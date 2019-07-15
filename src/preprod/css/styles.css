@@ -254,7 +254,7 @@ select {
   .uniform .full.kg {
     width: 44mm; }
   .uniform .full.before.kg {
-    width: 36mm; }
+    width: 35mm; }
   .uniform .half {
     width: 25mm; }
   .uniform .half.kg {
@@ -307,7 +307,7 @@ select {
     left: 103mm; }
   .uniform #drawbar, .uniform #roadDrawbar, .uniform #axle1, .uniform #roadAxle1, .uniform #axle2, .uniform #roadAxle2, .uniform #axle3, .uniform #roadAxle3 {
     top: 39mm;
-    left: 111mm; }
+    left: 112mm; }
     .uniform #drawbar::before, .uniform #roadDrawbar::before, .uniform #axle1::before, .uniform #roadAxle1::before, .uniform #axle2::before, .uniform #roadAxle2::before, .uniform #axle3::before, .uniform #roadAxle3::before {
       content: 'A-0:';
       display: inline-block;
