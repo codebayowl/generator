@@ -1,0 +1,84 @@
+/********* COMMON STYLES *********/
+// text initialization
+a, p, h1, h2, h3, h4, h5, h6, blockquote {
+  font-size: $basic;
+}
+// E N V I R O N M E N T
+html {
+  font-size: $basic;
+}
+body {
+  background: $color-bg $bgimg;
+  font-family: $font-regular;
+  color: $color-main;
+  box-sizing: border-box;
+  @media print {
+    background: transparent;
+  }
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-regular;
+  //color: $color-main;
+  font-weight: bold;
+  line-height: 2em;
+}
+h2, h3 {
+  color: $color-light;
+}
+h4, h5, h6 {
+  font-family: $font-regular;
+  color: $color-dark;
+}
+h1 {
+  font-size: $basic * 2;
+  color: $color-contrast;
+}
+h2 {
+  font-size: $basic * 1.75;
+}
+h3 {
+  font-size: $basic * 1.5;
+}
+h4 {
+  font-size: $basic * 1.25;
+}
+h5 {
+  font-size: $basic * 1.125;
+}
+h6 {
+  font-size: $basic;
+}
+p {
+  text-align: left;
+  line-height: 1;
+}
+blockquote {
+  color: $color-light;
+  margin: $basic $basic * 3;
+  padding: $basic/2 $basic/2 $basic/2 $basic;
+  border-left: $basic/4 solid $color-light;
+	font-style: italic;
+	border-radius: 0 $basic $basic 0;
+}
+a {
+  text-indent: 0;
+  color: $color-light;
+  text-decoration: none;
+  &:hover {
+    color: $color-contrast;
+  }
+}
+section {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+select {
+  display: block;
+  margin: 1mm;
+  height: 8mm;
+  font-size: 4mm;
+  //padding: 1mm;
+  //line-height: 6mm;
+  color: $color-main;
+}

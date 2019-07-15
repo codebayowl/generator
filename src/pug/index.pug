@@ -1,0 +1,82 @@
+doctype html
+html(lang="en")
+	include _header
+	body
+		#wrapper
+			#output
+				#plate.uniform
+					.logoAgro
+						include _umegaagrologo
+					.logoUmega
+						include _umegalogo
+					span.logoGroup Umega Group, AB
+					p.address Metalo str. 5, Utena, #[br] LT-28216, Lithuania #[br] www.umegaagro.com
+					
+					//- span#type.field GPP
+					//- span#variant.field 27L
+					//- span#version.field 1M4C
+					//- span#year.field 2019
+					//- span#weight.field.kg 8800
+					//- span#roadLoad.field.kg 15200
+					//- span#maxLoad.field.kg 24800
+					//- span#placeholder.field.half &nbsp;
+					//- span#road.field.half.kg 24000
+					//- span#drawbar.field.half.before.kg 3000
+					//- span#axle1.field.half.before.kg 10000
+					//- span#axle2.field.half.before.kg 10000 
+					//- span#axle3.field.half.before.kg 10000
+					.divider
+					span#category.field.full S2a
+					span#certificate.field.full e32*167/2013*00015*00
+					span#pin.field.full UMEGPP27JJ0004578
+					span#roadFull.field.full.kg 33600
+					span#roadDrawbar.field.full.before.kg 3000
+					span#roadAxle1.field.full.before.kg 14800
+					span#roadAxle2.field.full.before.kg 14800
+					span#roadAxle3.field.full.before.kg 14800
+					//- span#drawbarLoad.field 98kN
+					//- span#axleLoad.field 45kN
+
+					.b0.t0 &nbsp;
+					.b0.t1 T-1
+					.b0.t2 T-2
+					.b0.t3 T-3
+					.b1.t0 B-1
+					#b1t1.b1.t1 -
+					#b1t2.b1.t2 -
+					#b1t3.b1.t3 -
+					.b2.t0 B-2
+					#b2t1.b2.t1 -
+					#b2t2.b2.t2 -
+					#b2t3.b2.t3 -
+					.b3.t0 B-3
+					#b3t1.b3.t1 -
+					#b3t2.b3.t2 -
+					#b3t3.b3.t3 -
+					.b4.t0 B-4
+					#b4t1.b4.t1 -
+					#b4t2.b4.t2 -
+					#b4t3.b4.t3 -
+					.underlay
+					span.certified Certified:
+					span.iso ISO 9001
+					span.eac
+						include _eac
+					span.eu
+						include _ce
+					.rivet.lt
+					.rivet.rt
+					.rivet.rb
+					.rivet.lb
+			#input
+				select#chooseTrailer
+					option#choose_a_trailer(selected) -- choose a trailer --
+				select#chooseCountry
+					option#choose_a_country(selected) -- choose a country --
+				select#chooseCertificate
+					option#choose_certification(selected) -- choose certification --
+				.complectationOptions
+				select#inputYear
+				input(type="text" minlength="17" maxlength="17" size="19" placeholder="UMEXXX00XX0000000" required)#inputPin.noPin
+				button(name="pdf")#pdfBuild.button Download
+		script(src="js/scripts.js")

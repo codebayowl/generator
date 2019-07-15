@@ -1,0 +1,815 @@
+@charset "UTF-8";
+/********** STYLE RESET **********/
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0; }
+
+/********** VARIABLES AND MIXINS ***********/
+/* MIXINS */
+/********* COMMON STYLES *********/
+a, p, h1, h2, h3, h4, h5, h6, blockquote {
+  font-size: 4mm; }
+
+html {
+  font-size: 4mm; }
+
+body {
+  background: #fafafa url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAKCAMAAABL52QCAAAABlBMVEXCw8Tp6uwFw7MwAAAAF0lEQVR4AWNgYAQCCMEAIoAQgkA8/LIABOwAKWIaZEkAAAAASUVORK5CYII=);
+  font-family: "Roboto", sans-serif;
+  color: #005f4e;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+  @media print {
+    body {
+      background: transparent; } }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  line-height: 2em; }
+
+h2, h3 {
+  color: #a9a9a9; }
+
+h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+  color: #1a1a1a; }
+
+h1 {
+  font-size: 8mm;
+  color: #f3B900; }
+
+h2 {
+  font-size: 7mm; }
+
+h3 {
+  font-size: 6mm; }
+
+h4 {
+  font-size: 5mm; }
+
+h5 {
+  font-size: 4.5mm; }
+
+h6 {
+  font-size: 4mm; }
+
+p {
+  text-align: left;
+  line-height: 1; }
+
+blockquote {
+  color: #a9a9a9;
+  margin: 4mm 12mm;
+  padding: 2mm 2mm 2mm 4mm;
+  border-left: 1mm solid #a9a9a9;
+  font-style: italic;
+  -webkit-border-radius: 0 4mm 4mm 0;
+          border-radius: 0 4mm 4mm 0; }
+
+a {
+  text-indent: 0;
+  color: #a9a9a9;
+  text-decoration: none; }
+  a:hover {
+    color: #f3B900; }
+
+section {
+  display: inline-block;
+  margin: 0;
+  padding: 0; }
+
+select {
+  display: block;
+  margin: 1mm;
+  height: 8mm;
+  font-size: 4mm;
+  color: #005f4e; }
+
+/************ MAIN STYLES *************/
+#wrapper {
+  width: 100%;
+  height: 100%; }
+
+#output {
+  overflow: hidden; }
+
+#plate {
+  margin: 15mm auto;
+  display: block;
+  position: relative;
+  outline-width: 1px;
+  outline-style: solid;
+  -webkit-box-shadow: 0 3mm 10mm rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3mm 10mm rgba(0, 0, 0, 0.3); }
+  @media print {
+    #plate {
+      -webkit-box-shadow: none;
+              box-shadow: none; } }
+  #plate * {
+    position: absolute; }
+  #plate .rivet {
+    width: 2mm;
+    height: 2mm;
+    background-color: #4b4b4b;
+    -webkit-border-radius: 6mm;
+            border-radius: 6mm;
+    border-color: whitesmoke;
+    border-width: 2mm;
+    border-style: solid;
+    -webkit-box-shadow: 0.2mm 0.3mm 0.5mm rgba(0, 0, 0, 0.5);
+            box-shadow: 0.2mm 0.3mm 0.5mm rgba(0, 0, 0, 0.5); }
+    @media print {
+      #plate .rivet {
+        display: none; } }
+  #plate .lt {
+    top: 1mm;
+    left: 1mm; }
+  #plate .rt {
+    top: 1mm;
+    right: 1mm; }
+  #plate .rb {
+    bottom: 1mm;
+    right: 1mm; }
+  #plate .lb {
+    bottom: 1mm;
+    left: 1mm; }
+  #plate .underlay {
+    bottom: 5mm;
+    left: 5mm; }
+  #plate .logoAgro svg {
+    width: 60mm;
+    height: 14mm; }
+  #plate .address {
+    line-height: 1.2; }
+  #plate .divider {
+    width: 1mm;
+    height: 90mm;
+    background-color: #005f4e;
+    top: 5mm;
+    left: 97mm; }
+  #plate .field {
+    font-size: 4mm;
+    line-height: 6mm;
+    height: 6mm;
+    font-family: "Ubuntu Mono", monospace; }
+    #plate .field::before, #plate .field ::after {
+      font-family: "Roboto", sans-serif; }
+
+.undefined {
+  width: 100mm;
+  height: 110mm;
+  background: #a9a9a9;
+  outline-color: #4b4b4b;
+  -webkit-transition: width .3s;
+  -o-transition: width .3s;
+  transition: width .3s; }
+  .undefined .logoAgro {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+  .undefined .address,
+  .undefined .divider,
+  .undefined .logoUmega,
+  .undefined .logoGroup,
+  .undefined .address,
+  .undefined #category,
+  .undefined #type,
+  .undefined #variant,
+  .undefined #version,
+  .undefined #year,
+  .undefined #weight,
+  .undefined #roadLoad,
+  .undefined #maxLoad,
+  .undefined #certificate,
+  .undefined #pin,
+  .undefined #country,
+  .undefined #placeholder,
+  .undefined #road,
+  .undefined #full,
+  .undefined #drawbar,
+  .undefined #axle1,
+  .undefined #axle2,
+  .undefined #axle3,
+  .undefined #roadDrawbar,
+  .undefined #roadAxle1,
+  .undefined #roadAxle2,
+  .undefined #roadAxle3,
+  .undefined #drawbarLoad,
+  .undefined #axleLoad,
+  .undefined .b0, .undefined .b1, .undefined .b2, .undefined .b3, .undefined .b4,
+  .undefined .t0, .undefined .t1, .undefined .t2, .undefined .t3,
+  .undefined .underlay,
+  .undefined .iso,
+  .undefined .eac,
+  .undefined .eu {
+    display: none; }
+
+.uniform {
+  width: 160mm;
+  height: 100mm;
+  background: #fafafa;
+  outline-color: #a9a9a9; }
+  .uniform .eac, .uniform #drawbarLoad, .uniform #axleLoad, .uniform .logoUmega {
+    display: none; }
+  .uniform .underlay {
+    background-color: #005f4e;
+    height: 10mm;
+    width: 90mm; }
+  .uniform .logoAgro {
+    top: 7mm;
+    left: 5mm; }
+  .uniform .logoGroup {
+    text-transform: uppercase;
+    font-size: 5mm;
+    font-weight: 700;
+    width: 55mm;
+    left: 107mm;
+    top: 4mm; }
+  .uniform .address {
+    top: 10mm;
+    left: 67mm;
+    font-size: 2.8mm; }
+  .uniform .field {
+    padding: 0 0 0 1mm;
+    background-color: #005f4e;
+    color: yellow; }
+  .uniform .kg::after {
+    content: 'kg';
+    display: inline-block;
+    position: absolute;
+    left: 47mm;
+    font-family: "Roboto", sans-serif;
+    font-size: 4mm;
+    line-height: 6mm;
+    color: #005f4e; }
+  .uniform .full {
+    width: 51mm; }
+    .uniform .full::before {
+      display: none; }
+  .uniform .full.kg {
+    width: 44mm; }
+  .uniform .full.before.kg {
+    width: 36mm; }
+  .uniform .half {
+    width: 25mm; }
+  .uniform .half.kg {
+    width: 19mm; }
+    .uniform .half.kg::after {
+      left: 21mm; }
+  .uniform .half.before.kg {
+    width: 15mm; }
+    .uniform .half.before.kg::before {
+      left: 5mm; }
+    .uniform .half.before.kg::after {
+      left: 17mm; }
+  .uniform #type {
+    top: 46mm; }
+  .uniform #variant {
+    top: 53mm; }
+  .uniform #version {
+    top: 60mm; }
+  .uniform #year {
+    top: 67mm; }
+  .uniform #weight {
+    top: 74mm; }
+  .uniform #roadLoad {
+    top: 81mm; }
+  .uniform #maxLoad {
+    top: 88mm; }
+  .uniform #category {
+    top: 11mm;
+    left: 103mm; }
+    .uniform #category::before {
+      display: none; }
+  .uniform #certificate {
+    top: 18mm;
+    left: 103mm; }
+  .uniform #pin {
+    top: 25mm;
+    left: 103mm; }
+    .uniform #pin::before {
+      display: none; }
+  .uniform #placeholder {
+    width: 25mm;
+    top: 25mm;
+    left: 75%;
+    padding: 0;
+    -webkit-transform: translateX(1mm);
+        -ms-transform: translateX(1mm);
+            transform: translateX(1mm); }
+  .uniform #roadFull {
+    top: 32mm;
+    left: 103mm; }
+  .uniform #drawbar, .uniform #roadDrawbar, .uniform #axle1, .uniform #roadAxle1, .uniform #axle2, .uniform #roadAxle2, .uniform #axle3, .uniform #roadAxle3 {
+    top: 39mm;
+    left: 111mm; }
+    .uniform #drawbar::before, .uniform #roadDrawbar::before, .uniform #axle1::before, .uniform #roadAxle1::before, .uniform #axle2::before, .uniform #roadAxle2::before, .uniform #axle3::before, .uniform #roadAxle3::before {
+      content: 'A-0:';
+      display: inline-block;
+      position: absolute;
+      left: -9mm;
+      font-weight: 700;
+      color: #005f4e; }
+    .uniform #drawbar::after, .uniform #roadDrawbar::after, .uniform #axle1::after, .uniform #roadAxle1::after, .uniform #axle2::after, .uniform #roadAxle2::after, .uniform #axle3::after, .uniform #roadAxle3::after {
+      left: 39mm; }
+  .uniform #axle1, .uniform #roadAxle1 {
+    top: 46mm; }
+    .uniform #axle1::before, .uniform #roadAxle1::before {
+      content: 'A-1:'; }
+  .uniform #axle2, .uniform #roadAxle2 {
+    top: 53mm; }
+    .uniform #axle2::before, .uniform #roadAxle2::before {
+      content: 'A-2:'; }
+  .uniform #axle3, .uniform #roadAxle3 {
+    top: 60mm; }
+    .uniform #axle3::before, .uniform #roadAxle3::before {
+      content: 'A-3:'; }
+  .uniform .b1 {
+    top: 73.5mm;
+    height: 5mm;
+    background: #005f4e; }
+  .uniform .b2 {
+    top: 79mm;
+    height: 5mm;
+    background: #005f4e; }
+  .uniform .b3 {
+    top: 84.5mm;
+    height: 5mm;
+    background: #005f4e; }
+  .uniform .b4 {
+    top: 90mm;
+    height: 5mm;
+    background: #005f4e; }
+  .uniform .t0 {
+    text-align: center;
+    width: 10mm;
+    right: 53mm;
+    background: none; }
+  .uniform .t1 {
+    text-align: center;
+    color: yellow;
+    font-family: "Ubuntu Mono", monospace;
+    right: 37mm;
+    width: 15mm;
+    background: #005f4e; }
+  .uniform .t2 {
+    text-align: center;
+    color: yellow;
+    font-family: "Ubuntu Mono", monospace;
+    right: 21mm;
+    width: 15mm;
+    background: #005f4e; }
+  .uniform .t3 {
+    text-align: center;
+    color: yellow;
+    font-family: "Ubuntu Mono", monospace;
+    right: 5mm;
+    width: 15mm;
+    background: #005f4e; }
+  .uniform .b0 {
+    color: #005f4e;
+    font-family: "Roboto", sans-serif;
+    top: 68mm;
+    background: none;
+    height: 5mm; }
+  .uniform .iso {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 6mm;
+    line-height: 10mm;
+    top: 85mm;
+    color: whitesmoke;
+    left: 39mm; }
+  .uniform .certified {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 6mm;
+    line-height: 10mm;
+    color: whitesmoke;
+    top: 85mm;
+    left: 7mm; }
+  .uniform .eu {
+    top: 86mm;
+    color: whitesmoke;
+    left: 75mm; }
+    .uniform .eu svg {
+      height: 8mm; }
+  .uniform #category::before {
+    content: 'Category: '; }
+  .uniform #type::before {
+    content: 'Type:'; }
+  .uniform #variant::before {
+    content: 'Variant:'; }
+  .uniform #version::before {
+    content: 'Version:'; }
+  .uniform #year::before {
+    content: 'Manufactured:'; }
+  .uniform #weight::before {
+    content: 'Weight:'; }
+  .uniform #roadLoad::before {
+    content: 'Payload:'; }
+  .uniform #maxLoad::before {
+    content: 'Tech. payload:'; }
+
+.nocertOld {
+  width: 103mm;
+  height: 110mm;
+  background: #005f4e;
+  outline-color: #a9a9a9; }
+  .nocertOld .logoUmega,
+  .nocertOld .logoGroup,
+  .nocertOld #category,
+  .nocertOld #variant,
+  .nocertOld #version,
+  .nocertOld .divider,
+  .nocertOld #country,
+  .nocertOld #placeholder,
+  .nocertOld #axle2,
+  .nocertOld #axle3,
+  .nocertOld #roadDrawbar,
+  .nocertOld #roadAxle1,
+  .nocertOld #roadAxle2,
+  .nocertOld #roadAxle3,
+  .nocertOld #drawbarLoad,
+  .nocertOld #axleLoad,
+  .nocertOld #maxLoad,
+  .nocertOld .b0, .nocertOld .b1, .nocertOld .b2, .nocertOld .b3, .nocertOld .b4,
+  .nocertOld .t0, .nocertOld .t1, .nocertOld .t2, .nocertOld .t3,
+  .nocertOld .eac {
+    display: none; }
+  .nocertOld .field {
+    display: inline-block;
+    height: 5mm !important;
+    width: 37mm;
+    left: 59mm;
+    background: whitesmoke;
+    color: blue;
+    text-align: center;
+    line-height: 5mm;
+    font-size: 4mm; }
+    .nocertOld .field::before {
+      display: inline-block;
+      position: absolute;
+      height: 5mm;
+      width: 49mm;
+      padding-left: 1mm;
+      left: -52mm;
+      background: whitesmoke;
+      text-align: left;
+      color: #005f4e;
+      font-weight: 700;
+      line-height: 5mm; }
+  .nocertOld .full {
+    width: 89mm; }
+  .nocertOld .logoAgro {
+    top: 7mm;
+    left: 5mm; }
+  .nocertOld .address {
+    color: whitesmoke;
+    top: 6mm;
+    left: 60mm; }
+  .nocertOld #certificate {
+    top: 23mm;
+    left: 7mm; }
+  .nocertOld #type {
+    top: 30mm; }
+    .nocertOld #type::before {
+      content: 'Type:'; }
+  .nocertOld #pin {
+    top: 36mm; }
+    .nocertOld #pin::before {
+      content: 'Serial No.:'; }
+  .nocertOld #year {
+    top: 42mm; }
+    .nocertOld #year::before {
+      content: 'Year of manufacture:'; }
+  .nocertOld #road {
+    top: 48mm; }
+    .nocertOld #road::before {
+      content: 'Gross weight (kg):'; }
+  .nocertOld #weight {
+    top: 54mm; }
+    .nocertOld #weight::before {
+      content: 'Weight (kg):'; }
+  .nocertOld #drawbar {
+    top: 60mm; }
+    .nocertOld #drawbar::before {
+      content: 'Max load on drawbar (kg):'; }
+  .nocertOld #axle1 {
+    top: 66mm; }
+    .nocertOld #axle1::before {
+      content: 'Total axles load (kg):'; }
+  .nocertOld #roadLoad {
+    top: 72mm; }
+    .nocertOld #roadLoad::before {
+      content: 'Netto weight (kg):'; }
+  .nocertOld #full {
+    top: 78mm; }
+    .nocertOld #full::before {
+      content: 'Constr. gross weight (kg):'; }
+  .nocertOld .iso {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 9mm;
+    line-height: 15mm;
+    top: 95mm;
+    color: whitesmoke;
+    left: 35%;
+    -webkit-transform: translatex(-50%);
+        -ms-transform: translatex(-50%);
+            transform: translatex(-50%); }
+  .nocertOld .eu {
+    top: 97mm;
+    color: whitesmoke;
+    left: 65%;
+    -webkit-transform: translatex(-50%);
+        -ms-transform: translatex(-50%);
+            transform: translatex(-50%); }
+
+.witam {
+  width: 100mm;
+  height: 80mm;
+  background: #005f4e;
+  outline-color: #a9a9a9; }
+  .witam .divider,
+  .witam .logoAgro,
+  .witam .logoGroup,
+  .witam #category,
+  .witam #variant,
+  .witam #version,
+  .witam #country,
+  .witam #placeholder,
+  .witam #road,
+  .witam #maxLoad,
+  .witam #roadLoad,
+  .witam #drawbar,
+  .witam #axle1,
+  .witam #axle2,
+  .witam #axle3,
+  .witam #roadDrawbar,
+  .witam #roadAxle1,
+  .witam #roadAxle2,
+  .witam #roadAxle3,
+  .witam .b0, .witam .b1, .witam .b2, .witam .b3, .witam .b4,
+  .witam .t0, .witam .t1, .witam .t2, .witam .t3,
+  .witam .eac, .witam .iso, .witam .eu {
+    display: none; }
+  .witam .field {
+    display: inline-block;
+    width: 37mm;
+    left: 55mm;
+    background: whitesmoke;
+    color: blue;
+    text-align: left;
+    line-height: 6mm;
+    font-size: 4mm;
+    padding-left: 1mm; }
+    .witam .field::before {
+      position: absolute;
+      width: 51mm;
+      padding-left: 1mm;
+      left: -55mm;
+      text-align: left;
+      color: whitesmoke;
+      font-weight: 400;
+      line-height: 6mm;
+      text-align: right;
+      font-size: 3.5mm !important; }
+  .witam .logoUmega {
+    top: 7mm;
+    left: 9mm; }
+  .witam .address {
+    top: 5mm;
+    left: 55mm;
+    color: whitesmoke; }
+  .witam #type {
+    top: 21mm; }
+    .witam #type::before {
+      content: 'Typ'; }
+  .witam #certificate {
+    top: 28mm; }
+    .witam #certificate::before {
+      content: 'Nr świadectwa homologacji'; }
+  .witam #pin {
+    top: 35mm; }
+    .witam #pin::before {
+      content: 'Nr identyfikacyjny'; }
+  .witam #year {
+    top: 42mm; }
+    .witam #year::before {
+      content: 'Rok produkcji'; }
+  .witam #weight {
+    top: 49mm; }
+    .witam #weight::before {
+      content: 'Masa własna'; }
+  .witam #full {
+    top: 56mm; }
+    .witam #full::before {
+      content: 'Dopuszczalna masa całkowita'; }
+  .witam #axleLoad {
+    top: 63mm; }
+    .witam #axleLoad::before {
+      content: 'Maksymalny nacisk na oś'; }
+  .witam #drawbarLoad {
+    top: 70mm; }
+    .witam #drawbarLoad::before {
+      content: 'Maksymalny nacisk na sprzęg'; }
+
+.rus {
+  width: 103mm;
+  height: 110mm;
+  background: #005f4e;
+  outline-color: #a9a9a9; }
+  .rus .logoUmega,
+  .rus #category,
+  .rus #variant,
+  .rus #version,
+  .rus .divider,
+  .rus #country,
+  .rus #placeholder,
+  .rus #axle2,
+  .rus #axle3,
+  .rus #roadDrawbar,
+  .rus #roadAxle1,
+  .rus #roadAxle2,
+  .rus #roadAxle3,
+  .rus #drawbarLoad,
+  .rus #axleLoad,
+  .rus #full,
+  .rus #maxLoad,
+  .rus .b0, .rus .b1, .rus .b2, .rus .b3, .rus .b4,
+  .rus .t0, .rus .t1, .rus .t2, .rus .t3,
+  .rus .logoAgro {
+    display: none; }
+  .rus .field {
+    display: inline-block;
+    height: 5mm !important;
+    width: 37mm;
+    left: 59mm;
+    background: whitesmoke;
+    color: blue;
+    text-align: center;
+    line-height: 5mm;
+    font-size: 4mm; }
+    .rus .field::before {
+      display: inline-block;
+      position: absolute;
+      height: 5mm;
+      width: 49mm;
+      padding-left: 1mm;
+      left: -52mm;
+      background: whitesmoke;
+      text-align: left;
+      color: #005f4e;
+      font-weight: 400;
+      font-size: 3.5mm;
+      line-height: 5mm; }
+  .rus .full {
+    width: 89mm; }
+  .rus .logoGroup {
+    color: whitesmoke;
+    text-transform: uppercase;
+    font-size: 6mm;
+    font-weight: 700;
+    width: 55mm;
+    left: 6mm;
+    top: 10mm; }
+  .rus .address {
+    color: whitesmoke;
+    top: 6mm;
+    left: 60mm; }
+  .rus #certificate {
+    top: 23mm;
+    left: 7mm; }
+  .rus #type {
+    top: 30mm; }
+    .rus #type::before {
+      content: 'Тип:'; }
+  .rus #pin {
+    top: 36mm; }
+    .rus #pin::before {
+      content: 'Серийный номер:'; }
+  .rus #year {
+    top: 42mm; }
+    .rus #year::before {
+      content: 'Год производства:'; }
+  .rus #road {
+    top: 48mm; }
+    .rus #road::before {
+      content: 'Полная масса (кг):'; }
+  .rus #weight {
+    top: 54mm; }
+    .rus #weight::before {
+      content: 'Масса (кг):'; }
+  .rus #drawbar {
+    top: 60mm; }
+    .rus #drawbar::before {
+      content: 'Макс. нагр. на дышло (кг):'; }
+  .rus #axle1 {
+    top: 66mm; }
+    .rus #axle1::before {
+      content: 'Общая нагр. на оси (кг):'; }
+  .rus #roadLoad {
+    top: 72mm; }
+    .rus #roadLoad::before {
+      content: 'Масса нетто (кг):'; }
+  .rus .iso {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 9mm;
+    line-height: 15mm;
+    top: 95mm;
+    color: whitesmoke;
+    left: 10mm; }
+  .rus .eu {
+    top: 97mm;
+    color: whitesmoke;
+    left: 75mm; }
+  .rus .eac {
+    top: 97mm;
+    color: whitesmoke;
+    left: 55mm; }
+
+#input {
+  width: 120mm;
+  margin: 0 auto; }
+  @media print {
+    #input {
+      display: none; } }
+  #input input[type="text"] {
+    color: #005f4e;
+    height: 6mm;
+    font-size: 4mm;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: "Ubuntu Mono", monospace;
+    margin: 1mm;
+    padding: .5mm; }
+  #input #pdfBuild {
+    display: block;
+    margin: 2mm auto;
+    font-size: 6mm;
+    padding: 2mm 10mm;
+    -webkit-border-radius: 2mm;
+            border-radius: 2mm;
+    -webkit-transition: background-color .2s;
+    -o-transition: background-color .2s;
+    transition: background-color .2s;
+    border-width: 1px;
+    border-style: solid; }
+    #input #pdfBuild::after {
+      content: '\f1c1';
+      font-family: 'FontAwesome';
+      font-size: 8mm;
+      padding: 0 2mm; }
+  #input .activated {
+    background-color: #1f3948;
+    color: #fafafa;
+    -webkit-box-shadow: 0 4px 4px rgba(31, 57, 72, 0.2);
+            box-shadow: 0 4px 4px rgba(31, 57, 72, 0.2);
+    border-color: #1a1a1a;
+    cursor: pointer; }
+    #input .activated:hover {
+      background-color: #3e718f;
+      color: #fafafa;
+      -webkit-box-shadow: 0 4px 6px rgba(18, 126, 155, 0.4);
+              box-shadow: 0 4px 6px rgba(18, 126, 155, 0.4);
+      border-color: #1a1a1a; }
+    #input .activated:active {
+      background-color: #101d24;
+      color: #fafafa;
+      -webkit-box-shadow: 0 2px 6px rgba(18, 126, 155, 0.4);
+              box-shadow: 0 2px 6px rgba(18, 126, 155, 0.4);
+      border-color: #1a1a1a; }
+  #input .deactivated {
+    background-color: rgba(233, 234, 236, 0.5);
+    color: #a9a9a9;
+    -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    border-color: #a9a9a9;
+    cursor: not-allowed; }
+
+.noPin {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #a9a9a9; }
+
+.pendingPin {
+  -webkit-box-shadow: 0 1px 4px rgba(255, 200, 0, 0.6);
+          box-shadow: 0 1px 4px rgba(255, 200, 0, 0.6);
+  border: 1px solid #96b400; }
+
+.validPin {
+  -webkit-box-shadow: 0 1px 4px rgba(0, 200, 0, 0.6);
+          box-shadow: 0 1px 4px rgba(0, 200, 0, 0.6);
+  border: 1px solid #009600; }
+
+.invalidPin {
+  -webkit-box-shadow: 0 1px 4px rgba(255, 0, 0, 0.6);
+          box-shadow: 0 1px 4px rgba(255, 0, 0, 0.6);
+  border: 1px solid #960000; }

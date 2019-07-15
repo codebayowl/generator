@@ -1,0 +1,959 @@
+/************ MAIN STYLES *************/
+#wrapper {
+  width: 100%;
+  height: 100%;
+}
+#input {
+	
+}
+#output {
+	overflow: hidden;
+}
+#plate {
+  margin: 15mm auto;
+  display: block;
+  position: relative;
+  outline-width: 1px;
+  outline-style: solid;
+  box-shadow: 0 3mm 10mm rgba(0,0,0,.3);
+  @media print {
+    box-shadow: none;
+  }
+  & * {
+    position: absolute;
+  }
+  & .rivet {
+    width: 2mm;
+    height: 2mm;
+    background-color: $color-bgdark;
+    border-radius: 6mm;
+    border-color: whitesmoke;
+    border-width: 2mm;
+    border-style: solid;
+    box-shadow: .2mm .3mm .5mm rgba(0,0,0,.5);
+    @media print {
+      display: none;
+    }
+  }
+  & .lt {
+    top:  1mm;
+    left: 1mm;
+  }
+  & .rt {
+    top:   1mm;
+    right: 1mm;
+  }
+  & .rb {
+    bottom: 1mm;
+    right:  1mm;
+  }
+  & .lb {
+    bottom: 1mm;
+    left:   1mm;
+  }
+  & .underlay {
+    // width: calc(100% - 4mm);
+    bottom: 5mm;
+    left: 5mm;
+  }
+  & .logoAgro {
+    & svg {
+			width: 60mm;
+			height: 14mm;
+		}
+  }
+  & .address {
+    line-height: 1.2;
+  }
+  & .divider {
+    width: 1mm;
+    height: 90mm;
+    background-color: $color-main;
+    top: 5mm;
+    left: 97mm;
+    // transform: translateX(-50%);
+  }
+  
+  & .field {
+    font-size: 4mm;
+    line-height: 6mm;
+    height: 6mm;
+    font-family: $font-monospace;
+    &::before, ::after {
+      font-family: $font-regular;
+    }
+  }
+}
+
+// Different types of plates
+// according to country/certification
+
+// UNDEFINED
+.undefined {
+  width: 100mm;
+  height: 110mm;
+  background: $color-light;
+  outline-color: $color-bgdark;
+  transition: width .3s;
+  & .logoAgro {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  & .address, 
+    .divider, 
+    .logoUmega,
+    .logoGroup,
+    .address,
+    #category,
+    #type,
+    #variant,
+    #version,
+    #year,
+    #weight,
+    #roadLoad,
+    #maxLoad,
+    #certificate,
+    #pin,
+    #country,
+    #placeholder,
+    #road,
+    #full,
+    #drawbar,
+    #axle1,
+    #axle2,
+    #axle3,
+    #roadDrawbar,
+    #roadAxle1,
+    #roadAxle2,
+    #roadAxle3,
+    #drawbarLoad,
+    #axleLoad,
+    .b0, .b1, .b2, .b3, .b4,
+    .t0, .t1, .t2, .t3,
+    .underlay,
+    .iso,
+    .eac,
+    .eu
+    {
+    display: none;
+  }
+}
+
+// UNIFORM
+.uniform {
+  width: 160mm;
+  height: 100mm;
+  background: $color-bg;
+  outline-color: $color-light;
+  & .eac, #drawbarLoad, #axleLoad, .logoUmega {
+    display: none;
+  }
+  & .underlay {
+    background-color: $color-main;
+		height: 10mm;
+		width: 90mm;
+  }
+  & .logoAgro {
+    top: 7mm;
+		left: 5mm;
+  }
+  & .logoGroup {
+    // temp instead svg
+    text-transform: uppercase;
+    font-size: 5mm;
+    font-weight: 700;
+    width: 55mm;
+    left: 107mm;
+    top: 4mm;
+  }
+  & .address {
+    top: 10mm;
+		left: 67mm;
+		font-size: 2.8mm;
+  }
+  & .field {
+    padding: 0 0 0 1mm;
+    background-color: $color-main;
+    color: yellow;
+  }
+  & .kg {
+    //width: 15mm;
+    &::after {
+      content: 'kg';
+      display: inline-block;
+      position: absolute;
+			left: 47mm;
+			font-family: $font-regular;
+      font-size: 4mm;
+      line-height: 6mm;
+      color: $color-main;
+    }
+  }
+
+  // .before {
+  //   &::before {
+  //     color: $color-main;
+  //     padding: 0 2mm;
+  //     width: 10mm;
+  //     text-align: right;
+  //     display: inline-block;
+  //     position: absolute;
+  //     //transform: translateX(-100%);
+  //   }
+  // }
+
+  & .full {
+    width: 51mm;
+    &::before {
+      display: none;
+    }
+  }
+  & .full.kg {
+    width: 44mm;
+  }
+  & .full.before.kg {
+    width: 36mm;
+  }
+
+
+  & .half {
+    width: 25mm;
+  }
+  & .half.kg {
+    width: 19mm;
+    &::after {
+      left: 21mm;
+    }
+  }
+  & .half.before.kg {
+    width: 15mm;
+    &::before {
+      left: 5mm;
+    }
+    &::after {
+      left: 17mm;
+    }
+  }
+
+  
+  & #type {
+    top: 46mm;
+  }
+  & #variant {
+    top: 53mm;
+  }
+  & #version {
+    top: 60mm;
+  }
+  & #year {
+    top: 67mm;
+  }
+  & #weight {
+    top: 74mm;
+  }
+  & #roadLoad {
+    top: 81mm;
+  }
+  & #maxLoad {
+    top: 88mm;
+	}
+	& #category {
+		top: 11mm;
+		left: 103mm;
+		//width: 51mm;
+		&::before {
+      display: none;
+    }
+  }
+  & #certificate {
+    top: 18mm;
+    left: 103mm;
+  }
+  & #pin {
+    top: 25mm;
+    left: 103mm;
+    //width: 51mm;
+    &::before {
+      display: none;
+    }
+  }
+  & #placeholder {
+    width: 25mm;
+    top: 25mm;
+    left: 75%;
+    padding: 0;
+    transform: translateX(1mm);
+  }
+  & #road {
+    //top: 32mm;
+    //left: 75%;
+    //transform: translateX(-26mm);
+  }
+  & #roadFull {
+    top: 32mm;
+    left: 103mm;
+  }
+  & #drawbar, #roadDrawbar, #axle1, #roadAxle1, #axle2, #roadAxle2, #axle3, #roadAxle3 {
+    top: 39mm;
+		left: 111mm;
+    &::before {
+      content: 'A-0:';
+      display: inline-block;
+      position: absolute;
+      left: -9mm;
+      font-weight: 700;
+      color: $color-main;
+    }
+    &::after {
+			left: 39mm;
+    }
+  }
+
+  & #axle1, #roadAxle1 {
+		top: 46mm;
+    &::before {
+      content: 'A-1:';
+    }
+  }
+  & #axle2, #roadAxle2 {
+    top: 53mm;
+    &::before {
+      content: 'A-2:';
+    }
+  }
+  & #axle3, #roadAxle3 {
+    top: 60mm;
+    &::before {
+      content: 'A-3:';
+    }
+  }  
+  & #roadDrawbar{
+    //transform: translateX(5mm);
+  }
+  & #roadAxle1{
+    //transform: translateX(5mm);
+  }
+  & #roadAxle2{
+    //transform: translateX(5mm);
+  }
+  & #roadAxle3{
+    //transform: translateX(5mm);
+  }
+  
+  
+  .b1 {
+    top: 73.5mm;
+    height: 5mm;
+    background: $color-main;
+  }
+  .b2 {
+    top: 79mm;
+    height: 5mm;
+    background: $color-main;
+  }
+  .b3 {
+    top: 84.5mm;
+    height: 5mm;
+    background: $color-main;
+  }
+  .b4 {
+    top: 90mm;
+    height: 5mm;
+    background: $color-main;
+  }
+
+  .t0 {
+    text-align: center;
+    width: 10mm;
+    right: 53mm;
+    background: none;
+  }
+  .t1 {
+    text-align: center;
+    color: yellow;
+    font-family: $font-monospace;
+    right: 37mm;
+    width: 15mm;
+    background: $color-main;
+  }
+  .t2 {
+    text-align: center;
+    color: yellow;
+    font-family: $font-monospace;
+    right: 21mm;
+    width: 15mm;
+    background: $color-main;
+  }
+  .t3 {
+    text-align: center;
+    color: yellow;
+    font-family: $font-monospace;
+    right: 5mm;
+    width: 15mm;
+    background: $color-main;
+  }
+  .b0 {
+    color: $color-main;
+    font-family: $font-regular;
+    top: 68mm;
+    background: none;
+    height: 5mm;
+  }
+  & .iso {
+    font-family: $font-regular;
+    font-weight: 700;
+    font-size: 6mm;
+    line-height: 10mm;
+    top: 85mm;
+    color: whitesmoke;
+    left: 39mm;
+	}
+	& .certified {
+		font-family: $font-regular;
+		font-weight: 400;
+		font-size: 6mm;
+		line-height: 10mm;
+		color: whitesmoke;
+		top: 85mm;
+		left: 7mm;
+	}
+  & .eu {
+    // font-family: $font-regular;
+    // font-weight: 700;
+    // font-size: 9mm;
+    // line-height: 15mm;
+    top: 86mm;
+    color: whitesmoke;
+    left: 75mm;
+		& svg {
+			height: 8mm;
+		}
+  }
+  & #category {
+    &::before {
+      content: 'Category: ';
+    }
+  }
+  & #type {
+    &::before {
+      content: 'Type:';
+    }
+  }
+  & #variant {
+    &::before {
+      content: 'Variant:';
+    }
+  }
+  & #version {
+    &::before {
+      content: 'Version:';
+    }
+  }
+  & #year {
+    &::before {
+      content: 'Manufactured:';
+    }
+  }
+  & #weight {
+    &::before {
+      content: 'Weight:';
+    }
+  }
+  & #roadLoad {
+    &::before {
+      content: 'Payload:';
+    }
+  }
+  & #maxLoad {
+    &::before {
+      content: 'Tech. payload:';
+    }
+  }
+}
+
+// Dutch (Old UmegaAgro)
+.nocertOld {
+  width: 103mm;
+  height: 110mm;
+  background: $color-main;
+  outline-color: $color-light;
+  & .logoUmega,
+    .logoGroup,
+    #category,
+    #variant,
+    #version,
+    .divider,
+    #country,
+    #placeholder,
+    #axle2,
+    #axle3,
+    #roadDrawbar,
+    #roadAxle1,
+    #roadAxle2,
+    #roadAxle3,
+    #drawbarLoad,
+    #axleLoad,
+    #maxLoad,
+    .b0, .b1, .b2, .b3, .b4,
+    .t0, .t1, .t2, .t3,
+    .eac
+  {display: none;}
+  & .field {
+    display: inline-block;
+    height: 5mm !important;
+    width: 37mm;
+    left: 59mm;
+    background: whitesmoke;
+    color: blue;
+    text-align: center;
+    line-height: 5mm;
+    font-size: 4mm;
+    &::before {
+      display: inline-block;
+      position: absolute;
+      height: 5mm;
+      width: 49mm;
+      padding-left: 1mm;
+      left: -52mm;
+      background: whitesmoke;
+      text-align: left;
+      color: $color-main;
+      font-weight: 700;
+      line-height: 5mm;
+      //outline: $test;
+    }
+  }
+  & .full {
+    width: 89mm;
+  }
+  & .logoAgro {
+    top: 7mm;
+    left: 5mm;
+  }
+  & .address {
+    color: whitesmoke;
+    top: 6mm;
+    left: 60mm;
+  }
+  & #certificate {
+    top: 23mm;
+    left: 7mm;
+  }
+  & #type {
+    top: 30mm;
+    &::before {
+      content: 'Type:';
+    }
+  }
+  & #pin {
+    top: 36mm;
+    &::before {
+      content: 'Serial No.:';
+    }
+  }
+  & #year {
+    top: 42mm;
+    &::before {
+      content: 'Year of manufacture:'
+    }
+  }
+  & #road {
+    top: 48mm;
+    &::before {
+      content: 'Gross weight (kg):'
+    }
+  }
+  & #weight {
+    top: 54mm;
+    &::before {
+      content: 'Weight (kg):'
+    }
+  }
+  & #drawbar {
+    top: 60mm;
+    &::before {
+      content: 'Max load on drawbar (kg):'
+    }
+  }
+  & #axle1 {
+    top: 66mm;
+    &::before {
+      content: 'Total axles load (kg):'
+    }
+  }
+  & #roadLoad {
+    top: 72mm;
+    &::before {
+      content: 'Netto weight (kg):'
+    }
+  }
+  & #full {
+    top: 78mm;
+    &::before {
+      content: 'Constr. gross weight (kg):'
+    }
+  }
+  & .iso {
+    font-family: $font-regular;
+    font-weight: 700;
+    font-size: 9mm;
+    line-height: 15mm;
+    top: 95mm;
+    color: whitesmoke;
+    left: 35%;
+    transform: translatex(-50%);
+  }
+  & .eu {
+    // font-family: $font-regular;
+    // font-weight: 700;
+    // font-size: 9mm;
+    // line-height: 15mm;
+    top: 97mm;
+    color: whitesmoke;
+    left: 65%;
+    transform: translatex(-50%);
+  }
+}
+
+// Polish
+.witam {
+  width: 100mm;
+  height: 80mm;
+  background: $color-main;
+  outline-color: $color-light;
+  & .divider,
+    .logoAgro,
+    .logoGroup,
+    #category,
+    #variant,
+    #version,
+    #country,
+    #placeholder,
+    #road,
+    #maxLoad,
+    #roadLoad,
+    #drawbar,
+    #axle1,
+    #axle2,
+    #axle3,
+    #roadDrawbar,
+    #roadAxle1,
+    #roadAxle2,
+    #roadAxle3,
+    .b0, .b1, .b2, .b3, .b4,
+    .t0, .t1, .t2, .t3,
+    .eac, .iso, .eu
+  {display: none;}
+  & .field {
+    display: inline-block;
+    width: 37mm;
+    left: 55mm;
+    background: whitesmoke;
+    color: blue;
+    text-align: left;
+    line-height: 6mm;
+    font-size: 4mm;
+    padding-left: 1mm;
+    &::before {
+      position: absolute;
+      width: 51mm;
+      padding-left: 1mm;
+      left: -55mm;
+      text-align: left;
+      color: whitesmoke;
+      font-weight: 400;
+      line-height: 6mm;
+      text-align: right;
+      font-size: 3.5mm !important;
+    }
+  }
+  & .logoUmega {
+    top: 7mm;
+    left: 9mm;
+  }
+  & .address {
+    top: 5mm;
+    left: 55mm;
+    color: whitesmoke;
+  }
+  & #type {
+    top: 21mm;
+    &::before {
+      content: 'Typ';
+    }
+  }
+  & #certificate {
+    top: 28mm;
+    &::before {
+      content: 'Nr świadectwa homologacji';
+    }
+  }
+  & #pin {
+    top: 35mm;
+    &::before {
+      content: 'Nr identyfikacyjny';
+    }
+  }
+  & #year {
+    top: 42mm;
+    &::before {
+      content: 'Rok produkcji';
+    }
+  }
+  & #weight {
+    top: 49mm;
+    &::before {
+      content: 'Masa własna';
+    }
+  }
+  & #full {
+    top: 56mm;
+    &::before {
+      content: 'Dopuszczalna masa całkowita';
+    }
+  }
+  & #axleLoad {
+    top: 63mm;
+    &::before {
+      content: 'Maksymalny nacisk na oś';
+    }
+  }
+  & #drawbarLoad {
+    top: 70mm;
+    &::before {
+      content: 'Maksymalny nacisk na sprzęg';
+    }
+  }
+}
+
+// Rusische (uncertified)
+.rus {
+  width: 103mm;
+  height: 110mm;
+  background: $color-main;
+  outline-color: $color-light;
+  & .logoUmega,
+    #category,
+    #variant,
+    #version,
+    .divider,
+    #country,
+    #placeholder,
+    #axle2,
+    #axle3,
+    #roadDrawbar,
+    #roadAxle1,
+    #roadAxle2,
+    #roadAxle3,
+    #drawbarLoad,
+    #axleLoad,
+    #full,
+    #maxLoad,
+    .b0, .b1, .b2, .b3, .b4,
+    .t0, .t1, .t2, .t3,
+    .logoAgro
+  {display: none;}
+  & .field {
+    display: inline-block;
+    height: 5mm !important;
+    width: 37mm;
+    left: 59mm;
+    background: whitesmoke;
+    color: blue;
+    text-align: center;
+    line-height: 5mm;
+    font-size: 4mm;
+    &::before {
+      display: inline-block;
+      position: absolute;
+      height: 5mm;
+      width: 49mm;
+      padding-left: 1mm;
+      left: -52mm;
+      background: whitesmoke;
+      text-align: left;
+      color: $color-main;
+      font-weight: 400;
+      font-size: 3.5mm;
+      line-height: 5mm;
+      //outline: $test;
+    }
+  }
+  & .full {
+    width: 89mm;
+  }
+  & .logoGroup {
+    // temp instead svg
+    color: whitesmoke;
+    text-transform: uppercase;
+    font-size: 6mm;
+    font-weight: 700;
+    width: 55mm;
+    left: 6mm;
+    top: 10mm;
+  }
+  & .address {
+    color: whitesmoke;
+    top: 6mm;
+    left: 60mm;
+  }
+  & #certificate {
+    top: 23mm;
+    left: 7mm;
+  }
+  & #type {
+    top: 30mm;
+    &::before {
+      content: 'Тип:';
+    }
+  }
+  & #pin {
+    top: 36mm;
+    &::before {
+      content: 'Серийный номер:';
+    }
+  }
+  & #year {
+    top: 42mm;
+    &::before {
+      content: 'Год производства:'
+    }
+  }
+  & #road {
+    top: 48mm;
+    &::before {
+      content: 'Полная масса (кг):'
+    }
+  }
+  & #weight {
+    top: 54mm;
+    &::before {
+      content: 'Масса (кг):'
+    }
+  }
+  & #drawbar {
+    top: 60mm;
+    &::before {
+      content: 'Макс. нагр. на дышло (кг):'
+    }
+  }
+  & #axle1 {
+    top: 66mm;
+    &::before {
+      content: 'Общая нагр. на оси (кг):'
+    }
+  }
+  & #roadLoad {
+    top: 72mm;
+    &::before {
+      content: 'Масса нетто (кг):'
+    }
+  }
+  & .iso {
+    font-family: $font-regular;
+    font-weight: 700;
+    font-size: 9mm;
+    line-height: 15mm;
+    top: 95mm;
+    color: whitesmoke;
+    left: 10mm;
+  }
+  & .eu {
+    // font-family: $font-regular;
+    // font-weight: 700;
+    // font-size: 9mm;
+    // line-height: 15mm;
+    top: 97mm;
+    color: whitesmoke;
+    left: 75mm;
+  }
+  & .eac {
+    // font-family: $font-regular;
+    // font-weight: 700;
+    // font-size: 9mm;
+    // line-height: 15mm;
+    top: 97mm;
+    color: whitesmoke;
+    left: 55mm;
+  }
+}
+
+#input {
+  //outline: $test;
+  width: 120mm;
+  margin: 0 auto;
+  @media print {
+    display: none;
+  }
+  & input[type="text"] {
+    color: $color-main;
+    height: 6mm;
+    font-size: 4mm;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: $font-monospace;
+    margin: 1mm;
+    padding: .5mm;
+    //border: 1px solid $color-light;
+  }
+  & #pdfBuild {
+    display: block;
+    margin: 2mm auto;
+    font-size: 6mm;
+    padding: 2mm 10mm;
+    border-radius: 2mm;
+    transition: background-color .2s;
+    border-width: 1px;
+    border-style: solid;
+    &::after {
+      content: '\f1c1';
+      font-family: 'FontAwesome';
+      font-size: 8mm;
+      padding: 0 2mm;
+    }
+  }
+  & .activated {
+    background-color: rgb(31,57,72);
+    color: $color-bg;
+    box-shadow: 0 4px 4px rgba(31,57,72,.2);
+    border-color: $color-dark;
+    cursor: pointer;
+    &:hover {
+      background-color: lighten(rgb(31,57,72),20%);
+      color: $color-bg;
+      box-shadow: 0 4px 6px rgba(18,126,155,.4);
+      border-color: $color-dark;
+    }
+    &:active {
+      background-color: darken(rgb(31,57,72), 10%);
+      color: $color-bg;
+      box-shadow: 0 2px 6px rgba(18,126,155,.4);
+      border-color: $color-dark;
+    }
+  }
+  & .deactivated {
+    background-color: rgba(233,234,236,.5);
+    color: $color-light;
+    box-shadow: 0 4px 4px rgba(0,0,0,.1);
+    border-color: $color-light;
+    cursor: not-allowed;
+  }
+}
+
+.noPin {
+  box-shadow: none;
+  border: 1px solid $color-light;
+}
+.pendingPin {
+  box-shadow: 0 1px 4px rgba(255,200,0,0.6);
+  border: 1px solid rgb(150,180,0);
+}
+.validPin {
+  box-shadow: 0 1px 4px rgba(0,200,0,0.6);
+  border: 1px solid rgb(0,150,0);
+}
+.invalidPin {
+  box-shadow: 0 1px 4px rgba(255,0,0,0.6);
+  border: 1px solid rgb(150,0,0);
+}
