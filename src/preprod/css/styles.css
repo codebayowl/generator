@@ -238,62 +238,73 @@ select {
     padding: 0 0 0 1mm;
     background-color: #005f4e;
     color: yellow; }
-  .uniform .kg::after {
-    content: 'kg';
-    display: inline-block;
-    position: absolute;
-    left: 47mm;
-    font-family: "Roboto", sans-serif;
-    font-size: 4mm;
-    line-height: 6mm;
-    color: #005f4e; }
-  .uniform .full {
-    width: 51mm; }
-    .uniform .full::before {
-      display: none; }
-  .uniform .full.kg {
-    width: 44mm; }
-  .uniform .full.before.kg {
-    width: 35mm; }
-  .uniform .half {
-    width: 25mm; }
-  .uniform .half.kg {
-    width: 19mm; }
-    .uniform .half.kg::after {
-      left: 21mm; }
-  .uniform .half.before.kg {
-    width: 15mm; }
-    .uniform .half.before.kg::before {
-      left: 5mm; }
-    .uniform .half.before.kg::after {
-      left: 17mm; }
-  .uniform #type {
+  .uniform #model {
     top: 46mm; }
-  .uniform #variant {
-    top: 53mm; }
-  .uniform #version {
-    top: 60mm; }
   .uniform #year {
     top: 67mm; }
+  .uniform #speed {
+    top: 50mm; }
   .uniform #weight {
     top: 74mm; }
-  .uniform #roadLoad {
-    top: 81mm; }
-  .uniform #maxLoad {
+  .uniform #payload {
     top: 88mm; }
+  .uniform #techFull.field {
+    top: 49mm;
+    left: 62mm;
+    width: 25mm; }
+    .uniform #techFull.field::after {
+      content: 'kg';
+      display: inline-block;
+      position: absolute;
+      left: 28mm;
+      font-family: "Roboto", sans-serif;
+      font-size: 4mm;
+      line-height: 6mm;
+      color: #005f4e; }
+  .uniform #drawbar, .uniform #axle1, .uniform #axle2, .uniform #axle3 {
+    top: 56mm;
+    left: 71mm;
+    width: 16mm; }
+    .uniform #drawbar::before, .uniform #axle1::before, .uniform #axle2::before, .uniform #axle3::before {
+      content: 'A-0:';
+      display: inline-block;
+      position: absolute;
+      left: -9mm;
+      font-weight: 400;
+      color: #005f4e; }
+    .uniform #drawbar::after, .uniform #axle1::after, .uniform #axle2::after, .uniform #axle3::after {
+      content: 'kg';
+      display: inline-block;
+      position: absolute;
+      left: 19mm;
+      font-family: "Roboto", sans-serif;
+      font-size: 4mm;
+      line-height: 6mm;
+      color: #005f4e; }
+  .uniform #axle1 {
+    top: 63mm; }
+    .uniform #axle1::before {
+      content: 'A-1:'; }
+  .uniform #axle2 {
+    top: 70mm; }
+    .uniform #axle2::before {
+      content: 'A-2:'; }
+  .uniform #axle3 {
+    top: 77mm; }
+    .uniform #axle3::before {
+      content: 'A-3:'; }
   .uniform #category {
+    width: 51mm;
     top: 11mm;
     left: 103mm; }
-    .uniform #category::before {
-      display: none; }
   .uniform #certificate {
     top: 18mm;
-    left: 103mm; }
+    left: 103mm;
+    width: 51mm; }
   .uniform #pin {
     top: 25mm;
-    left: 103mm; }
-    .uniform #pin::before {
-      display: none; }
+    left: 103mm;
+    width: 51mm; }
   .uniform #placeholder {
     width: 25mm;
     top: 25mm;
@@ -304,30 +315,50 @@ select {
             transform: translateX(1mm); }
   .uniform #roadFull {
     top: 32mm;
-    left: 103mm; }
-  .uniform #drawbar, .uniform #roadDrawbar, .uniform #axle1, .uniform #roadAxle1, .uniform #axle2, .uniform #roadAxle2, .uniform #axle3, .uniform #roadAxle3 {
+    left: 103mm;
+    width: 44mm; }
+    .uniform #roadFull::before {
+      display: none; }
+    .uniform #roadFull::after {
+      content: 'kg';
+      display: inline-block;
+      position: absolute;
+      left: 47mm;
+      font-family: "Roboto", sans-serif;
+      font-size: 4mm;
+      line-height: 6mm;
+      color: #005f4e; }
+  .uniform #roadDrawbar, .uniform #roadAxle1, .uniform #roadAxle2, .uniform #roadAxle3 {
     top: 39mm;
-    left: 112mm; }
-    .uniform #drawbar::before, .uniform #roadDrawbar::before, .uniform #axle1::before, .uniform #roadAxle1::before, .uniform #axle2::before, .uniform #roadAxle2::before, .uniform #axle3::before, .uniform #roadAxle3::before {
+    left: 112mm;
+    width: 35mm; }
+    .uniform #roadDrawbar::before, .uniform #roadAxle1::before, .uniform #roadAxle2::before, .uniform #roadAxle3::before {
       content: 'A-0:';
       display: inline-block;
       position: absolute;
       left: -9mm;
-      font-weight: 700;
+      font-weight: 400;
       color: #005f4e; }
-    .uniform #drawbar::after, .uniform #roadDrawbar::after, .uniform #axle1::after, .uniform #roadAxle1::after, .uniform #axle2::after, .uniform #roadAxle2::after, .uniform #axle3::after, .uniform #roadAxle3::after {
-      left: 39mm; }
-  .uniform #axle1, .uniform #roadAxle1 {
+    .uniform #roadDrawbar::after, .uniform #roadAxle1::after, .uniform #roadAxle2::after, .uniform #roadAxle3::after {
+      content: 'kg';
+      display: inline-block;
+      position: absolute;
+      left: 38mm;
+      font-family: "Roboto", sans-serif;
+      font-size: 4mm;
+      line-height: 6mm;
+      color: #005f4e; }
+  .uniform #roadAxle1 {
     top: 46mm; }
-    .uniform #axle1::before, .uniform #roadAxle1::before {
+    .uniform #roadAxle1::before {
       content: 'A-1:'; }
-  .uniform #axle2, .uniform #roadAxle2 {
+  .uniform #roadAxle2 {
     top: 53mm; }
-    .uniform #axle2::before, .uniform #roadAxle2::before {
+    .uniform #roadAxle2::before {
       content: 'A-2:'; }
-  .uniform #axle3, .uniform #roadAxle3 {
+  .uniform #roadAxle3 {
     top: 60mm; }
-    .uniform #axle3::before, .uniform #roadAxle3::before {
+    .uniform #roadAxle3::before {
       content: 'A-3:'; }
   .uniform .b1 {
     top: 73.5mm;
