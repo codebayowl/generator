@@ -248,6 +248,8 @@
 //   #roadAxle2,
 //   #roadAxle3,
 //   #drawbarLoad,
+//   #axlesru,
+//   #axlesdk,
 //   #axleLoad {
 //     display: none;
 //   }
@@ -302,6 +304,8 @@
 //   & #roadAxle2 {}
 //   & #roadAxle3 {}
 
+//   & #axlesru {}
+//   & #axlesdk {}
 //   & #drawbarLoad {}
 //   & #axleLoad {}
 // }
@@ -315,7 +319,7 @@
   outline-color: $color-light;
 
   // excluding elements:
-  & .eac, #drawbarLoad, #axleLoad, .logoUmega {
+  & .eac, #drawbarLoad, #axleLoad, .logoUmega, #axlesru, #axlesdk {
     display: none;
   }
 
@@ -745,9 +749,11 @@
   // #pin,
   // #roadFull,
   // #roadDrawbar,
-  // #roadAxle1,
+  #roadAxle1,
   #roadAxle2,
   #roadAxle3,
+  #axlesru,
+  // #axlesdk,
   #drawbarLoad,
   #axleLoad {
     display: none;
@@ -854,12 +860,7 @@
       content: 'Max. load on drawbar (kg):';
     }
   }
-  & #roadAxle1 {
-		top: 71mm;
-    &::before {
-      content: 'Total axles load (kg):';
-    }
-  }
+  // & #roadAxle1 {}
   & #payload {
     top: 78mm;
     &::before {
@@ -870,6 +871,13 @@
     top: 85mm;
     &::before {
       content: 'Gross constr. weight (kg):';
+    }
+  }
+  // & #axlesru {}
+  & #axlesdk {
+    top: 71mm;
+    &::before {
+      content: 'Total axles load (kg):';
     }
   }
 }
@@ -923,7 +931,9 @@
   #roadDrawbar,
   #roadAxle1,
   #roadAxle2,
-  #roadAxle3
+  #roadAxle3,
+  #axlesru,
+  #axlesdk
   // #drawbarLoad,
   // #axleLoad 
   {
@@ -1039,6 +1049,8 @@
   // & #roadAxle1 {}
   // & #roadAxle2 {}
   // & #roadAxle3 {}
+  // & #axlesru {}
+  // & #axlesdk {}
 
   & #drawbarLoad {
     top: 64mm;
@@ -1102,9 +1114,11 @@
   // #pin,
   // #roadFull,
   // #roadDrawbar,
-  // #roadAxle1,
+  #roadAxle1,
   #roadAxle2,
   #roadAxle3,
+  // #axlesru,
+  #axlesdk,
   #drawbarLoad,
   #axleLoad {
     display: none;
@@ -1229,19 +1243,21 @@
       font-size: 3.8mm;
     }
   }
-  & #roadAxle1 {
-		top: 71mm;
-    &::before {
-      content: 'Общая нагрузка на оси (кг):';
-      font-size: 3.6mm;
-    }
-  }
+  // & #roadAxle1 {}
   & #payload {
     top: 78mm;
     &::before {
       content: 'Масса нетто (кг):';
     }
   }
+  & #axlesru {
+    top: 71mm;
+    &::before {
+      content: 'Общая нагрузка на оси (кг):';
+      font-size: 3.6mm;
+    }
+  }
+  // & #axlesdk {}
   // & #techFull {}
 }
 

@@ -4,7 +4,7 @@ html(lang="en")
 	body
 		#wrapper
 			#output
-				#plate.undefined
+				#plate.witam
 					.logoAgro
 						include _umegaagrologo
 					.logoUmega
@@ -25,16 +25,22 @@ html(lang="en")
 					span#axle1.field 10000
 					span#axle2.field 10000 
 					span#axle3.field 10000
+					
 
 					.divider
 					span#category.field S2a
 					span#certificate.field e32*167/2013*00015*00
 					span#pin.field UMEGPP27JJ0004578
+
 					span#roadFull.field 33600
 					span#roadDrawbar.field 3000
 					span#roadAxle1.field 14800
 					span#roadAxle2.field 14800
 					span#roadAxle3.field 14800
+
+					span#axlesru.field 38000
+					span#axlesdk.field 30000
+
 					span#drawbarLoad.field 98kN
 					span#axleLoad.field 45kN
 
@@ -78,6 +84,7 @@ html(lang="en")
 					option#choose_certification(selected) -- choose certification --
 				.complectationOptions
 				select#inputYear
+					option#choose_year(selected) -- choose year --
 				input(type="text" minlength="17" maxlength="17" size="19" placeholder="UMEXXX00XX0000000" required)#inputPin.noPin
 				button(name="pdf")#pdfBuild.button Download
 		script(src="js/scripts.js")

@@ -221,7 +221,7 @@ select {
   height: 100mm;
   background: #fafafa;
   outline-color: #a9a9a9; }
-  .uniform .eac, .uniform #drawbarLoad, .uniform #axleLoad, .uniform .logoUmega {
+  .uniform .eac, .uniform #drawbarLoad, .uniform #axleLoad, .uniform .logoUmega, .uniform #axlesru, .uniform #axlesdk {
     display: none; }
   .uniform .underlay {
     background-color: #005f4e;
@@ -549,8 +549,10 @@ select {
   .nocertOld #axle2,
   .nocertOld #axle3,
   .nocertOld #category,
+  .nocertOld #roadAxle1,
   .nocertOld #roadAxle2,
   .nocertOld #roadAxle3,
+  .nocertOld #axlesru,
   .nocertOld #drawbarLoad,
   .nocertOld #axleLoad {
     display: none; }
@@ -634,10 +636,6 @@ select {
     top: 64mm; }
     .nocertOld #roadDrawbar::before {
       content: 'Max. load on drawbar (kg):'; }
-  .nocertOld #roadAxle1 {
-    top: 71mm; }
-    .nocertOld #roadAxle1::before {
-      content: 'Total axles load (kg):'; }
   .nocertOld #payload {
     top: 78mm; }
     .nocertOld #payload::before {
@@ -646,6 +644,10 @@ select {
     top: 85mm; }
     .nocertOld #techFull::before {
       content: 'Gross constr. weight (kg):'; }
+  .nocertOld #axlesdk {
+    top: 71mm; }
+    .nocertOld #axlesdk::before {
+      content: 'Total axles load (kg):'; }
 
 .witam {
   width: 100mm;
@@ -683,7 +685,9 @@ select {
   .witam #roadDrawbar,
   .witam #roadAxle1,
   .witam #roadAxle2,
-  .witam #roadAxle3 {
+  .witam #roadAxle3,
+  .witam #axlesru,
+  .witam #axlesdk {
     display: none; }
   .witam .field {
     display: inline-block;
@@ -776,8 +780,10 @@ select {
   .rus #axle2,
   .rus #axle3,
   .rus #category,
+  .rus #roadAxle1,
   .rus #roadAxle2,
   .rus #roadAxle3,
+  .rus #axlesdk,
   .rus #drawbarLoad,
   .rus #axleLoad {
     display: none; }
@@ -872,15 +878,15 @@ select {
     .rus #roadDrawbar::before {
       content: 'Макс. нагр. на дышло (кг):';
       font-size: 3.8mm; }
-  .rus #roadAxle1 {
-    top: 71mm; }
-    .rus #roadAxle1::before {
-      content: 'Общая нагрузка на оси (кг):';
-      font-size: 3.6mm; }
   .rus #payload {
     top: 78mm; }
     .rus #payload::before {
       content: 'Масса нетто (кг):'; }
+  .rus #axlesru {
+    top: 71mm; }
+    .rus #axlesru::before {
+      content: 'Общая нагрузка на оси (кг):';
+      font-size: 3.6mm; }
 
 #input {
   width: 120mm;
