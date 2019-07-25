@@ -8430,7 +8430,7 @@ activator = {
   certName:       "",
   certType:       "",
   manufacture:    0,
-  numOfTrailers:  0,
+  // numOfTrailers:  0,
   VINcode:        "",
   okVIN:          false,
   okCert:         false,
@@ -8445,282 +8445,17 @@ activator = {
   }
 };
 
-
-function buildTrailer () {
-  currentTrailer.category       = activator.model.category;
-  currentTrailer.type           = activator.certName === "European 167/2013" ? activator.model.typeEC : activator.country.type;
-  currentTrailer.variant        = activator.model.variant;
-  currentTrailer.version        = "-";
-  currentTrailer.manufactured   = activator.manufacture;
-  currentTrailer.weight         = activator.model.weight;
-  currentTrailer.techPayload    = activator.model.techPayload;
-  currentTrailer.payload        = activator.model.payload;
-  currentTrailer.homologation   = activator.certType;
-  currentTrailer.vinCode        = activator.VINcode;
-  currentTrailer.country        = activator.countryLocale;
-  currentTrailer.roadWeight     = activator.model.roadWeight;
-  currentTrailer.couplingLoad   = activator.model.couplingLoad;
-  currentTrailer.couplingDval   = activator.model.couplingDval;
-
-  currentTrailer.axleNumber     = activator.model.axleNum;
-  currentTrailer.axleLoadRoad   = currentTrailer.roadWeight - currentTrailer.couplingLoad;
-  currentTrailer.axleLoadFull   = currentTrailer.techPayload + currentTrailer.weight - currentTrailer.couplingLoad;
-  if (currentTrailer.country === "dk") {
-    if (currentTrailer.axleNumber === 1) {
-      currentTrailer.singleAxleRoad = currentTrailer.axleLoadRoad;
-    } else if (currentTrailer.axleNumber === 2) {
-      currentTrailer.singleAxleRoad = Math.round(currentTrailer.axleLoadRoad/2) + " / " + Math.round(currentTrailer.axleLoadRoad/2);
-    } else if (currentTrailer.axleNumber === 3) {
-      currentTrailer.singleAxleRoad = Math.round(currentTrailer.axleLoadRoad/3) + "/" + Math.round(currentTrailer.axleLoadRoad/3) + "/" + Math.round(currentTrailer.axleLoadRoad/3);
-    }
-  } else if(currentTrailer.country === "ru" ) {
-      if (currentTrailer.axleNumber === 1) {
-        currentTrailer.singleAxleRoad = currentTrailer.axleLoadFull;
-      } else if (currentTrailer.axleNumber === 2) {
-        currentTrailer.singleAxleRoad = Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10 + " / " + Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10;
-      } else if (currentTrailer.axleNumber === 3) {
-        currentTrailer.singleAxleRoad = Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10 + "/" + Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10 + "/" + Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10;
-      }
-  } else {
-    currentTrailer.singleAxleRoad = Math.round(currentTrailer.axleLoadRoad / currentTrailer.axleNumber);
-  }
-  currentTrailer.singleAxleFull = Math.round(currentTrailer.axleLoadFull / currentTrailer.axleNumber);
-
-
-  plateVar.category.innerText     = currentTrailer.category;
-  plateVar.type.innerText         = currentTrailer.type;
-  plateVar.variant.innerText      = currentTrailer.variant;
-  plateVar.version.innerText      = currentTrailer.version;
-  plateVar.year.innerText         = currentTrailer.manufactured;
-  plateVar.weight.innerText       = currentTrailer.weight;
-  if (currentTrailer.country === "ru") {
-    plateVar.roadLoad.innerText     = currentTrailer.techPayload;
-  } else {
-    plateVar.roadLoad.innerText     = currentTrailer.payload;
-  }
-  
-  plateVar.maxLoad.innerText      = currentTrailer.techPayload;
-  plateVar.certificate.innerText  = currentTrailer.homologation;
-  plateVar.pin.innerText          = currentTrailer.vinCode;
-  plateVar.country.innerText      = currentTrailer.country.toUpperCase();  
-
-  plateVar.road.innerText         = currentTrailer.country === "ru" ? currentTrailer.weight + currentTrailer.techPayload : currentTrailer.roadWeight;
-
-  plateVar.drawbar.innerText      = currentTrailer.couplingLoad;
-  plateVar.axle1.innerText        = currentTrailer.singleAxleRoad;
-  plateVar.axle2.innerText        = currentTrailer.axleNumber > 1 ? plateVar.axle1.innerText : "-" ;
-  plateVar.axle3.innerText        = currentTrailer.axleNumber > 2 ? plateVar.axle1.innerText : "-" ;
-
-  plateVar.full.innerText         = currentTrailer.weight + currentTrailer.techPayload;
-  plateVar.roadDrawbar.innerText  = currentTrailer.couplingLoad;
-  plateVar.roadAxle1.innerText    = currentTrailer.singleAxleFull;
-  plateVar.roadAxle2.innerText    = currentTrailer.axleNumber > 1 ? plateVar.roadAxle1.innerText : "-" ;
-  plateVar.roadAxle3.innerText    = currentTrailer.axleNumber > 2 ? plateVar.roadAxle1.innerText : "-" ;
-
-  plateVar.drawbarLoad.innerText  = Math.round(parseFloat(currentTrailer.couplingLoad * 0.0098) * 100) / 100  + " kN";
-  plateVar.axleLoad.innerText     = Math.round(parseFloat(currentTrailer.singleAxleRoad * 0.0098) * 100) / 100  + " kN";
-  
-  plateVar.b1t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 1500 ? 1500 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
-  plateVar.b2t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 8000 ? 8000 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
-  plateVar.b3t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 18000 ? 18000 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
-  plateVar.b4t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 18000 ? 18000 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
-
-  plateVar.b1t2.innerText         = "-";
-  plateVar.b2t2.innerText         = "-";
-  plateVar.b3t2.innerText         = "-";
-  plateVar.b4t2.innerText         = "-";
-  
-  plateVar.b1t3.innerText         = "-";
-  plateVar.b2t3.innerText         = "-";  
-  plateVar.b3t3.innerText         = "-";
-  plateVar.b4t3.innerText         = "-";
-}
-
-function resetData () {
-  plateVar.plate.classList.remove("uniform", "rus", "witam", "nocertOld", "undefined");
-  plateVar.plate.classList.add("undefined");
-  plateVar.category.innerText = "-";
-  plateVar.type.innerText = "-";
-  plateVar.variant.innerText = "-";
-  plateVar.version.innerText = "-";
-  plateVar.year.innerText = "-";
-  plateVar.weight.innerText = "-";
-  plateVar.roadLoad.innerText = "-";
-  plateVar.maxLoad.innerText = "-";
-  plateVar.certificate.innerText = "-";
-  plateVar.pin.innerText = "-";
-  plateVar.country.innerText = "-";
-  plateVar.road.innerText = "-";
-  plateVar.full.innerText = "-";
-  plateVar.drawbar.innerText = "-";
-  plateVar.axle1.innerText = "-";
-  plateVar.axle2.innerText = "-";
-  plateVar.axle3.innerText = "-";
-  plateVar.roadDrawbar.innerText = "-";
-  plateVar.roadAxle1.innerText = "-";
-  plateVar.roadAxle2.innerText = "-";
-  plateVar.roadAxle3.innerText = "-";
-  plateVar.drawbarLoad.innerText = "-";
-  plateVar.axleLoad.innerText = "-";
-  plateVar.b1t1.innerText = "-";
-  plateVar.b1t2.innerText = "-";
-  plateVar.b1t3.innerText = "-";
-  plateVar.b2t1.innerText = "-";
-  plateVar.b2t2.innerText = "-";
-  plateVar.b2t3.innerText = "-";
-  plateVar.b3t1.innerText = "-";
-  plateVar.b3t2.innerText = "-";
-  plateVar.b3t3.innerText = "-";
-  plateVar.b4t1.innerText = "-";
-  plateVar.b4t2.innerText = "-";
-  plateVar.b4t3.innerText = "-";
-}
-
-function readYears() {
-  // declaring an array of years for the dropdown
-  var years = [];
-  // filling an array with years from 1984 until now
-  for (var i = new Date().getFullYear(); i >= 2000; i--) {
-    years.push(i);
-  }
-  // creating and appending nodes to year dropdown (as options in select)
-  for (var year in years) {
-    var nodeDOM = document.createElement("option");
-    var nodeText = document.createTextNode(years[year]);
-    nodeDOM.appendChild(nodeText);
-    domVar.inputYear.appendChild(nodeDOM);
-  }
-  // setting current year as a default
-  setYear();
-}
-function setYear() {
-  activator.manufacture = domVar.inputYear.options[domVar.inputYear.selectedIndex].text;
-}
-
-
-function readTrailers() {
-  for (var trailer in umegaTrailers) {
-    var nodeDOM = document.createElement("option");
-    var nodeText = document.createTextNode(umegaTrailers[trailer].name);
-    nodeDOM.appendChild(nodeText);
-    domVar.trailerChooser.appendChild(nodeDOM);
-    activator.numOfTrailers ++;
-  }
-}
-function clearTrailers () {
-  activator.model = "";
-}
-function selectTrailer () {
-  activator.model = umegaTrailers[domVar.trailerChooser.options[domVar.trailerChooser.selectedIndex].text.toLowerCase()];
-  readCountry();
-}
-
-function readCountry () {
-  for (var i = 0; i < activator.model.country.length; i++) {
-    var nodeDOM = document.createElement("option");
-    var nodeText = document.createTextNode(activator.model.country[i].name);
-    nodeDOM.appendChild(nodeText);
-    domVar.countryChooser.appendChild(nodeDOM);
-  }
-}
-function clearCountry () {
-  while (domVar.countryChooser.length > 1) {
-    domVar.countryChooser.removeChild(domVar.countryChooser.lastChild);
-  }
-  clearCertification();
-  activator.country = [];
-  activator.countryName = "";
-  activator.countryLocale = "";
-}
-function selectCountry () {
-  var selection = domVar.countryChooser.options[domVar.countryChooser.selectedIndex].text;
-  for (var i = 0; i < activator.model.country.length; i++) {
-    var currentCountry = activator.model.country[i];
-    if (currentCountry.name === selection) {
-      activator.country = activator.model.country[i];
-      activator.countryName = activator.model.country[i].name;
-      activator.countryLocale = activator.model.country[i].locale;
-    }
-  }
-  readCertification();
-}
-
-function readCertification () {
-  for (var i = 0; i < activator.model.certificate.length; i++) {
-    var currentCert = activator.model.certificate[i];
-    if ( currentCert.name === "No certification" || currentCert.name === "European 167/2013" || currentCert.name === activator.countryName) {
-      activator.certificates.push(currentCert);
-      var nodeDOM = document.createElement("option");
-      var nodeText = document.createTextNode(activator.model.certificate[i].name);
-      nodeDOM.appendChild(nodeText);
-      domVar.certificateChooser.appendChild(nodeDOM);
-    }
-  }
-}
-function clearCertification () {
-  while (domVar.certificateChooser.length > 1) {
-    domVar.certificateChooser.removeChild(domVar.certificateChooser.lastChild);
-  }
-  activator.certificates = [];
-  activator.certName = "";
-  activator.certType = "";
-  setForm ("undefined");
-}
-function selectCertification () {
-  var selected = domVar.certificateChooser.options[domVar.certificateChooser.selectedIndex].text;
-  for (var i = 0; i < activator.certificates.length; i++) {
-    if (selected === activator.certificates[i].name) {
-      activator.certName = activator.certificates[i].name;
-      activator.certType = activator.certificates[i].number;
-      activator.okCert = true;
-    }
-  }
-}
-
-// setup table form
-function setForm (tableType) {
-  plateVar.plate.classList.remove("uniform", "rus", "witam", "nocertOld", "undefined");
-  plateVar.plate.classList.add(tableType);
-}
-function chooseForm () {
-  switch (activator.country.locale) {
-    case 'ru':
-      setForm("rus");
-      break;
-    case 'dk':
-      if (activator.certName === "European 167/2013") {
-        setForm("uniform");
-      } else {
-        setForm("nocertOld")
-      }
-      break;
-    case 'undef':
-      setForm("undefined");
-      break;
-    case 'pl':
-      if (activator.certName === "European 167/2013") {
-        setForm("uniform");
-      } else {
-        setForm("witam")
-      }
-      break;
-    default:
-      setForm("uniform");
-  }
-}
-
-function activateElement(domNode) {
-  domVar[domNode].classList.remove("deactivated", "activated");
-  domVar[domNode].classList.add("activated");
-}
-function deactivateElement(domNode) {
-  domVar[domNode].classList.remove("deactivated", "activated");
-  domVar[domNode].classList.add("deactivated");
-}
-
 function getVIN () {
   activator.VINcode = domVar.inputPIN.value.toUpperCase();
   //console.log(activator.VINcode);
+}
+function parseVIN (vin) {
+	var vinextract = ["0", "0"];
+	// slicing vincode
+	// next - asynchronous
+	// parsing vincode for model
+	// parsing vincode for year
+	return vinextract;
 }
 function reactVIN (cssClass) {
   domVar.inputPIN.classList.remove("noPin", "pendingPin", "validPin", "invalidPin");
@@ -8826,49 +8561,324 @@ function validateVIN () {
   activator.checkup();
 }
 
-function trailerChange () {
-  clearCountry();
-  activator.okCert = false;
-  selectTrailer();
-  activator.checkup();
-}
-function countryChange () {
-  clearCertification();
-  activator.okCert = false;
-  selectCountry();
-  activator.checkup();
-}
-function certificateChange () {
-  selectCertification();
-  setForm ("undefined");
-  chooseForm();
-  activator.checkup();
-}
-function yearChange () {
-  //setForm ("undefined");
-  setYear();
-  activator.checkup();
-}
-function VINChange () {
-  getVIN();
-  if (activator.VINcode.length) {
-    validateVIN();
-  } else {
-    activator.okVIN = false;
-    reactVIN("noPin");
-    deactivateElement("pdfButton");
-  }
-}
 
-function initialize () {
-  readTrailers();
-  deactivateElement("pdfButton");
-  readYears();
-  resetData();
-}
-// function exportPDF () {
-//   doc.save('a4.pdf');
+// function buildTrailer () {
+//   currentTrailer.category       = activator.model.category;
+//   currentTrailer.type           = activator.certName === "European 167/2013" ? activator.model.typeEC : activator.country.type;
+//   currentTrailer.variant        = activator.model.variant;
+//   currentTrailer.version        = "-";
+//   currentTrailer.manufactured   = activator.manufacture;
+//   currentTrailer.weight         = activator.model.weight;
+//   currentTrailer.techPayload    = activator.model.techPayload;
+//   currentTrailer.payload        = activator.model.payload;
+//   currentTrailer.homologation   = activator.certType;
+//   currentTrailer.vinCode        = activator.VINcode;
+//   currentTrailer.country        = activator.countryLocale;
+//   currentTrailer.roadWeight     = activator.model.roadWeight;
+//   currentTrailer.couplingLoad   = activator.model.couplingLoad;
+//   currentTrailer.couplingDval   = activator.model.couplingDval;
+
+//   currentTrailer.axleNumber     = activator.model.axleNum;
+//   currentTrailer.axleLoadRoad   = currentTrailer.roadWeight - currentTrailer.couplingLoad;
+//   currentTrailer.axleLoadFull   = currentTrailer.techPayload + currentTrailer.weight - currentTrailer.couplingLoad;
+//   if (currentTrailer.country === "dk") {
+//     if (currentTrailer.axleNumber === 1) {
+//       currentTrailer.singleAxleRoad = currentTrailer.axleLoadRoad;
+//     } else if (currentTrailer.axleNumber === 2) {
+//       currentTrailer.singleAxleRoad = Math.round(currentTrailer.axleLoadRoad/2) + " / " + Math.round(currentTrailer.axleLoadRoad/2);
+//     } else if (currentTrailer.axleNumber === 3) {
+//       currentTrailer.singleAxleRoad = Math.round(currentTrailer.axleLoadRoad/3) + "/" + Math.round(currentTrailer.axleLoadRoad/3) + "/" + Math.round(currentTrailer.axleLoadRoad/3);
+//     }
+//   } else if(currentTrailer.country === "ru" ) {
+//       if (currentTrailer.axleNumber === 1) {
+//         currentTrailer.singleAxleRoad = currentTrailer.axleLoadFull;
+//       } else if (currentTrailer.axleNumber === 2) {
+//         currentTrailer.singleAxleRoad = Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10 + " / " + Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10;
+//       } else if (currentTrailer.axleNumber === 3) {
+//         currentTrailer.singleAxleRoad = Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10 + "/" + Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10 + "/" + Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10;
+//       }
+//   } else {
+//     currentTrailer.singleAxleRoad = Math.round(currentTrailer.axleLoadRoad / currentTrailer.axleNumber);
+//   }
+//   currentTrailer.singleAxleFull = Math.round(currentTrailer.axleLoadFull / currentTrailer.axleNumber);
+
+
+//   plateVar.category.innerText     = currentTrailer.category;
+//   plateVar.type.innerText         = currentTrailer.type;
+//   plateVar.variant.innerText      = currentTrailer.variant;
+//   plateVar.version.innerText      = currentTrailer.version;
+//   plateVar.year.innerText         = currentTrailer.manufactured;
+//   plateVar.weight.innerText       = currentTrailer.weight;
+//   if (currentTrailer.country === "ru") {
+//     plateVar.roadLoad.innerText     = currentTrailer.techPayload;
+//   } else {
+//     plateVar.roadLoad.innerText     = currentTrailer.payload;
+//   }
+  
+//   plateVar.maxLoad.innerText      = currentTrailer.techPayload;
+//   plateVar.certificate.innerText  = currentTrailer.homologation;
+//   plateVar.pin.innerText          = currentTrailer.vinCode;
+//   plateVar.country.innerText      = currentTrailer.country.toUpperCase();  
+
+//   plateVar.road.innerText         = currentTrailer.country === "ru" ? currentTrailer.weight + currentTrailer.techPayload : currentTrailer.roadWeight;
+
+//   plateVar.drawbar.innerText      = currentTrailer.couplingLoad;
+//   plateVar.axle1.innerText        = currentTrailer.singleAxleRoad;
+//   plateVar.axle2.innerText        = currentTrailer.axleNumber > 1 ? plateVar.axle1.innerText : "-" ;
+//   plateVar.axle3.innerText        = currentTrailer.axleNumber > 2 ? plateVar.axle1.innerText : "-" ;
+
+//   plateVar.full.innerText         = currentTrailer.weight + currentTrailer.techPayload;
+//   plateVar.roadDrawbar.innerText  = currentTrailer.couplingLoad;
+//   plateVar.roadAxle1.innerText    = currentTrailer.singleAxleFull;
+//   plateVar.roadAxle2.innerText    = currentTrailer.axleNumber > 1 ? plateVar.roadAxle1.innerText : "-" ;
+//   plateVar.roadAxle3.innerText    = currentTrailer.axleNumber > 2 ? plateVar.roadAxle1.innerText : "-" ;
+
+//   plateVar.drawbarLoad.innerText  = Math.round(parseFloat(currentTrailer.couplingLoad * 0.0098) * 100) / 100  + " kN";
+//   plateVar.axleLoad.innerText     = Math.round(parseFloat(currentTrailer.singleAxleRoad * 0.0098) * 100) / 100  + " kN";
+  
+//   plateVar.b1t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 1500 ? 1500 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
+//   plateVar.b2t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 8000 ? 8000 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
+//   plateVar.b3t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 18000 ? 18000 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
+//   plateVar.b4t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 18000 ? 18000 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
+
+//   plateVar.b1t2.innerText         = "-";
+//   plateVar.b2t2.innerText         = "-";
+//   plateVar.b3t2.innerText         = "-";
+//   plateVar.b4t2.innerText         = "-";
+  
+//   plateVar.b1t3.innerText         = "-";
+//   plateVar.b2t3.innerText         = "-";  
+//   plateVar.b3t3.innerText         = "-";
+//   plateVar.b4t3.innerText         = "-";
 // }
+
+// function resetData () {
+//   plateVar.plate.classList.remove("uniform", "rus", "witam", "nocertOld", "undefined");
+//   plateVar.plate.classList.add("undefined");
+//   plateVar.category.innerText = "-";
+//   plateVar.type.innerText = "-";
+//   plateVar.variant.innerText = "-";
+//   plateVar.version.innerText = "-";
+//   plateVar.year.innerText = "-";
+//   plateVar.weight.innerText = "-";
+//   plateVar.roadLoad.innerText = "-";
+//   plateVar.maxLoad.innerText = "-";
+//   plateVar.certificate.innerText = "-";
+//   plateVar.pin.innerText = "-";
+//   plateVar.country.innerText = "-";
+//   plateVar.road.innerText = "-";
+//   plateVar.full.innerText = "-";
+//   plateVar.drawbar.innerText = "-";
+//   plateVar.axle1.innerText = "-";
+//   plateVar.axle2.innerText = "-";
+//   plateVar.axle3.innerText = "-";
+//   plateVar.roadDrawbar.innerText = "-";
+//   plateVar.roadAxle1.innerText = "-";
+//   plateVar.roadAxle2.innerText = "-";
+//   plateVar.roadAxle3.innerText = "-";
+//   plateVar.drawbarLoad.innerText = "-";
+//   plateVar.axleLoad.innerText = "-";
+//   plateVar.b1t1.innerText = "-";
+//   plateVar.b1t2.innerText = "-";
+//   plateVar.b1t3.innerText = "-";
+//   plateVar.b2t1.innerText = "-";
+//   plateVar.b2t2.innerText = "-";
+//   plateVar.b2t3.innerText = "-";
+//   plateVar.b3t1.innerText = "-";
+//   plateVar.b3t2.innerText = "-";
+//   plateVar.b3t3.innerText = "-";
+//   plateVar.b4t1.innerText = "-";
+//   plateVar.b4t2.innerText = "-";
+//   plateVar.b4t3.innerText = "-";
+// }
+
+// function readYears() {
+//   // declaring an array of years for the dropdown
+//   var years = [];
+//   // filling an array with years from 1984 until now
+//   for (var i = new Date().getFullYear(); i >= 2000; i--) {
+//     years.push(i);
+//   }
+//   // creating and appending nodes to year dropdown (as options in select)
+//   for (var year in years) {
+//     var nodeDOM = document.createElement("option");
+//     var nodeText = document.createTextNode(years[year]);
+//     nodeDOM.appendChild(nodeText);
+//     domVar.inputYear.appendChild(nodeDOM);
+//   }
+//   // setting current year as a default
+//   setYear();
+// }
+// function setYear() {
+//   activator.manufacture = domVar.inputYear.options[domVar.inputYear.selectedIndex].text;
+// }
+
+
+// function readTrailers() {
+//   for (var trailer in umegaTrailers) {
+//     var nodeDOM = document.createElement("option");
+//     var nodeText = document.createTextNode(umegaTrailers[trailer].name);
+//     nodeDOM.appendChild(nodeText);
+//     domVar.trailerChooser.appendChild(nodeDOM);
+//     activator.numOfTrailers ++;
+//   }
+// }
+// function clearTrailers () {
+//   activator.model = "";
+// }
+// function selectTrailer () {
+//   activator.model = umegaTrailers[domVar.trailerChooser.options[domVar.trailerChooser.selectedIndex].text.toLowerCase()];
+//   readCountry();
+// }
+
+// function readCountry () {
+//   for (var i = 0; i < activator.model.country.length; i++) {
+//     var nodeDOM = document.createElement("option");
+//     var nodeText = document.createTextNode(activator.model.country[i].name);
+//     nodeDOM.appendChild(nodeText);
+//     domVar.countryChooser.appendChild(nodeDOM);
+//   }
+// }
+// function clearCountry () {
+//   while (domVar.countryChooser.length > 1) {
+//     domVar.countryChooser.removeChild(domVar.countryChooser.lastChild);
+//   }
+//   clearCertification();
+//   activator.country = [];
+//   activator.countryName = "";
+//   activator.countryLocale = "";
+// }
+// function selectCountry () {
+//   var selection = domVar.countryChooser.options[domVar.countryChooser.selectedIndex].text;
+//   for (var i = 0; i < activator.model.country.length; i++) {
+//     var currentCountry = activator.model.country[i];
+//     if (currentCountry.name === selection) {
+//       activator.country = activator.model.country[i];
+//       activator.countryName = activator.model.country[i].name;
+//       activator.countryLocale = activator.model.country[i].locale;
+//     }
+//   }
+//   readCertification();
+// }
+
+// function readCertification () {
+//   for (var i = 0; i < activator.model.certificate.length; i++) {
+//     var currentCert = activator.model.certificate[i];
+//     if ( currentCert.name === "No certification" || currentCert.name === "European 167/2013" || currentCert.name === activator.countryName) {
+//       activator.certificates.push(currentCert);
+//       var nodeDOM = document.createElement("option");
+//       var nodeText = document.createTextNode(activator.model.certificate[i].name);
+//       nodeDOM.appendChild(nodeText);
+//       domVar.certificateChooser.appendChild(nodeDOM);
+//     }
+//   }
+// }
+// function clearCertification () {
+//   while (domVar.certificateChooser.length > 1) {
+//     domVar.certificateChooser.removeChild(domVar.certificateChooser.lastChild);
+//   }
+//   activator.certificates = [];
+//   activator.certName = "";
+//   activator.certType = "";
+//   setForm ("undefined");
+// }
+// function selectCertification () {
+//   var selected = domVar.certificateChooser.options[domVar.certificateChooser.selectedIndex].text;
+//   for (var i = 0; i < activator.certificates.length; i++) {
+//     if (selected === activator.certificates[i].name) {
+//       activator.certName = activator.certificates[i].name;
+//       activator.certType = activator.certificates[i].number;
+//       activator.okCert = true;
+//     }
+//   }
+// }
+
+// // setup table form
+// function setForm (tableType) {
+//   plateVar.plate.classList.remove("uniform", "rus", "witam", "nocertOld", "undefined");
+//   plateVar.plate.classList.add(tableType);
+// }
+// function chooseForm () {
+//   switch (activator.country.locale) {
+//     case 'ru':
+//       setForm("rus");
+//       break;
+//     case 'dk':
+//       if (activator.certName === "European 167/2013") {
+//         setForm("uniform");
+//       } else {
+//         setForm("nocertOld")
+//       }
+//       break;
+//     case 'undef':
+//       setForm("undefined");
+//       break;
+//     case 'pl':
+//       if (activator.certName === "European 167/2013") {
+//         setForm("uniform");
+//       } else {
+//         setForm("witam")
+//       }
+//       break;
+//     default:
+//       setForm("uniform");
+//   }
+// }
+
+// function activateElement(domNode) {
+//   domVar[domNode].classList.remove("deactivated", "activated");
+//   domVar[domNode].classList.add("activated");
+// }
+// function deactivateElement(domNode) {
+//   domVar[domNode].classList.remove("deactivated", "activated");
+//   domVar[domNode].classList.add("deactivated");
+// }
+
+
+
+// function trailerChange () {
+//   clearCountry();
+//   activator.okCert = false;
+//   selectTrailer();
+//   activator.checkup();
+// }
+// function countryChange () {
+//   clearCertification();
+//   activator.okCert = false;
+//   selectCountry();
+//   activator.checkup();
+// }
+// function certificateChange () {
+//   selectCertification();
+//   setForm ("undefined");
+//   chooseForm();
+//   activator.checkup();
+// }
+// function yearChange () {
+//   //setForm ("undefined");
+//   setYear();
+//   activator.checkup();
+// }
+// function VINChange () {
+//   getVIN();
+//   if (activator.VINcode.length) {
+//     validateVIN();
+//   } else {
+//     activator.okVIN = false;
+//     reactVIN("noPin");
+//     deactivateElement("pdfButton");
+//   }
+// }
+
+// function initialize () {
+//   readTrailers();
+//   deactivateElement("pdfButton");
+//   readYears();
+//   resetData();
+// }
+// // function exportPDF () {
+// //   doc.save('a4.pdf');
+// // }
 
 //// WORKFLOW ///////
 initialize();

@@ -4,7 +4,7 @@ html(lang="en")
 	body
 		#wrapper
 			#output
-				#plate.witam
+				#plate.undefined
 					.logoAgro
 						include _umegaagrologo
 					.logoUmega
@@ -76,6 +76,8 @@ html(lang="en")
 					.rivet.rb
 					.rivet.lb
 			#input
+				label(for="inputPin") Input VIN:
+				input(type="text" minlength="17" maxlength="17" size="19" placeholder="UMEXXX00XX0000000" required)#inputPin.noPin
 				select#chooseTrailer
 					option#choose_a_trailer(selected) -- choose a trailer --
 				select#chooseCountry
@@ -85,6 +87,6 @@ html(lang="en")
 				.complectationOptions
 				select#inputYear
 					option#choose_year(selected) -- choose year --
-				input(type="text" minlength="17" maxlength="17" size="19" placeholder="UMEXXX00XX0000000" required)#inputPin.noPin
-				button(name="pdf")#pdfBuild.button Download
+				
+				//- button(name="pdf")#pdfBuild.button Download
 		script(src="js/scripts.js")
