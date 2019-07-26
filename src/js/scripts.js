@@ -8438,9 +8438,11 @@ activator = {
   checkup: function () {
     if (this.okVIN && this.okCert) {
       buildTrailer();
-      activateElement("pdfButton");
+      // activateElement("pdfButton");
     } else {
-      deactivateElement("pdfButton");
+      // deactivateElement("pdfButton");
+      // domVar.trailerChooser.options[0].selected = true;
+      // domVar.inputYear.options[0].selected = true;
     }
   }
 };
@@ -8449,14 +8451,46 @@ function getVIN () {
   activator.VINcode = domVar.inputPIN.value.toUpperCase();
   //console.log(activator.VINcode);
 }
-function parseVIN (vin) {
+function parseVIN () {
 	var vinextract = ["0", "0"];
-	// slicing vincode
-	// next - asynchronous
-	// parsing vincode for model
-	// parsing vincode for year
+  vinextract[0] = activator.VINcode[3] + activator.VINcode[4] + activator.VINcode[5] + activator.VINcode[6] + activator.VINcode[7];
+  
+  switch (activator.VINcode[9]) {
+    case "G" : vinextract[1] = "2016"; break;
+    case "H" : vinextract[1] = "2017"; break;
+    case "J" : vinextract[1] = "2018"; break;
+    case "K" : vinextract[1] = "2019"; break;
+    case "L" : vinextract[1] = "2020"; break;
+    case "M" : vinextract[1] = "2021"; break;
+    case "N" : vinextract[1] = "2022"; break;
+    case "P" : vinextract[1] = "2023"; break;
+    case "R" : vinextract[1] = "2024"; break;
+    case "S" : vinextract[1] = "2025"; break;
+    case "T" : vinextract[1] = "2026"; break;
+    case "V" : vinextract[1] = "2027"; break;
+    case "W" : vinextract[1] = "2028"; break;
+    case "X" : vinextract[1] = "2029"; break;
+    case "Y" : vinextract[1] = "2030"; break;
+    case "1" : vinextract[1] = "2031"; break;
+    case "2" : vinextract[1] = "2032"; break;
+    case "3" : vinextract[1] = "2033"; break;
+    case "4" : vinextract[1] = "2034"; break;
+    case "5" : vinextract[1] = "2035"; break;
+    case "6" : vinextract[1] = "2036"; break;
+    case "7" : vinextract[1] = "2037"; break;
+    case "8" : vinextract[1] = "2038"; break;
+    case "9" : vinextract[1] = "2039"; break;
+    case "A" : vinextract[1] = "2040"; break;
+    case "B" : vinextract[1] = "2041"; break;
+    case "C" : vinextract[1] = "2042"; break;
+    case "D" : vinextract[1] = "2043"; break;
+    case "E" : vinextract[1] = "2044"; break;
+    case "F" : vinextract[1] = "2045";
+  }
+  
 	return vinextract;
 }
+
 function reactVIN (cssClass) {
   domVar.inputPIN.classList.remove("noPin", "pendingPin", "validPin", "invalidPin");
   domVar.inputPIN.classList.add(cssClass);
@@ -8549,8 +8583,9 @@ function validateVIN () {
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{7}/g.test(activator.VINcode);
       if (vinValid) {
         reactVIN("validPin");
-				activator.okVIN = true;
-				// preset model
+        activator.okVIN = true;
+        // preset model
+        presetTrailer();
 				// preset year
       } else {
         reactVIN("invalidPin");
@@ -8561,6 +8596,124 @@ function validateVIN () {
   activator.checkup();
 }
 
+
+// Формируем хтмл-ный список названий прицепов из "дэйтабэйзе"
+function formTrailerList () {
+  for (var trailer in umegaTrailers) {
+    // var nodeDOM = document.createElement("option");
+    // var nodeText = document.createTextNode(umegaTrailers[trailer].name);
+    // nodeDOM.appendChild(nodeText);
+    // domVar.trailerChooser.appendChild(nodeDOM);
+
+    // получаем текст для элемента
+    var text = umegaTrailers[trailer].name;
+    // получаем значение для элемента
+    var value = text.toLowerCase();
+    // создаем новый элемента
+    var newOption = new Option(text, value);
+    domVar.trailerChooser.options[domVar.trailerChooser.options.length]=newOption;
+
+    //activator.numOfTrailers ++;
+  }
+  
+  
+}
+// на основании VIN-кода выбираем из сформированного хтмл-списка соответствующий пункт
+function presetTrailer () {
+  var model = parseVIN()[0].toLowerCase();
+  console.log("Trailer in VIN: " + model);
+  var year = parseVIN()[1];
+  console.log("Year in VIN: " + year);
+  
+  for (i=0; i < domVar.trailerChooser.options.length; i++) {
+    if(domVar.trailerChooser.options[i].value.toLowerCase().slice(0,5) === model.toLowerCase()) {
+      console.log("Trailer found. index: " + i);
+      setTrailer(i);
+      selectTrailer();
+      break;
+    }
+  }
+  for (i=0; i < domVar.inputYear.options.length; i++) {
+    if(domVar.inputYear.options[i].value == year) {
+      console.log("Year found. index: " + i);
+      setYear(i);
+      selectYear();
+      break;
+    }
+  }
+}
+// установка в селекте значения по номеру индекса (принимаемое значение)
+function setTrailer (optionIndex) {
+  console.log("Setting trailer with index:" + optionIndex);
+  domVar.trailerChooser.options[optionIndex].selected = true;
+}
+// на основании выбранного пункта копируем из "дэйтабэйза" соответствующий прицеп-объект в активатор
+function selectTrailer () {
+  activator.model = umegaTrailers[domVar.trailerChooser.options[domVar.trailerChooser.selectedIndex].text.toLowerCase()];
+  // readCountry();
+}
+// очищаем нахрен активатор и устанавливаем дропдаун на начальную позицию
+function clearTrailers () {
+  activator.model = "";
+  // domVar.trailerChooser.options[0].selected = true;
+  // domVar.inputYear.options[0].selected = true;
+}
+
+function formYearList() {
+  // declaring an array of years for the dropdown
+  var years = [];
+  // filling an array with years from 2016 until now
+  for (var i = new Date().getFullYear(); i >= 2016; i--) {
+    years.push(i);
+  }
+  // creating and appending nodes to year dropdown (as options in select)
+  for (var i = 0; i <years.length; i++) {
+
+    // получаем текст для элемента
+    var text = years[i];
+    // получаем значение для элемента
+    var value = text;
+    // создаем новый элемента
+    var newOption = new Option(text, value);
+    domVar.inputYear.options[domVar.inputYear.options.length]=newOption;
+  }
+  // // setting current year as a default
+  // setYear();
+}
+function setYear(optionIndex) {
+  console.log("Setting year with index:" + optionIndex);
+  domVar.inputYear.options[optionIndex].selected = true;
+}
+function selectYear() {
+  activator.manufacture = domVar.inputYear.options[domVar.inputYear.selectedIndex].text;
+}
+
+function VINChange () {
+  getVIN();
+  if (activator.VINcode.length) {
+    validateVIN();
+  } else {
+    activator.okVIN = false;
+    reactVIN("noPin");
+    // deactivateElement("pdfButton");
+  }
+}
+
+function initialize () {
+  formTrailerList();
+  // deactivateElement("pdfButton");
+  formYearList();
+  // resetData();
+}
+
+//// WORKFLOW ///////
+initialize();
+// domVar.trailerChooser.addEventListener('change', trailerChange);
+// domVar.countryChooser.addEventListener('change', countryChange);
+// domVar.certificateChooser.addEventListener('change', certificateChange);
+// domVar.inputYear.addEventListener('change', yearChange);
+domVar.inputPIN.addEventListener('input', VINChange);
+// domVar.pdfButton.addEventListener('click', exportPDF);
 
 // function buildTrailer () {
 //   currentTrailer.category       = activator.model.category;
@@ -8692,26 +8845,7 @@ function validateVIN () {
 //   plateVar.b4t3.innerText = "-";
 // }
 
-// function readYears() {
-//   // declaring an array of years for the dropdown
-//   var years = [];
-//   // filling an array with years from 1984 until now
-//   for (var i = new Date().getFullYear(); i >= 2000; i--) {
-//     years.push(i);
-//   }
-//   // creating and appending nodes to year dropdown (as options in select)
-//   for (var year in years) {
-//     var nodeDOM = document.createElement("option");
-//     var nodeText = document.createTextNode(years[year]);
-//     nodeDOM.appendChild(nodeText);
-//     domVar.inputYear.appendChild(nodeDOM);
-//   }
-//   // setting current year as a default
-//   setYear();
-// }
-// function setYear() {
-//   activator.manufacture = domVar.inputYear.options[domVar.inputYear.selectedIndex].text;
-// }
+
 
 
 // function readTrailers() {
@@ -8859,32 +8993,10 @@ function validateVIN () {
 //   setYear();
 //   activator.checkup();
 // }
-// function VINChange () {
-//   getVIN();
-//   if (activator.VINcode.length) {
-//     validateVIN();
-//   } else {
-//     activator.okVIN = false;
-//     reactVIN("noPin");
-//     deactivateElement("pdfButton");
-//   }
-// }
 
-// function initialize () {
-//   readTrailers();
-//   deactivateElement("pdfButton");
-//   readYears();
-//   resetData();
-// }
+
+
 // // function exportPDF () {
 // //   doc.save('a4.pdf');
 // // }
 
-//// WORKFLOW ///////
-initialize();
-domVar.trailerChooser.addEventListener('change', trailerChange);
-domVar.countryChooser.addEventListener('change', countryChange);
-domVar.certificateChooser.addEventListener('change', certificateChange);
-domVar.inputYear.addEventListener('change', yearChange);
-domVar.inputPIN.addEventListener('input', VINChange);
-// domVar.pdfButton.addEventListener('click', exportPDF);
