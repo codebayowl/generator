@@ -80,13 +80,13 @@ html(lang="en")
 				input(type="text" minlength="17" maxlength="17" size="19" placeholder="UMEXXX00XX0000000" required)#inputPin.noPin
 				select#chooseTrailer
 					option#choose_a_trailer(value="def") -- choose a trailer --
+				select#inputYear
+					option#choose_year(selected) -- choose year --
 				select#chooseCountry
 					option#choose_a_country(selected) -- choose a country --
 				select#chooseCertificate
 					option#choose_certification(selected) -- choose certification --
 				.complectationOptions
-				select#inputYear
-					option#choose_year(selected) -- choose year --
 				
 				//- button(name="pdf")#pdfBuild.button Download
 		script(src="js/scripts.js")

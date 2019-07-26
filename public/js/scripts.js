@@ -8503,81 +8503,97 @@ function validateVIN () {
       vinValid =  /U/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 2:   
       vinValid =  /UM/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 3:   
       vinValid =  /UME/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 4:   
       vinValid =  /UME[\dA-Z]/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 5:   
       vinValid =  /UME[\dA-Z][A-Z]/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 6:   
       vinValid =  /UME[\dA-Z][A-Z]{2}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 7:   
       vinValid =  /UME[\dA-Z][A-Z]{2}\d/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 8:   
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-			activator.okVIN = false;
+      activator.okVIN = false;
+      unsetTrailer();
       break;
     case 9:   
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 10:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 11:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 12:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{2}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 13:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{3}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 14:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{4}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 15:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{5}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     case 16:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{6}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      unsetTrailer();
       break;
     default:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{7}/g.test(activator.VINcode);
@@ -8590,6 +8606,7 @@ function validateVIN () {
       } else {
         reactVIN("invalidPin");
         activator.okVIN = false;
+        unsetTrailer();
       }
       // add VIN to the cookies?
   }
@@ -8625,14 +8642,18 @@ function presetTrailer () {
   var year = parseVIN()[1];
   console.log("Year in VIN: " + year);
   
+  // если одно из значений выпадающего списка прицепов совпадает с отпарсеным из винкода, устанавливаем эту модель, как активную.
   for (i=0; i < domVar.trailerChooser.options.length; i++) {
-    if(domVar.trailerChooser.options[i].value.toLowerCase().slice(0,5) === model.toLowerCase()) {
+    if((domVar.trailerChooser.options[i].value.toLowerCase().slice(0,5) === model.toLowerCase()) || 
+        (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,4) === "pi20" && model.toLowerCase() === "0pt20") ||
+        (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,4) === "pi42" && model.toLowerCase() === "0pt42")) {
       console.log("Trailer found. index: " + i);
       setTrailer(i);
       selectTrailer();
       break;
     }
   }
+  // если отпарсенное значение года совпадает с одним из значений из списка, устанавливаем этот год активным.
   for (i=0; i < domVar.inputYear.options.length; i++) {
     if(domVar.inputYear.options[i].value == year) {
       console.log("Year found. index: " + i);
@@ -8642,6 +8663,13 @@ function presetTrailer () {
     }
   }
 }
+function unsetTrailer () {
+  domVar.trailerChooser.options[0].selected = true;
+  domVar.inputYear.options[0].selected = true;
+  activator.model = {};
+  activator.manufacture = 0;
+  console.log("activator options: " + activator.model.name + " " + activator.manufacture);
+}
 // установка в селекте значения по номеру индекса (принимаемое значение)
 function setTrailer (optionIndex) {
   console.log("Setting trailer with index:" + optionIndex);
@@ -8650,13 +8678,12 @@ function setTrailer (optionIndex) {
 // на основании выбранного пункта копируем из "дэйтабэйза" соответствующий прицеп-объект в активатор
 function selectTrailer () {
   activator.model = umegaTrailers[domVar.trailerChooser.options[domVar.trailerChooser.selectedIndex].text.toLowerCase()];
+  console.log("set in activator: " + activator.model);
   // readCountry();
 }
 // очищаем нахрен активатор и устанавливаем дропдаун на начальную позицию
 function clearTrailers () {
   activator.model = "";
-  // domVar.trailerChooser.options[0].selected = true;
-  // domVar.inputYear.options[0].selected = true;
 }
 
 function formYearList() {
@@ -8686,9 +8713,11 @@ function setYear(optionIndex) {
 }
 function selectYear() {
   activator.manufacture = domVar.inputYear.options[domVar.inputYear.selectedIndex].text;
+  console.log("set in activator: " + activator.manufacture);
 }
 
 function VINChange () {
+  unsetTrailer();
   getVIN();
   if (activator.VINcode.length) {
     validateVIN();
@@ -8697,6 +8726,18 @@ function VINChange () {
     reactVIN("noPin");
     // deactivateElement("pdfButton");
   }
+  console.log("VINcode in activator: " + activator.VINcode);
+}
+function trailerChange () {
+  // clearCountry();
+  // activator.okCert = false;
+  selectTrailer();
+  activator.checkup();
+}
+function yearChange () {
+  //setForm ("undefined");
+  selectYear();
+  activator.checkup();
 }
 
 function initialize () {
@@ -8708,11 +8749,12 @@ function initialize () {
 
 //// WORKFLOW ///////
 initialize();
-// domVar.trailerChooser.addEventListener('change', trailerChange);
+domVar.trailerChooser.addEventListener('change', trailerChange);
 // domVar.countryChooser.addEventListener('change', countryChange);
 // domVar.certificateChooser.addEventListener('change', certificateChange);
-// domVar.inputYear.addEventListener('change', yearChange);
-domVar.inputPIN.addEventListener('input', VINChange);
+domVar.inputYear.addEventListener('change', yearChange);
+domVar.inputPIN.addEventListener('mouseup', VINChange);
+domVar.inputPIN.addEventListener('keyup', VINChange);
 // domVar.pdfButton.addEventListener('click', exportPDF);
 
 // function buildTrailer () {
@@ -8970,12 +9012,7 @@ domVar.inputPIN.addEventListener('input', VINChange);
 
 
 
-// function trailerChange () {
-//   clearCountry();
-//   activator.okCert = false;
-//   selectTrailer();
-//   activator.checkup();
-// }
+
 // function countryChange () {
 //   clearCertification();
 //   activator.okCert = false;
@@ -8988,11 +9025,7 @@ domVar.inputPIN.addEventListener('input', VINChange);
 //   chooseForm();
 //   activator.checkup();
 // }
-// function yearChange () {
-//   //setForm ("undefined");
-//   setYear();
-//   activator.checkup();
-// }
+
 
 
 
