@@ -1,3 +1,5 @@
+// import { objectExpression } from "babel-types";
+
 console.log("Connected");
 
 ////////// DOM variables //////////
@@ -13,8 +15,8 @@ domVar = {
   countryChooser:     document.getElementById("chooseCountry"),
   certificateChooser: document.getElementById("chooseCertificate"),
   inputYear:          document.getElementById("inputYear"),
-  inputPIN:           document.getElementById("inputPin"),
-  pdfButton:          document.getElementById("pdfBuild")
+  inputPIN:           document.getElementById("inputPin")
+  // pdfButton:          document.getElementById("pdfBuild")
 };
 // Plate hooks
 plateVar = {
@@ -55,22 +57,125 @@ plateVar = {
 };
 currentTrailer = {
   category:     "",
-  type:         "",
+  model:         "",
   manufactured: 0,
   weight:       0,
-  payload:      0,
+  couplingVert: 0,
   techPayload:  0,
-  homologation: "-",
+  homologation: "",
   vinCode:      "",
-  country:      "",
+  // country:      "",
   roadWeight:   0,
-  couplingLoad: 0,
-  couplingDval: 0,
   axleNumber:   0,
   axleLoadRoad: 0,
   axleLoadFull: 0,
   singleAxleRoad: 0,
-  singleAxleFull: 0
+  singleAxleFull: 0,
+  axleLoadDk:     0,
+  axleLoadRu:     0,
+  brakesConfig: [],
+
+  secondTrailer: function() {
+    // допустимый вес второго прицепа (вес трактора принимаем равным 15 тоннам)
+    // var trainWeight = 40000;
+    var tractorWeight = 15000;
+    var unbrakedMax = 1500;
+    var inertiaMax = 8000;
+    var continuousMax = 18000;
+    var pneumohydroMax = 18000;
+    var gravityconst = 9.8;
+    var dvalFront = activator.model.couplingFront.dval;
+    var dvalRear = activator.model.couplingRear.dval;
+    var isSecond = activator.model.couplingRear.presence;
+    var t1b1;
+    var t1b2;
+    var t1b3;
+    var t1b4;
+
+    var operatingDval; // выбор наименьшего значения дин.нагрузки, с которой работаем
+    dvalFront > dvalRear ? operatingDval = dvalRear : operatingDval = dvalFront;
+    console.log("Dvalue selected: " + operatingDval);
+
+    var trailersWeightMax = Math.round(-1 * ((operatingDval * (tractorWeight/1000)) / (operatingDval - (gravityconst * (tractorWeight/1000)))));
+    console.log("All trailers weight: " + trailersWeightMax);
+    var secondTrailerWeight = Math.floor(((trailersWeightMax * 1000) - this.weight)/1000)*1000;
+    console.log("Second Trailer max weight: " + secondTrailerWeight);
+
+    if (isSecond) {
+      secondTrailerWeight > unbrakedMax ? t1b1 = unbrakedMax : t1b1 = secondTrailerWeight;
+      secondTrailerWeight > inertiaMax ? t1b2 = inertiaMax : t1b2 = secondTrailerWeight;
+      secondTrailerWeight > continuousMax ? t1b3 = continuousMax : t1b3 = secondTrailerWeight;
+      secondTrailerWeight > pneumohydroMax ? t1b4 = pneumohydroMax : t1b4 = secondTrailerWeight;
+    } else {
+      t1b1 = "-";
+      t1b2 = "-";
+      t1b3 = "-";
+      t1b4 = "-";
+    }
+    console.log(t1b1 + " / " + t1b2 + " / " + t1b3 + " / " + t1b4);
+    var brakes = [];
+    brakes.push(t1b1, t1b2, t1b3, t1b4);
+    console.log(brakes);
+    return brakes;
+  },
+
+  build: function() {
+    // собираем информацию о прицепе
+    this.category       = activator.model.category;
+    this.model          = activator.model.name;
+    this.manufactured   = activator.manufacture;
+    this.weight         = activator.model.weight;
+    this.couplingVert   = activator.model.couplingFront.vval;
+    this.techPayload    = activator.model.techPayload;
+    this.homologation   = activator.certType;
+    this.vinCode        = activator.VINcode;
+    // this.country        = activator.countryLocale;
+    this.roadWeight     = activator.model.roadWeight;
+    this.axleNumber     = activator.model.axleNum;
+    this.axleLoadRoad   = this.roadWeight - this.couplingVert;
+    this.axleLoadFull   = this.techPayload + this.weight - this.couplingVert;
+    this.singleAxleRoad = Math.round(this.axleLoadRoad / this.axleNumber);
+    this.singleAxleFull = Math.round(this.axleLoadFull / this.axleNumber);
+    // this.axleLoadDk     = ;
+    if (this.axleNumber === 1) {
+      this.axleLoadDk = this.axleLoadRoad;
+    } else if (this.axleNumber === 2) {
+      this.axleLoadDk = Math.round(this.axleLoadRoad/2) + " / " + Math.round(this.axleLoadRoad/2);
+    } else if (this.axleNumber === 3) {
+      this.axleLoadDk = Math.round(this.axleLoadRoad/3) + "/" + Math.round(this.axleLoadRoad/3) + "/" + Math.round(this.axleLoadRoad/3);
+    }
+    // this.axleLoadRu     = ;
+    if (this.axleNumber === 1) {
+      this.axleLoadRu = this.axleLoadFull;
+    } else if (this.axleNumber === 2) {
+      this.axleLoadRu = Math.round(this.axleLoadFull/2) + " / " + Math.round(this.axleLoadFull/2);
+    } else if (this.axleNumber === 3) {
+      this.axleLoadRu = Math.round(this.axleLoadFull/3) + "/" + Math.round(this.axleLoadFull/3) + "/" + Math.round(this.axleLoadFull/3);
+    }
+    this.brakesConfig = this.secondTrailer();
+  },
+
+  clear: function() {
+    this.category        = "",
+    this.model           = "",
+    this.manufactured    = 0,
+    this.weight          = 0,
+    this.couplingVert    = 0,
+    this.techPayload     = 0,
+    this.homologation    = "",
+    this.vinCode         = "",
+    // this.country         =  "",
+    this.roadWeight      = 0,
+    this.axleNumber      = 0,
+    this.axleLoadRoad    = 0,
+    this.axleLoadFull    = 0,
+    this.singleAxleRoad  = 0,
+    this.singleAxleFull  = 0,
+    this.axleLoadDk      = 0,
+    this.axleLoadRu      = 0,
+    this.brakesConfig    = []
+  }
+  
 };
 //////////// Database /////////////
 umegaTrailers = {
@@ -80,12 +185,23 @@ umegaTrailers = {
     variant:      "23",
     typeEC:       "GPP",
     weight:       7140,
-    payload:      13860,
+    // payload:      13860,
     techPayload:  18000,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 3000,
-    couplingDval: 38000,
+    // couplingLoad: 3000,
+    // couplingDval: 38000,
+    //-------------
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 4000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       96
+    },
+    //-------------
     certificate: [
       {
         name: "European 167/2013",
@@ -8424,7 +8540,7 @@ activator = {
   // state variables (is choosed, is correct, etc)
   model:          {},
   certificates:   [],
-  country:        [],
+  country:        {},
   countryName:    "",
   countryLocale:  "",
   certName:       "",
@@ -8432,17 +8548,20 @@ activator = {
   manufacture:    0,
   // numOfTrailers:  0,
   VINcode:        "",
+  okYear:         false,
+  okModel:        false,
   okVIN:          false,
   okCert:         false,
   // METHODS //
   checkup: function () {
     if (this.okVIN && this.okCert) {
-      buildTrailer();
+      currentTrailer.build();
+      chooseForm();
       // activateElement("pdfButton");
     } else {
+      currentTrailer.clear();
+      setForm("undefined");
       // deactivateElement("pdfButton");
-      // domVar.trailerChooser.options[0].selected = true;
-      // domVar.inputYear.options[0].selected = true;
     }
   }
 };
@@ -8495,6 +8614,23 @@ function reactVIN (cssClass) {
   domVar.inputPIN.classList.remove("noPin", "pendingPin", "validPin", "invalidPin");
   domVar.inputPIN.classList.add(cssClass);
 }
+function vinUnlocker() {
+  if (activator.okVIN) {
+    if (activator.okModel && activator.okYear) {
+      activateElement("trailerChooser");
+      activateElement("inputYear");
+      activateElement("countryChooser");
+    } else {
+      activateElement("trailerChooser");
+      activateElement("inputYear");
+      deactivateElement("countryChooser");
+    }
+  } else {
+    deactivateElement("trailerChooser");
+    deactivateElement("inputYear");
+    deactivateElement("countryChooser");
+  }
+}
 // VIN code validation on-the-fly
 function validateVIN () {
   var vinValid = false;
@@ -8503,110 +8639,160 @@ function validateVIN () {
       vinValid =  /U/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 2:   
       vinValid =  /UM/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 3:   
       vinValid =  /UME/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 4:   
       vinValid =  /UME[\dA-Z]/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 5:   
       vinValid =  /UME[\dA-Z][A-Z]/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 6:   
       vinValid =  /UME[\dA-Z][A-Z]{2}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 7:   
       vinValid =  /UME[\dA-Z][A-Z]{2}\d/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 8:   
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 9:   
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 10:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 11:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 12:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{2}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 13:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{3}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 14:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{4}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 15:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{5}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     case 16:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{6}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
+      vinUnlocker();
       unsetTrailer();
+      unsetYear();
+      unsetCountry();
       break;
     default:  
       vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{7}/g.test(activator.VINcode);
       if (vinValid) {
         reactVIN("validPin");
         activator.okVIN = true;
-        // preset model
         presetTrailer();
-				// preset year
+        vinUnlocker();
       } else {
         reactVIN("invalidPin");
         activator.okVIN = false;
+        vinUnlocker();
         unsetTrailer();
+        unsetYear();
+        unsetCountry();
       }
       // add VIN to the cookies?
   }
@@ -8638,16 +8824,16 @@ function formTrailerList () {
 // на основании VIN-кода выбираем из сформированного хтмл-списка соответствующий пункт
 function presetTrailer () {
   var model = parseVIN()[0].toLowerCase();
-  console.log("Trailer in VIN: " + model);
+  // console.log("Trailer in VIN: " + model);
   var year = parseVIN()[1];
-  console.log("Year in VIN: " + year);
+  // console.log("Year in VIN: " + year);
   
   // если одно из значений выпадающего списка прицепов совпадает с отпарсеным из винкода, устанавливаем эту модель, как активную.
   for (i=0; i < domVar.trailerChooser.options.length; i++) {
     if((domVar.trailerChooser.options[i].value.toLowerCase().slice(0,5) === model.toLowerCase()) || 
         (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,4) === "pi20" && model.toLowerCase() === "0pt20") ||
         (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,4) === "pi42" && model.toLowerCase() === "0pt42")) {
-      console.log("Trailer found. index: " + i);
+      // console.log("Trailer found. index: " + i);
       setTrailer(i);
       selectTrailer();
       break;
@@ -8656,7 +8842,7 @@ function presetTrailer () {
   // если отпарсенное значение года совпадает с одним из значений из списка, устанавливаем этот год активным.
   for (i=0; i < domVar.inputYear.options.length; i++) {
     if(domVar.inputYear.options[i].value == year) {
-      console.log("Year found. index: " + i);
+      // console.log("Year found. index: " + i);
       setYear(i);
       selectYear();
       break;
@@ -8665,10 +8851,11 @@ function presetTrailer () {
 }
 function unsetTrailer () {
   domVar.trailerChooser.options[0].selected = true;
-  domVar.inputYear.options[0].selected = true;
+  currentTrailer.clear();
   activator.model = {};
-  activator.manufacture = 0;
-  console.log("activator options: " + activator.model.name + " " + activator.manufacture);
+  activator.okModel = false;
+  
+  // console.log("activator options: " + activator.model.name + " " + activator.manufacture);
 }
 // установка в селекте значения по номеру индекса (принимаемое значение)
 function setTrailer (optionIndex) {
@@ -8678,12 +8865,14 @@ function setTrailer (optionIndex) {
 // на основании выбранного пункта копируем из "дэйтабэйза" соответствующий прицеп-объект в активатор
 function selectTrailer () {
   activator.model = umegaTrailers[domVar.trailerChooser.options[domVar.trailerChooser.selectedIndex].text.toLowerCase()];
-  console.log("set in activator: " + activator.model);
-  // readCountry();
+  console.log("set in activator: " + activator.model.name);
+  activator.okModel = true;
+  readCountry();
 }
 // очищаем нахрен активатор и устанавливаем дропдаун на начальную позицию
 function clearTrailers () {
-  activator.model = "";
+  activator.model = {};
+  domVar.trailerChooser.options[0].selected = true;
 }
 
 function formYearList() {
@@ -8713,11 +8902,17 @@ function setYear(optionIndex) {
 }
 function selectYear() {
   activator.manufacture = domVar.inputYear.options[domVar.inputYear.selectedIndex].text;
+  activator.okYear = true;
   console.log("set in activator: " + activator.manufacture);
+}
+function unsetYear(){
+  domVar.inputYear.options[0].selected = true;
+  activator.manufacture = 0;
+  activator.okYear = false;
 }
 
 function VINChange () {
-  unsetTrailer();
+  //unsetTrailer();
   getVIN();
   if (activator.VINcode.length) {
     validateVIN();
@@ -8726,23 +8921,157 @@ function VINChange () {
     reactVIN("noPin");
     // deactivateElement("pdfButton");
   }
-  console.log("VINcode in activator: " + activator.VINcode);
+  //console.log("VINcode in activator: " + activator.VINcode);
 }
 function trailerChange () {
-  // clearCountry();
-  // activator.okCert = false;
+  clearCountry();
+  activator.okCert = false;
   selectTrailer();
+  vinUnlocker();
   activator.checkup();
 }
 function yearChange () {
   //setForm ("undefined");
+  // unsetYear();
   selectYear();
+  vinUnlocker();
   activator.checkup();
 }
 
+function readCountry () {
+  for (var i = 0; i < activator.model.country.length; i++) {
+    var nodeDOM = document.createElement("option");
+    var nodeText = document.createTextNode(activator.model.country[i].name);
+    nodeDOM.appendChild(nodeText);
+    domVar.countryChooser.appendChild(nodeDOM);
+  }
+}
+function clearCountry () {
+  while (domVar.countryChooser.length > 1) {
+    domVar.countryChooser.removeChild(domVar.countryChooser.lastChild);
+  }
+  clearCertification();
+  activator.country = [];
+  activator.countryName = "";
+  activator.countryLocale = "";
+}
+function selectCountry () {
+  var selection = domVar.countryChooser.options[domVar.countryChooser.selectedIndex].text;
+  for (var i = 0; i < activator.model.country.length; i++) {
+    var currentCountry = activator.model.country[i];
+    if (currentCountry.name === selection) {
+      activator.country = activator.model.country[i];
+      activator.countryName = activator.model.country[i].name;
+      activator.countryLocale = activator.model.country[i].locale;
+    }
+  }
+  readCertification();
+  activateElement("certificateChooser");
+}
+function countryChange () {
+  clearCertification();
+  activator.okCert = false;
+  selectCountry();
+  activator.checkup();
+}
+function unsetCountry () {
+  domVar.countryChooser.options[0].selected = true;
+  activator.country = "";
+  activator.countryName = "";
+  activator.countryLocale = "";
+  clearCertification();
+  activator.okCert = false;
+}
+
+
+function readCertification () {
+  for (var i = 0; i < activator.model.certificate.length; i++) {
+    var currentCert = activator.model.certificate[i];
+    if ( currentCert.name === "No certification" || currentCert.name === "European 167/2013" || currentCert.name === activator.countryName) {
+      activator.certificates.push(currentCert);
+      var nodeDOM = document.createElement("option");
+      var nodeText = document.createTextNode(activator.model.certificate[i].name);
+      nodeDOM.appendChild(nodeText);
+      domVar.certificateChooser.appendChild(nodeDOM);
+    }
+  }
+}
+function clearCertification () {
+  while (domVar.certificateChooser.length > 1) {
+    domVar.certificateChooser.removeChild(domVar.certificateChooser.lastChild);
+  }
+  activator.certificates = [];
+  activator.certName = "";
+  activator.certType = "";
+  deactivateElement("certificateChooser");
+  // setForm ("undefined");
+
+}
+function selectCertification () {
+  var selected = domVar.certificateChooser.options[domVar.certificateChooser.selectedIndex].text;
+  for (var i = 0; i < activator.certificates.length; i++) {
+    if (selected === activator.certificates[i].name) {
+      activator.certName = activator.certificates[i].name;
+      activator.certType = activator.certificates[i].number;
+      activator.okCert = true;
+    }
+  }
+  activator.checkup();
+}
+function certificateChange () {
+  selectCertification();
+}
+
+// setup table form
+function setForm (tableType) {
+  plateVar.plate.classList.remove("uniform", "rus", "witam", "nocertOld", "undefined");
+  plateVar.plate.classList.add(tableType);
+}
+
+function chooseForm () {
+  switch (activator.country.locale) {
+    case 'ru':
+      setForm("rus");
+      break;
+    case 'dk':
+      if (activator.certName === "European 167/2013") {
+        setForm("uniform");
+      } else {
+        setForm("nocertOld")
+      }
+      break;
+    case 'undef':
+      setForm("undefined");
+      break;
+    case 'pl':
+      if (activator.certName === "European 167/2013") {
+        setForm("uniform");
+      } else {
+        setForm("witam")
+      }
+      break;
+    default:
+      setForm("uniform");
+  }
+}
+
+function activateElement(domNode) {
+  domVar[domNode].disabled = false;
+  domVar[domNode].classList.remove("deactivated");
+}
+function deactivateElement(domNode) {
+  domVar[domNode].disabled = true;
+  domVar[domNode].classList.add("deactivated");
+}
+
 function initialize () {
-  formTrailerList();
-  // deactivateElement("pdfButton");
+  activateElement("inputPIN");
+  deactivateElement("trailerChooser");
+  deactivateElement("inputYear");
+  deactivateElement("countryChooser");
+  deactivateElement("certificateChooser");
+
+  formTrailerList();  
   formYearList();
   // resetData();
 }
@@ -8750,54 +9079,14 @@ function initialize () {
 //// WORKFLOW ///////
 initialize();
 domVar.trailerChooser.addEventListener('change', trailerChange);
-// domVar.countryChooser.addEventListener('change', countryChange);
-// domVar.certificateChooser.addEventListener('change', certificateChange);
+domVar.countryChooser.addEventListener('change', countryChange);
+domVar.certificateChooser.addEventListener('change', certificateChange);
 domVar.inputYear.addEventListener('change', yearChange);
 domVar.inputPIN.addEventListener('mouseup', VINChange);
 domVar.inputPIN.addEventListener('keyup', VINChange);
 // domVar.pdfButton.addEventListener('click', exportPDF);
 
 // function buildTrailer () {
-//   currentTrailer.category       = activator.model.category;
-//   currentTrailer.type           = activator.certName === "European 167/2013" ? activator.model.typeEC : activator.country.type;
-//   currentTrailer.variant        = activator.model.variant;
-//   currentTrailer.version        = "-";
-//   currentTrailer.manufactured   = activator.manufacture;
-//   currentTrailer.weight         = activator.model.weight;
-//   currentTrailer.techPayload    = activator.model.techPayload;
-//   currentTrailer.payload        = activator.model.payload;
-//   currentTrailer.homologation   = activator.certType;
-//   currentTrailer.vinCode        = activator.VINcode;
-//   currentTrailer.country        = activator.countryLocale;
-//   currentTrailer.roadWeight     = activator.model.roadWeight;
-//   currentTrailer.couplingLoad   = activator.model.couplingLoad;
-//   currentTrailer.couplingDval   = activator.model.couplingDval;
-
-//   currentTrailer.axleNumber     = activator.model.axleNum;
-//   currentTrailer.axleLoadRoad   = currentTrailer.roadWeight - currentTrailer.couplingLoad;
-//   currentTrailer.axleLoadFull   = currentTrailer.techPayload + currentTrailer.weight - currentTrailer.couplingLoad;
-//   if (currentTrailer.country === "dk") {
-//     if (currentTrailer.axleNumber === 1) {
-//       currentTrailer.singleAxleRoad = currentTrailer.axleLoadRoad;
-//     } else if (currentTrailer.axleNumber === 2) {
-//       currentTrailer.singleAxleRoad = Math.round(currentTrailer.axleLoadRoad/2) + " / " + Math.round(currentTrailer.axleLoadRoad/2);
-//     } else if (currentTrailer.axleNumber === 3) {
-//       currentTrailer.singleAxleRoad = Math.round(currentTrailer.axleLoadRoad/3) + "/" + Math.round(currentTrailer.axleLoadRoad/3) + "/" + Math.round(currentTrailer.axleLoadRoad/3);
-//     }
-//   } else if(currentTrailer.country === "ru" ) {
-//       if (currentTrailer.axleNumber === 1) {
-//         currentTrailer.singleAxleRoad = currentTrailer.axleLoadFull;
-//       } else if (currentTrailer.axleNumber === 2) {
-//         currentTrailer.singleAxleRoad = Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10 + " / " + Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10;
-//       } else if (currentTrailer.axleNumber === 3) {
-//         currentTrailer.singleAxleRoad = Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10 + "/" + Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10 + "/" + Math.round(Math.round(currentTrailer.axleLoadFull/2)/10)*10;
-//       }
-//   } else {
-//     currentTrailer.singleAxleRoad = Math.round(currentTrailer.axleLoadRoad / currentTrailer.axleNumber);
-//   }
-//   currentTrailer.singleAxleFull = Math.round(currentTrailer.axleLoadFull / currentTrailer.axleNumber);
-
-
 //   plateVar.category.innerText     = currentTrailer.category;
 //   plateVar.type.innerText         = currentTrailer.type;
 //   plateVar.variant.innerText      = currentTrailer.variant;
@@ -8890,141 +9179,17 @@ domVar.inputPIN.addEventListener('keyup', VINChange);
 
 
 
-// function readTrailers() {
-//   for (var trailer in umegaTrailers) {
-//     var nodeDOM = document.createElement("option");
-//     var nodeText = document.createTextNode(umegaTrailers[trailer].name);
-//     nodeDOM.appendChild(nodeText);
-//     domVar.trailerChooser.appendChild(nodeDOM);
-//     activator.numOfTrailers ++;
-//   }
-// }
-// function clearTrailers () {
-//   activator.model = "";
-// }
-// function selectTrailer () {
-//   activator.model = umegaTrailers[domVar.trailerChooser.options[domVar.trailerChooser.selectedIndex].text.toLowerCase()];
-//   readCountry();
-// }
-
-// function readCountry () {
-//   for (var i = 0; i < activator.model.country.length; i++) {
-//     var nodeDOM = document.createElement("option");
-//     var nodeText = document.createTextNode(activator.model.country[i].name);
-//     nodeDOM.appendChild(nodeText);
-//     domVar.countryChooser.appendChild(nodeDOM);
-//   }
-// }
-// function clearCountry () {
-//   while (domVar.countryChooser.length > 1) {
-//     domVar.countryChooser.removeChild(domVar.countryChooser.lastChild);
-//   }
-//   clearCertification();
-//   activator.country = [];
-//   activator.countryName = "";
-//   activator.countryLocale = "";
-// }
-// function selectCountry () {
-//   var selection = domVar.countryChooser.options[domVar.countryChooser.selectedIndex].text;
-//   for (var i = 0; i < activator.model.country.length; i++) {
-//     var currentCountry = activator.model.country[i];
-//     if (currentCountry.name === selection) {
-//       activator.country = activator.model.country[i];
-//       activator.countryName = activator.model.country[i].name;
-//       activator.countryLocale = activator.model.country[i].locale;
-//     }
-//   }
-//   readCertification();
-// }
-
-// function readCertification () {
-//   for (var i = 0; i < activator.model.certificate.length; i++) {
-//     var currentCert = activator.model.certificate[i];
-//     if ( currentCert.name === "No certification" || currentCert.name === "European 167/2013" || currentCert.name === activator.countryName) {
-//       activator.certificates.push(currentCert);
-//       var nodeDOM = document.createElement("option");
-//       var nodeText = document.createTextNode(activator.model.certificate[i].name);
-//       nodeDOM.appendChild(nodeText);
-//       domVar.certificateChooser.appendChild(nodeDOM);
-//     }
-//   }
-// }
-// function clearCertification () {
-//   while (domVar.certificateChooser.length > 1) {
-//     domVar.certificateChooser.removeChild(domVar.certificateChooser.lastChild);
-//   }
-//   activator.certificates = [];
-//   activator.certName = "";
-//   activator.certType = "";
-//   setForm ("undefined");
-// }
-// function selectCertification () {
-//   var selected = domVar.certificateChooser.options[domVar.certificateChooser.selectedIndex].text;
-//   for (var i = 0; i < activator.certificates.length; i++) {
-//     if (selected === activator.certificates[i].name) {
-//       activator.certName = activator.certificates[i].name;
-//       activator.certType = activator.certificates[i].number;
-//       activator.okCert = true;
-//     }
-//   }
-// }
-
-// // setup table form
-// function setForm (tableType) {
-//   plateVar.plate.classList.remove("uniform", "rus", "witam", "nocertOld", "undefined");
-//   plateVar.plate.classList.add(tableType);
-// }
-// function chooseForm () {
-//   switch (activator.country.locale) {
-//     case 'ru':
-//       setForm("rus");
-//       break;
-//     case 'dk':
-//       if (activator.certName === "European 167/2013") {
-//         setForm("uniform");
-//       } else {
-//         setForm("nocertOld")
-//       }
-//       break;
-//     case 'undef':
-//       setForm("undefined");
-//       break;
-//     case 'pl':
-//       if (activator.certName === "European 167/2013") {
-//         setForm("uniform");
-//       } else {
-//         setForm("witam")
-//       }
-//       break;
-//     default:
-//       setForm("uniform");
-//   }
-// }
-
-// function activateElement(domNode) {
-//   domVar[domNode].classList.remove("deactivated", "activated");
-//   domVar[domNode].classList.add("activated");
-// }
-// function deactivateElement(domNode) {
-//   domVar[domNode].classList.remove("deactivated", "activated");
-//   domVar[domNode].classList.add("deactivated");
-// }
 
 
 
 
-// function countryChange () {
-//   clearCertification();
-//   activator.okCert = false;
-//   selectCountry();
-//   activator.checkup();
-// }
-// function certificateChange () {
-//   selectCertification();
-//   setForm ("undefined");
-//   chooseForm();
-//   activator.checkup();
-// }
+
+
+
+
+
+
+
 
 
 
