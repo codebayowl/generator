@@ -16,7 +16,6 @@ domVar = {
   certificateChooser: document.getElementById("chooseCertificate"),
   inputYear:          document.getElementById("inputYear"),
   inputPIN:           document.getElementById("inputPin")
-  // pdfButton:          document.getElementById("pdfBuild")
 };
 // Plate hooks
 plateVar = {
@@ -159,15 +158,10 @@ currentTrailer = {
     var t1b2;
     var t1b3;
     var t1b4;
-
     var operatingDval; // выбор наименьшего значения дин.нагрузки, с которой работаем
     dvalFront > dvalRear ? operatingDval = dvalRear : operatingDval = dvalFront;
-    // console.log("Dvalue selected: " + operatingDval);
-
     var trailersWeightMax = Math.round(-1 * ((operatingDval * (tractorWeight/1000)) / (operatingDval - (gravityconst * (tractorWeight/1000)))));
-    // console.log("All trailers weight: " + trailersWeightMax);
     var secondTrailerWeight = Math.floor(((trailersWeightMax * 1000) - this.weight)/1000)*1000;
-    // console.log("Second Trailer max weight: " + secondTrailerWeight);
 
     if (isSecond) {
       secondTrailerWeight > unbrakedMax ? t1b1 = unbrakedMax : t1b1 = secondTrailerWeight;
@@ -180,10 +174,9 @@ currentTrailer = {
       t1b3 = "-";
       t1b4 = "-";
     }
-    // console.log(t1b1 + " / " + t1b2 + " / " + t1b3 + " / " + t1b4);
+    
     var brakes = [];
     brakes.push(t1b1, t1b2, t1b3, t1b4);
-    // console.log(brakes);
     return brakes;
   },
 
@@ -5211,7 +5204,6 @@ umegaTrailers = {
     variant:      "10P",
     typeEC:       "SPP",
     weight:       3700,
-    // payload:      16300,
     techPayload:  10000,
     roadWeight:   20000,
     axleNum:      2,
@@ -8892,18 +8884,15 @@ activator = {
       currentTrailer.build();
       chooseForm();
       plateVar.fillPlate();
-      // activateElement("pdfButton");
     } else {
       currentTrailer.clear();
       setForm("undefined");
-      // deactivateElement("pdfButton");
     }
   }
 };
 
 function getVIN () {
   activator.VINcode = domVar.inputPIN.value.toUpperCase();
-  //console.log(activator.VINcode);
 }
 function parseVIN () {
 	var vinextract = ["0", "0"];
@@ -9138,11 +9127,6 @@ function validateVIN () {
 // Формируем хтмл-ный список названий прицепов из "дэйтабэйзе"
 function formTrailerList () {
   for (var trailer in umegaTrailers) {
-    // var nodeDOM = document.createElement("option");
-    // var nodeText = document.createTextNode(umegaTrailers[trailer].name);
-    // nodeDOM.appendChild(nodeText);
-    // domVar.trailerChooser.appendChild(nodeDOM);
-
     // получаем текст для элемента
     var text = umegaTrailers[trailer].name;
     // получаем значение для элемента
@@ -9150,25 +9134,17 @@ function formTrailerList () {
     // создаем новый элемента
     var newOption = new Option(text, value);
     domVar.trailerChooser.options[domVar.trailerChooser.options.length]=newOption;
-
-    //activator.numOfTrailers ++;
   }
-  
-  
 }
 // на основании VIN-кода выбираем из сформированного хтмл-списка соответствующий пункт
 function presetTrailer () {
   var model = parseVIN()[0].toLowerCase();
-  // console.log("Trailer in VIN: " + model);
   var year = parseVIN()[1];
-  // console.log("Year in VIN: " + year);
-  
   // если одно из значений выпадающего списка прицепов совпадает с отпарсеным из винкода, устанавливаем эту модель, как активную.
   for (i=0; i < domVar.trailerChooser.options.length; i++) {
     if((domVar.trailerChooser.options[i].value.toLowerCase().slice(0,5) === model.toLowerCase()) || 
         (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,4) === "pi20" && model.toLowerCase() === "0pt20") ||
         (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,4) === "pi42" && model.toLowerCase() === "0pt42")) {
-      // console.log("Trailer found. index: " + i);
       setTrailer(i);
       selectTrailer();
       break;
@@ -9177,7 +9153,6 @@ function presetTrailer () {
   // если отпарсенное значение года совпадает с одним из значений из списка, устанавливаем этот год активным.
   for (i=0; i < domVar.inputYear.options.length; i++) {
     if(domVar.inputYear.options[i].value == year) {
-      // console.log("Year found. index: " + i);
       setYear(i);
       selectYear();
       break;
@@ -9189,18 +9164,14 @@ function unsetTrailer () {
   currentTrailer.clear();
   activator.model = {};
   activator.okModel = false;
-  
-  // console.log("activator options: " + activator.model.name + " " + activator.manufacture);
 }
 // установка в селекте значения по номеру индекса (принимаемое значение)
 function setTrailer (optionIndex) {
-  // console.log("Setting trailer with index:" + optionIndex);
   domVar.trailerChooser.options[optionIndex].selected = true;
 }
 // на основании выбранного пункта копируем из "дэйтабэйза" соответствующий прицеп-объект в активатор
 function selectTrailer () {
   activator.model = umegaTrailers[domVar.trailerChooser.options[domVar.trailerChooser.selectedIndex].text.toLowerCase()];
-  // console.log("set in activator: " + activator.model.name);
   activator.okModel = true;
   readCountry();
 }
@@ -9232,13 +9203,11 @@ function formYearList() {
   // setYear();
 }
 function setYear(optionIndex) {
-  // console.log("Setting year with index:" + optionIndex);
   domVar.inputYear.options[optionIndex].selected = true;
 }
 function selectYear() {
   activator.manufacture = domVar.inputYear.options[domVar.inputYear.selectedIndex].text;
   activator.okYear = true;
-  // console.log("set in activator: " + activator.manufacture);
 }
 function unsetYear(){
   domVar.inputYear.options[0].selected = true;
@@ -9247,16 +9216,13 @@ function unsetYear(){
 }
 
 function VINChange () {
-  //unsetTrailer();
   getVIN();
   if (activator.VINcode.length) {
     validateVIN();
   } else {
     activator.okVIN = false;
     reactVIN("noPin");
-    // deactivateElement("pdfButton");
   }
-  //console.log("VINcode in activator: " + activator.VINcode);
 }
 function trailerChange () {
   clearCountry();
@@ -9266,8 +9232,6 @@ function trailerChange () {
   activator.checkup();
 }
 function yearChange () {
-  //setForm ("undefined");
-  // unsetYear();
   selectYear();
   vinUnlocker();
   activator.checkup();
@@ -9395,7 +9359,6 @@ function initialize () {
   deactivateElement("inputYear");
   deactivateElement("countryChooser");
   deactivateElement("certificateChooser");
-
   formTrailerList();
   formYearList();
   plateVar.resetPlate();
@@ -9409,4 +9372,3 @@ domVar.certificateChooser.addEventListener('change', certificateChange);
 domVar.inputYear.addEventListener('change', yearChange);
 domVar.inputPIN.addEventListener('mouseup', VINChange);
 domVar.inputPIN.addEventListener('keyup', VINChange);
-// domVar.pdfButton.addEventListener('click', exportPDF);
