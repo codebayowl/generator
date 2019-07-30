@@ -948,7 +948,7 @@
     left: 55mm;
     background: whitesmoke;
     color: blue;
-    text-align: left;
+    text-align: center;
     line-height: 5mm;
     font-size: 4mm;
     padding-left: 1mm;
@@ -1104,16 +1104,16 @@
   #speed,
   // #weight,
   // #payload,
-  #techFull,
-  #drawbar,
+  // #techFull,
+  // #drawbar,
   #axle1,
   #axle2,
   #axle3,
   #category,
   // #certificate,
   // #pin,
-  // #roadFull,
-  // #roadDrawbar,
+  #roadFull,
+  #roadDrawbar,
   #roadAxle1,
   #roadAxle2,
   #roadAxle3,
@@ -1224,7 +1224,7 @@
       content: 'Год производства:';
     }
   }
-  & #roadFull {
+  & #techFull {
     top: 50mm;
     &::before {
       content: 'Полная масса (кг):';
@@ -1236,7 +1236,7 @@
       content: 'Масса (кг):';
     }
   }
-  & #roadDrawbar {
+  & #drawbar {
     top: 64mm;
     &::before {
       content: 'Макс. нагр. на дышло (кг):';

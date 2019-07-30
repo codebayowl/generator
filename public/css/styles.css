@@ -696,7 +696,7 @@ select {
     left: 55mm;
     background: whitesmoke;
     color: blue;
-    text-align: left;
+    text-align: center;
     line-height: 5mm;
     font-size: 4mm;
     padding-left: 1mm; }
@@ -774,12 +774,12 @@ select {
   .rus .t3,
   .rus .b0,
   .rus #speed,
-  .rus #techFull,
-  .rus #drawbar,
   .rus #axle1,
   .rus #axle2,
   .rus #axle3,
   .rus #category,
+  .rus #roadFull,
+  .rus #roadDrawbar,
   .rus #roadAxle1,
   .rus #roadAxle2,
   .rus #roadAxle3,
@@ -865,17 +865,17 @@ select {
     top: 43mm; }
     .rus #year::before {
       content: 'Год производства:'; }
-  .rus #roadFull {
+  .rus #techFull {
     top: 50mm; }
-    .rus #roadFull::before {
+    .rus #techFull::before {
       content: 'Полная масса (кг):'; }
   .rus #weight {
     top: 57mm; }
     .rus #weight::before {
       content: 'Масса (кг):'; }
-  .rus #roadDrawbar {
+  .rus #drawbar {
     top: 64mm; }
-    .rus #roadDrawbar::before {
+    .rus #drawbar::before {
       content: 'Макс. нагр. на дышло (кг):';
       font-size: 3.8mm; }
   .rus #payload {

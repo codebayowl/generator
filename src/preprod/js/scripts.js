@@ -23,6 +23,7 @@ plateVar = {
   category:     document.getElementById("category"),
   type:         document.getElementById("model"),
   year:         document.getElementById("year"),
+  speed:        document.getElementById("speed"),
   weight:       document.getElementById("weight"),
   roadLoad:     document.getElementById("roadFull"),
   maxLoad:      document.getElementById("techFull"),
@@ -53,31 +54,98 @@ plateVar = {
   b4t1:         document.getElementById("b4t1"),
   b4t2:         document.getElementById("b4t2"),
   b4t3:         document.getElementById("b4t3"),
-  plate:        document.getElementById("plate")
+  plate:        document.getElementById("plate"),
+
+  fillPlate: function() {
+    this.category.innerText    = currentTrailer.category;
+    this.type.innerText        = currentTrailer.model;
+    this.year.innerText        = currentTrailer.manufactured;
+    this.speed.innerText       = currentTrailer.speed;
+    this.weight.innerText      = currentTrailer.weight;
+    this.roadLoad.innerText    = currentTrailer.roadWeight;  // roadFull
+    this.maxLoad.innerText     = currentTrailer.techPayload + currentTrailer.weight;  // techFull
+    this.certificate.innerText = currentTrailer.homologation;
+    this.pin.innerText         = currentTrailer.vinCode;
+    this.full.innerText        = currentTrailer.techPayload; // PAYLOAD
+    this.drawbar.innerText     = currentTrailer.couplingVert;
+    this.axle1.innerText       = currentTrailer.singleAxleFull;
+    this.axle2.innerText       = currentTrailer.singleAxleFull;
+    this.axle3.innerText       = currentTrailer.singleAxleFull;
+    this.roadDrawbar.innerText = currentTrailer.couplingVert;
+    this.roadAxle1.innerText   = currentTrailer.singleAxleRoad;
+    this.roadAxle2.innerText   = currentTrailer.singleAxleRoad;
+    this.roadAxle3.innerText   = currentTrailer.singleAxleRoad;
+    this.axlesru.innerText     = currentTrailer.axleLoadRu;
+    this.axlesdk.innerText     = currentTrailer.axleLoadDk;
+    this.drawbarLoad.innerText = currentTrailer.drawbarLoadPl;  // polska
+    this.axleLoad.innerText    = currentTrailer.axleLoadPl;  // polska
+    this.b1t1.innerText        = currentTrailer.brakesConfig[0];
+    this.b2t1.innerText        = currentTrailer.brakesConfig[1];
+    this.b3t1.innerText        = currentTrailer.brakesConfig[2];
+    this.b4t1.innerText        = currentTrailer.brakesConfig[3];
+  },
+  resetPlate: function() {
+    this.category.innerText    = "-";
+    this.type.innerText        = "-";
+    this.year.innerText        = "-";
+    this.speed.innerText       = "-";
+    this.weight.innerText      = "-";
+    this.roadLoad.innerText    = "-";
+    this.maxLoad.innerText     = "-";
+    this.certificate.innerText = "-";
+    this.pin.innerText         = "-";
+    this.full.innerText        = "-";
+    this.drawbar.innerText     = "-";
+    this.axle1.innerText       = "-";
+    this.axle2.innerText       = "-";
+    this.axle3.innerText       = "-";
+    this.roadDrawbar.innerText = "-";
+    this.roadAxle1.innerText   = "-";
+    this.roadAxle2.innerText   = "-";
+    this.roadAxle3.innerText   = "-";
+    this.axlesru.innerText     = "-";
+    this.axlesdk.innerText     = "-";
+    this.drawbarLoad.innerText = "-";
+    this.axleLoad.innerText    = "-";
+    this.b1t1.innerText        = "-";
+    this.b1t2.innerText        = "-";
+    this.b1t3.innerText        = "-";
+    this.b2t1.innerText        = "-";
+    this.b2t2.innerText        = "-";
+    this.b2t3.innerText        = "-";
+    this.b3t1.innerText        = "-";
+    this.b3t2.innerText        = "-";
+    this.b3t3.innerText        = "-";
+    this.b4t1.innerText        = "-";
+    this.b4t2.innerText        = "-";
+    this.b4t3.innerText        = "-";
+  }
 };
 currentTrailer = {
-  category:     "",
-  model:         "",
-  manufactured: 0,
-  weight:       0,
-  couplingVert: 0,
-  techPayload:  0,
-  homologation: "",
-  vinCode:      "",
-  // country:      "",
-  roadWeight:   0,
-  axleNumber:   0,
-  axleLoadRoad: 0,
-  axleLoadFull: 0,
+  category:       "",
+  model:          "",
+  manufactured:   0,
+  speed:          0,
+  weight:         0,
+  couplingVert:   0,
+  techPayload:    0,
+  homologation:   "",
+  vinCode:        "",
+  roadWeight:     0,
+  axleNumber:     0,
+  drawbar:        0,
+  axleLoadRoad:   0,
+  axleLoadFull:   0,
   singleAxleRoad: 0,
   singleAxleFull: 0,
   axleLoadDk:     0,
   axleLoadRu:     0,
-  brakesConfig: [],
+  axleLoadPl:     0,
+  drawbarLoadPl:  0,
+  brakesConfig:   [],
 
   secondTrailer: function() {
     // допустимый вес второго прицепа (вес трактора принимаем равным 15 тоннам)
-    // var trainWeight = 40000;
     var tractorWeight = 15000;
     var unbrakedMax = 1500;
     var inertiaMax = 8000;
@@ -94,12 +162,12 @@ currentTrailer = {
 
     var operatingDval; // выбор наименьшего значения дин.нагрузки, с которой работаем
     dvalFront > dvalRear ? operatingDval = dvalRear : operatingDval = dvalFront;
-    console.log("Dvalue selected: " + operatingDval);
+    // console.log("Dvalue selected: " + operatingDval);
 
     var trailersWeightMax = Math.round(-1 * ((operatingDval * (tractorWeight/1000)) / (operatingDval - (gravityconst * (tractorWeight/1000)))));
-    console.log("All trailers weight: " + trailersWeightMax);
+    // console.log("All trailers weight: " + trailersWeightMax);
     var secondTrailerWeight = Math.floor(((trailersWeightMax * 1000) - this.weight)/1000)*1000;
-    console.log("Second Trailer max weight: " + secondTrailerWeight);
+    // console.log("Second Trailer max weight: " + secondTrailerWeight);
 
     if (isSecond) {
       secondTrailerWeight > unbrakedMax ? t1b1 = unbrakedMax : t1b1 = secondTrailerWeight;
@@ -124,19 +192,20 @@ currentTrailer = {
     this.category       = activator.model.category;
     this.model          = activator.model.name;
     this.manufactured   = activator.manufacture;
+    this.speed          = activator.model.speed;
     this.weight         = activator.model.weight;
     this.couplingVert   = activator.model.couplingFront.vval;
     this.techPayload    = activator.model.techPayload;
     this.homologation   = activator.certType;
     this.vinCode        = activator.VINcode;
-    // this.country        = activator.countryLocale;
     this.roadWeight     = activator.model.roadWeight;
     this.axleNumber     = activator.model.axleNum;
+    this.drawbar        = activator.model.couplingFront.vval;
     this.axleLoadRoad   = this.roadWeight - this.couplingVert;
     this.axleLoadFull   = this.techPayload + this.weight - this.couplingVert;
     this.singleAxleRoad = Math.round(this.axleLoadRoad / this.axleNumber);
     this.singleAxleFull = Math.round(this.axleLoadFull / this.axleNumber);
-    // this.axleLoadDk     = ;
+    // axleLoadDk
     if (this.axleNumber === 1) {
       this.axleLoadDk = this.axleLoadRoad;
     } else if (this.axleNumber === 2) {
@@ -144,7 +213,7 @@ currentTrailer = {
     } else if (this.axleNumber === 3) {
       this.axleLoadDk = Math.round(this.axleLoadRoad/3) + "/" + Math.round(this.axleLoadRoad/3) + "/" + Math.round(this.axleLoadRoad/3);
     }
-    // this.axleLoadRu     = ;
+    // axleLoadRu
     if (this.axleNumber === 1) {
       this.axleLoadRu = this.axleLoadFull;
     } else if (this.axleNumber === 2) {
@@ -152,6 +221,8 @@ currentTrailer = {
     } else if (this.axleNumber === 3) {
       this.axleLoadRu = Math.round(this.axleLoadFull/3) + "/" + Math.round(this.axleLoadFull/3) + "/" + Math.round(this.axleLoadFull/3);
     }
+    this.axleLoadPl = Math.round((this.singleAxleRoad / 1000) * 98)/10 + " kN";
+    this.drawbarLoadPl = Math.round((this.drawbar / 1000) * 98)/10 + " kN";
     this.brakesConfig = this.secondTrailer();
   },
 
@@ -159,20 +230,23 @@ currentTrailer = {
     this.category        = "",
     this.model           = "",
     this.manufactured    = 0,
+    this.speed           = 0,
     this.weight          = 0,
     this.couplingVert    = 0,
     this.techPayload     = 0,
     this.homologation    = "",
     this.vinCode         = "",
-    // this.country         =  "",
     this.roadWeight      = 0,
     this.axleNumber      = 0,
+    this.drawbar         = 0,
     this.axleLoadRoad    = 0,
     this.axleLoadFull    = 0,
     this.singleAxleRoad  = 0,
     this.singleAxleFull  = 0,
     this.axleLoadDk      = 0,
     this.axleLoadRu      = 0,
+    this.axleLoadPl      = 0,
+    this.drawbarLoadPl   = 0,
     this.brakesConfig    = []
   }
   
@@ -195,11 +269,11 @@ umegaTrailers = {
     speed: 40,
     couplingFront: {
       dval: 120,
-      vval: 4000
+      vval: 3000
     },
     couplingRear: {
       presence:   false,
-      dval:       96
+      dval:       0
     },
     //-------------
     certificate: [
@@ -8557,6 +8631,7 @@ activator = {
     if (this.okVIN && this.okCert) {
       currentTrailer.build();
       chooseForm();
+      plateVar.fillPlate();
       // activateElement("pdfButton");
     } else {
       currentTrailer.clear();
@@ -9073,7 +9148,7 @@ function initialize () {
 
   formTrailerList();  
   formYearList();
-  // resetData();
+  plateVar.resetPlate();
 }
 
 //// WORKFLOW ///////
@@ -9085,116 +9160,3 @@ domVar.inputYear.addEventListener('change', yearChange);
 domVar.inputPIN.addEventListener('mouseup', VINChange);
 domVar.inputPIN.addEventListener('keyup', VINChange);
 // domVar.pdfButton.addEventListener('click', exportPDF);
-
-// function buildTrailer () {
-//   plateVar.category.innerText     = currentTrailer.category;
-//   plateVar.type.innerText         = currentTrailer.type;
-//   plateVar.variant.innerText      = currentTrailer.variant;
-//   plateVar.version.innerText      = currentTrailer.version;
-//   plateVar.year.innerText         = currentTrailer.manufactured;
-//   plateVar.weight.innerText       = currentTrailer.weight;
-//   if (currentTrailer.country === "ru") {
-//     plateVar.roadLoad.innerText     = currentTrailer.techPayload;
-//   } else {
-//     plateVar.roadLoad.innerText     = currentTrailer.payload;
-//   }
-  
-//   plateVar.maxLoad.innerText      = currentTrailer.techPayload;
-//   plateVar.certificate.innerText  = currentTrailer.homologation;
-//   plateVar.pin.innerText          = currentTrailer.vinCode;
-//   plateVar.country.innerText      = currentTrailer.country.toUpperCase();  
-
-//   plateVar.road.innerText         = currentTrailer.country === "ru" ? currentTrailer.weight + currentTrailer.techPayload : currentTrailer.roadWeight;
-
-//   plateVar.drawbar.innerText      = currentTrailer.couplingLoad;
-//   plateVar.axle1.innerText        = currentTrailer.singleAxleRoad;
-//   plateVar.axle2.innerText        = currentTrailer.axleNumber > 1 ? plateVar.axle1.innerText : "-" ;
-//   plateVar.axle3.innerText        = currentTrailer.axleNumber > 2 ? plateVar.axle1.innerText : "-" ;
-
-//   plateVar.full.innerText         = currentTrailer.weight + currentTrailer.techPayload;
-//   plateVar.roadDrawbar.innerText  = currentTrailer.couplingLoad;
-//   plateVar.roadAxle1.innerText    = currentTrailer.singleAxleFull;
-//   plateVar.roadAxle2.innerText    = currentTrailer.axleNumber > 1 ? plateVar.roadAxle1.innerText : "-" ;
-//   plateVar.roadAxle3.innerText    = currentTrailer.axleNumber > 2 ? plateVar.roadAxle1.innerText : "-" ;
-
-//   plateVar.drawbarLoad.innerText  = Math.round(parseFloat(currentTrailer.couplingLoad * 0.0098) * 100) / 100  + " kN";
-//   plateVar.axleLoad.innerText     = Math.round(parseFloat(currentTrailer.singleAxleRoad * 0.0098) * 100) / 100  + " kN";
-  
-//   plateVar.b1t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 1500 ? 1500 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
-//   plateVar.b2t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 8000 ? 8000 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
-//   plateVar.b3t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 18000 ? 18000 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
-//   plateVar.b4t1.innerText         = currentTrailer.category === "S2a" ? "-" : currentTrailer.couplingDval - currentTrailer.roadWeight > 18000 ? 18000 : currentTrailer.couplingDval - currentTrailer.roadWeight ;
-
-//   plateVar.b1t2.innerText         = "-";
-//   plateVar.b2t2.innerText         = "-";
-//   plateVar.b3t2.innerText         = "-";
-//   plateVar.b4t2.innerText         = "-";
-  
-//   plateVar.b1t3.innerText         = "-";
-//   plateVar.b2t3.innerText         = "-";  
-//   plateVar.b3t3.innerText         = "-";
-//   plateVar.b4t3.innerText         = "-";
-// }
-
-// function resetData () {
-//   plateVar.plate.classList.remove("uniform", "rus", "witam", "nocertOld", "undefined");
-//   plateVar.plate.classList.add("undefined");
-//   plateVar.category.innerText = "-";
-//   plateVar.type.innerText = "-";
-//   plateVar.variant.innerText = "-";
-//   plateVar.version.innerText = "-";
-//   plateVar.year.innerText = "-";
-//   plateVar.weight.innerText = "-";
-//   plateVar.roadLoad.innerText = "-";
-//   plateVar.maxLoad.innerText = "-";
-//   plateVar.certificate.innerText = "-";
-//   plateVar.pin.innerText = "-";
-//   plateVar.country.innerText = "-";
-//   plateVar.road.innerText = "-";
-//   plateVar.full.innerText = "-";
-//   plateVar.drawbar.innerText = "-";
-//   plateVar.axle1.innerText = "-";
-//   plateVar.axle2.innerText = "-";
-//   plateVar.axle3.innerText = "-";
-//   plateVar.roadDrawbar.innerText = "-";
-//   plateVar.roadAxle1.innerText = "-";
-//   plateVar.roadAxle2.innerText = "-";
-//   plateVar.roadAxle3.innerText = "-";
-//   plateVar.drawbarLoad.innerText = "-";
-//   plateVar.axleLoad.innerText = "-";
-//   plateVar.b1t1.innerText = "-";
-//   plateVar.b1t2.innerText = "-";
-//   plateVar.b1t3.innerText = "-";
-//   plateVar.b2t1.innerText = "-";
-//   plateVar.b2t2.innerText = "-";
-//   plateVar.b2t3.innerText = "-";
-//   plateVar.b3t1.innerText = "-";
-//   plateVar.b3t2.innerText = "-";
-//   plateVar.b3t3.innerText = "-";
-//   plateVar.b4t1.innerText = "-";
-//   plateVar.b4t2.innerText = "-";
-//   plateVar.b4t3.innerText = "-";
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // function exportPDF () {
-// //   doc.save('a4.pdf');
-// // }
-
