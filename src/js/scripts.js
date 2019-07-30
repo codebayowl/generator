@@ -8934,13 +8934,13 @@ function unsetTrailer () {
 }
 // установка в селекте значения по номеру индекса (принимаемое значение)
 function setTrailer (optionIndex) {
-  console.log("Setting trailer with index:" + optionIndex);
+  // console.log("Setting trailer with index:" + optionIndex);
   domVar.trailerChooser.options[optionIndex].selected = true;
 }
 // на основании выбранного пункта копируем из "дэйтабэйза" соответствующий прицеп-объект в активатор
 function selectTrailer () {
   activator.model = umegaTrailers[domVar.trailerChooser.options[domVar.trailerChooser.selectedIndex].text.toLowerCase()];
-  console.log("set in activator: " + activator.model.name);
+  // console.log("set in activator: " + activator.model.name);
   activator.okModel = true;
   readCountry();
 }
@@ -8954,7 +8954,7 @@ function formYearList() {
   // declaring an array of years for the dropdown
   var years = [];
   // filling an array with years from 2016 until now
-  for (var i = new Date().getFullYear(); i >= 2016; i--) {
+  for (var i = new Date().getFullYear() + 1; i >= 2016; i--) {
     years.push(i);
   }
   // creating and appending nodes to year dropdown (as options in select)
@@ -8972,13 +8972,13 @@ function formYearList() {
   // setYear();
 }
 function setYear(optionIndex) {
-  console.log("Setting year with index:" + optionIndex);
+  // console.log("Setting year with index:" + optionIndex);
   domVar.inputYear.options[optionIndex].selected = true;
 }
 function selectYear() {
   activator.manufacture = domVar.inputYear.options[domVar.inputYear.selectedIndex].text;
   activator.okYear = true;
-  console.log("set in activator: " + activator.manufacture);
+  // console.log("set in activator: " + activator.manufacture);
 }
 function unsetYear(){
   domVar.inputYear.options[0].selected = true;
@@ -9051,10 +9051,10 @@ function countryChange () {
 }
 function unsetCountry () {
   domVar.countryChooser.options[0].selected = true;
-  activator.country = "";
+  activator.country = [];
   activator.countryName = "";
   activator.countryLocale = "";
-  clearCertification();
+  clearCountry();
   activator.okCert = false;
 }
 
@@ -9146,7 +9146,7 @@ function initialize () {
   deactivateElement("countryChooser");
   deactivateElement("certificateChooser");
 
-  formTrailerList();  
+  formTrailerList();
   formYearList();
   plateVar.resetPlate();
 }
