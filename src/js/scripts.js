@@ -69,12 +69,12 @@ plateVar = {
     this.full.innerText        = currentTrailer.techPayload; // PAYLOAD
     this.drawbar.innerText     = currentTrailer.couplingVert;
     this.axle1.innerText       = currentTrailer.singleAxleFull;
-    this.axle2.innerText       = currentTrailer.singleAxleFull;
-    this.axle3.innerText       = currentTrailer.singleAxleFull;
+    currentTrailer.axleNumber > 1 ?  this.axle2.innerText = currentTrailer.singleAxleFull : this.axle2.innerText = "-";
+    currentTrailer.axleNumber > 2 ?  this.axle3.innerText = currentTrailer.singleAxleFull : this.axle3.innerText = "-";
     this.roadDrawbar.innerText = currentTrailer.couplingVert;
     this.roadAxle1.innerText   = currentTrailer.singleAxleRoad;
-    this.roadAxle2.innerText   = currentTrailer.singleAxleRoad;
-    this.roadAxle3.innerText   = currentTrailer.singleAxleRoad;
+    currentTrailer.axleNumber > 1 ?  this.roadAxle2.innerText = currentTrailer.singleAxleRoad : this.roadAxle2.innerText = "-";
+    currentTrailer.axleNumber > 2 ?  this.roadAxle3.innerText = currentTrailer.singleAxleRoad : this.roadAxle3.innerText = "-";
     this.axlesru.innerText     = currentTrailer.axleLoadRu;
     this.axlesdk.innerText     = currentTrailer.axleLoadDk;
     this.drawbarLoad.innerText = currentTrailer.drawbarLoadPl;  // polska
@@ -180,23 +180,27 @@ currentTrailer = {
       t1b3 = "-";
       t1b4 = "-";
     }
-    console.log(t1b1 + " / " + t1b2 + " / " + t1b3 + " / " + t1b4);
+    // console.log(t1b1 + " / " + t1b2 + " / " + t1b3 + " / " + t1b4);
     var brakes = [];
     brakes.push(t1b1, t1b2, t1b3, t1b4);
-    console.log(brakes);
+    // console.log(brakes);
     return brakes;
   },
 
   build: function() {
     // собираем информацию о прицепе
     this.category       = activator.model.category;
-    this.model          = activator.model.name;
+    if (activator.certification.name === "No certification") {
+      this.model = activator.country.type;
+    } else {
+      this.model = activator.certification.type;
+    }
     this.manufactured   = activator.manufacture;
     this.speed          = activator.model.speed;
     this.weight         = activator.model.weight;
     this.couplingVert   = activator.model.couplingFront.vval;
     this.techPayload    = activator.model.techPayload;
-    this.homologation   = activator.certType;
+    this.homologation   = activator.certification.number;
     this.vinCode        = activator.VINcode;
     this.roadWeight     = activator.model.roadWeight;
     this.axleNumber     = activator.model.axleNum;
@@ -259,27 +263,23 @@ umegaTrailers = {
     variant:      "23",
     typeEC:       "GPP",
     weight:       7140,
-    // payload:      13860,
     techPayload:  18000,
     roadWeight:   21000,
     axleNum:      2,
-    // couplingLoad: 3000,
-    // couplingDval: 38000,
-    //-------------
     speed: 40,
     couplingFront: {
-      dval: 120,
+      dval: 135,
       vval: 3000
     },
     couplingRear: {
       presence:   false,
       dval:       0
     },
-    //-------------
     certificate: [
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00029*00"
+        number: "e32*167/2013*00029*00",
+        type: "GPP23"
       },
       {
         name: "No certification",
@@ -475,12 +475,18 @@ umegaTrailers = {
     variant:      "23HD",
     typeEC:       "GPP",
     weight:       7550,
-    payload:      16450,
     techPayload:  24000,
     roadWeight:   24000,
     axleNum:      2,
-    couplingLoad: 4000,
-    couplingDval: 31500,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 4000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -488,7 +494,8 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00029*00"
+        number: "e32*167/2013*00029*00",
+        type: "GPP23HD"
       }
     ],
     country: [
@@ -680,12 +687,18 @@ umegaTrailers = {
     variant:      "27L",
     typeEC:       "GPP",
     weight:       8500,
-    payload:      15500,
     techPayload:  27000,
     roadWeight:   24000,
     axleNum:      2,
-    couplingLoad: 4000,
-    couplingDval: 31500,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 4000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -693,7 +706,8 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00029*00"
+        number: "e32*167/2013*00029*00",
+        type: "GPP27L"
       }
     ],
     country: [
@@ -885,12 +899,18 @@ umegaTrailers = {
     variant:      "20",
     typeEC:       "PI",
     weight:       8370,
-    payload:      14630,
     techPayload:  20000,
     roadWeight:   24000,
     axleNum:      2,
-    couplingLoad: 4000,
-    couplingDval: 31500,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 4000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -898,7 +918,8 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00021*00"
+        number: "e32*167/2013*00021*00",
+        type: "PI20"
       }
     ],
     country: [
@@ -1090,12 +1111,18 @@ umegaTrailers = {
     variant:      "42",
     typeEC:       "PI",
     weight:       15000,
-    payload:      19000,
     techPayload:  42000,
     roadWeight:   34000,
     axleNum:      3,
-    couplingLoad: 4000,
-    couplingDval: 38000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 4000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -1299,12 +1326,18 @@ umegaTrailers = {
     variant:      "12B",
     typeEC:       "TIP12",
     weight:       4000,
-    payload:      16500,
     techPayload:  12000,
     roadWeight:   20500,
     axleNum:      2,
-    couplingLoad: 2500,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -1313,11 +1346,11 @@ umegaTrailers = {
       {
         name: "European 167/2013",
         number: "e32*167/2013*00023*00"
-      },*/
+      },
       {
         name: "Poland",
         number: "PL*4404*00"
-      }
+      }*/
     ],
     country: [
       {
@@ -1508,12 +1541,18 @@ umegaTrailers = {
     variant:      "B",
     typeEC:       "TIP14",
     weight:       4050,
-    payload:      16450,
     techPayload:  14000,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 2500,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -1521,11 +1560,13 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00023*00"
+        number: "e32*167/2013*00023*00",
+        type: "SPB14"
       },
       {
         name: "Poland",
-        number: "PL*4404*00"
+        number: "PL*4404*00",
+        type: "SP1/SPB14"
       }
     ],
     country: [
@@ -1717,12 +1758,18 @@ umegaTrailers = {
     variant:      "R",
     typeEC:       "TIP14",
     weight:       4250,
-    payload:      16250,
     techPayload:  14000,
     roadWeight:   20500,
     axleNum:      2,
-    couplingLoad: 2500,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -1926,12 +1973,18 @@ umegaTrailers = {
     variant:      "10C",
     typeEC:       "TIP12",
     weight:       3650,
-    payload:      16850,
     techPayload:  10000,
     roadWeight:   20500,
     axleNum:      2,
-    couplingLoad: 2500,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -1943,7 +1996,8 @@ umegaTrailers = {
       },*/
       {
         name: "Poland",
-        number: "PL*4404*00"
+        number: "PL*4404*00",
+        type: "SP1/SPC10"
       }
     ],
     country: [
@@ -2135,12 +2189,18 @@ umegaTrailers = {
     variant:      "C",
     typeEC:       "TIP12",
     weight:       4150,
-    payload:      16350,
     techPayload:  12000,
     roadWeight:   20500,
     axleNum:      2,
-    couplingLoad: 2500,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -2152,7 +2212,8 @@ umegaTrailers = {
       }*/,
       {
         name: "Poland",
-        number: "PL*4404*00"
+        number: "PL*4404*00",
+        type: "SP1/SPC12"
       }
     ],
     country: [
@@ -2344,12 +2405,18 @@ umegaTrailers = {
     variant:      "C",
     typeEC:       "TIP14",
     weight:       4500, // 4100!
-    payload:      14000,
     techPayload:  16000,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 3000,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 3000
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -2357,11 +2424,13 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00023*00"
+        number: "e32*167/2013*00023*00",
+        type: "SPC14"
       },
       {
         name: "Poland",
-        number: "PL*4404*00"
+        number: "PL*4404*00",
+        type: "SP1/SPC14"
       }
     ],
     country: [
@@ -2551,26 +2620,34 @@ umegaTrailers = {
     name:         "SPC16BS",
     category:     "R3a",
     variant:      "16",
-    typeEC:       "SPC16",
+    typeEC:       "TIP16",
     weight:       5500,
-    payload:      15500,
     techPayload:  18000,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 3000,
-    couplingDval: 38000,
+    speed: 40,
+    couplingFront: {
+      dval: 135,
+      vval: 3000
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
-        number: ""
+        number: "",
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00015*00"
+        number: "e32*167/2013*00015*00",
+        type: "SPC16"
       },
       {
         name: "Poland",
-        number: "PL*4404*00"
+        number: "PL*4404*00",
+        type: "SP1/SPC16"
       }
     ],
     country: [
@@ -2692,7 +2769,7 @@ umegaTrailers = {
       {
         name:   "Poland",
         locale: "pl",
-        type:   "SP1/SPC16"
+        type:   "SPC16"
       },
       {
         name:   "Portugal",
@@ -2762,12 +2839,18 @@ umegaTrailers = {
     variant:      "L",
     typeEC:       "SPC20",
     weight:       7200,
-    payload:      13800,
     techPayload:  20000,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 3000,
-    couplingDval: 38000,
+    speed: 40,
+    couplingFront: {
+      dval: 135,
+      vval: 3000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -2775,7 +2858,8 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00031*00"
+        number: "e32*167/2013*00031*00",
+        type: "SPC20L"
       }/*,
       {
         name: "Poland",
@@ -2971,12 +3055,18 @@ umegaTrailers = {
     variant:      "C",
     typeEC:       "SPC20",
     weight:       8000,
-    payload:      16000,
     techPayload:  20000,
     roadWeight:   24000,
     axleNum:      2,
-    couplingLoad: 4000,
-    couplingDval: 31500,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 4000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -2984,12 +3074,13 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00031*00"
-      },
+        number: "e32*167/2013*00031*00",
+        type: "SPC19"
+      }/*,
       {
         name: "Poland",
         number: "PL*4404*00"
-      }
+      }*/
     ],
     country: [
       {
@@ -3180,12 +3271,18 @@ umegaTrailers = {
     variant:      "20",
     typeEC:       "SPC16",
     weight:       6700,
-    payload:      15300,
     techPayload:  20000,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 3000,
-    couplingDval: 38000,
+    speed: 40,
+    couplingFront: {
+      dval: 135,
+      vval: 3000
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -3193,12 +3290,13 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00015*00"
-      },
+        number: "e32*167/2013*00015*00",
+        type: "SPC20"
+      }/*,
       {
         name: "Poland",
         number: "PL*4404*00"
-      }
+      }*/
     ],
     country: [
       {
@@ -3389,12 +3487,18 @@ umegaTrailers = {
     variant:      "C",
     typeEC:       "SPC24",
     weight:       9000,
-    payload:      22000,
     techPayload:  24000,
     roadWeight:   31000,
     axleNum:      3,
-    couplingLoad: 4000,
-    couplingDval: 31500,
+    speed: 40,
+    couplingFront: {
+      dval: 135,
+      vval: 4000
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -3598,12 +3702,18 @@ umegaTrailers = {
     variant:      "C",
     typeEC:       "TIP30",
     weight:       9500,
-    payload:      21500,
     techPayload:  30000,
     roadWeight:   31000,
     axleNum:      3,
-    couplingLoad: 4000,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 4000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -3807,12 +3917,18 @@ umegaTrailers = {
     variant:      "S",
     typeEC:       "SPD10",
     weight:       4300,
-    payload:      10000,
     techPayload:  10000,
     roadWeight:   14300,
     axleNum:      2,
-    couplingLoad: 2500,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -4016,12 +4132,18 @@ umegaTrailers = {
     variant:      "S",
     typeEC:       "SPD13",
     weight:       3350,
-    payload:      17150,
     techPayload:  12000,
     roadWeight:   20500,
     axleNum:      2,
-    couplingLoad: 2500,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -4225,12 +4347,18 @@ umegaTrailers = {
     variant:      "S",
     typeEC:       "SPD17",
     weight:       5800,
-    payload:      15200,
     techPayload:  16000,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 3000,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 135,
+      vval: 3000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -4434,12 +4562,18 @@ umegaTrailers = {
     variant:      "E",
     typeEC:       "TIP14",
     weight:       4550,
-    payload:      15950,
     techPayload:  14000,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 2500,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -4447,11 +4581,13 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00023*00"
+        number: "e32*167/2013*00023*00",
+        type: "SPE14"
       },
       {
         name: "Poland",
-        number: "PL*4404*00"
+        number: "PL*4404*00",
+        type: "SP1/SPC14"
       }
     ],
     country: [
@@ -4573,7 +4709,7 @@ umegaTrailers = {
       {
         name:   "Poland",
         locale: "pl",
-        type:   "SPE14"
+        type:   "SP1/SPC14"
       },
       {
         name:   "Portugal",
@@ -4643,12 +4779,18 @@ umegaTrailers = {
     variant:      "E",
     typeEC:       "TIP16",
     weight:       5800,
-    payload:      15200,
     techPayload:  16000,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 3000,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 135,
+      vval: 3000
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -4660,7 +4802,8 @@ umegaTrailers = {
       },*/
       {
         name: "Poland",
-        number: "PL*4404*00"
+        number: "PL*4404*00",
+        type: "SP1/SPC16"
       }
     ],
     country: [
@@ -4782,7 +4925,7 @@ umegaTrailers = {
       {
         name:   "Poland",
         locale: "pl",
-        type:   "SP1/SPE16"
+        type:   "SP1/SPC16"
       },
       {
         name:   "Portugal",
@@ -4852,12 +4995,18 @@ umegaTrailers = {
     variant:      "E",
     typeEC:       "SPE20",
     weight:       8000,
-    payload:      16000,
     techPayload:  20000,
     roadWeight:   24000,
     axleNum:      2,
-    couplingLoad: 4000,
-    couplingDval: 31500,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 4000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -4865,12 +5014,13 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00031*00"
-      },
+        number: "e32*167/2013*00031*00",
+        type: "SPE19"
+      }/*,
       {
         name: "Poland",
         number: "PL*4404*00"
-      }
+      }*/
     ],
     country: [
       {
@@ -5061,12 +5211,19 @@ umegaTrailers = {
     variant:      "10P",
     typeEC:       "SPP",
     weight:       3700,
-    payload:      16300,
+    // payload:      16300,
     techPayload:  10000,
     roadWeight:   20000,
     axleNum:      2,
-    couplingLoad: 0,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 0
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -5078,7 +5235,8 @@ umegaTrailers = {
       },*/
       {
         name: "Poland",
-        number: "PL*44810*00"
+        number: "PL*44810*00",
+        type: "SPP10"
       }
     ],
     country: [
@@ -5270,12 +5428,18 @@ umegaTrailers = {
     variant:      "U",
     typeEC:       "SPP10",
     weight:       3700,
-    payload:      14300,
     techPayload:  10000,
     roadWeight:   18000,
     axleNum:      2,
-    couplingLoad: 0,
-    couplingDval: 26000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 0
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -5287,7 +5451,8 @@ umegaTrailers = {
       },*/
       {
         name: "Poland",
-        number: "PL*44810*00"
+        number: "PL*44810*00",
+        type: "SPP10"
       }
     ],
     country: [
@@ -5479,12 +5644,18 @@ umegaTrailers = {
     variant:      "12P",
     typeEC:       "SPP",
     weight:       3800,
-    payload:      16200,
     techPayload:  12000,
     roadWeight:   20000,
     axleNum:      2,
-    couplingLoad: 0,
-    couplingDval: 28000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 0
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -5496,7 +5667,8 @@ umegaTrailers = {
       },*/
       {
         name: "Poland",
-        number: "PL*44810*00"
+        number: "PL*44810*00",
+        type: "SPP12"
       }
     ],
     country: [
@@ -5688,12 +5860,18 @@ umegaTrailers = {
     variant:      "U",
     typeEC:       "SPP12",
     weight:       4100,
-    payload:      13900,
     techPayload:  12000,
     roadWeight:   18000,
     axleNum:      2,
-    couplingLoad: 0,
-    couplingDval: 28000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 0
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -5705,7 +5883,8 @@ umegaTrailers = {
       },*/
       {
         name: "Poland",
-        number: "PL*44810*00"
+        number: "PL*44810*00",
+        type: "SPP12"
       }
     ],
     country: [
@@ -5897,12 +6076,18 @@ umegaTrailers = {
     variant:      "14P",
     typeEC:       "SPP",
     weight:       4500,
-    payload:      15500,
     techPayload:  14000,
     roadWeight:   20000,
     axleNum:      2,
-    couplingLoad: 0,
-    couplingDval: 28000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 0
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -5914,7 +6099,8 @@ umegaTrailers = {
       },*/
       {
         name: "Poland",
-        number: "PL*44810*00"
+        number: "PL*44810*00",
+        type: "SPP14"
       }
     ],
     country: [
@@ -6104,14 +6290,20 @@ umegaTrailers = {
     name:         "SPP14U",
     category:     "R3a",
     variant:      "14U",
-    typeEC:       "SPP16",
+    typeEC:       "SPP14",
     weight:       4750,
-    payload:      13250,
     techPayload:  14000,
     roadWeight:   18000,
     axleNum:      2,
-    couplingLoad: 0,
-    couplingDval: 28000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 0
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -6123,7 +6315,8 @@ umegaTrailers = {
       },*/
       {
         name: "Poland",
-        number: "PL*44810*00"
+        number: "PL*44810*00",
+        type: "SPP14"
       }
     ],
     country: [
@@ -6315,12 +6508,18 @@ umegaTrailers = {
     variant:      "16P",
     typeEC:       "SPP",
     weight:       4950,
-    payload:      15050,
     techPayload:  16000,
     roadWeight:   20000,
     axleNum:      2,
-    couplingLoad: 0,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 0
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -6332,7 +6531,8 @@ umegaTrailers = {
       },*/
       {
         name: "Poland",
-        number: "PL*44810*00"
+        number: "PL*44810*00",
+        type: "SPP16"
       }
     ],
     country: [
@@ -6524,12 +6724,18 @@ umegaTrailers = {
     variant:      "16U",
     typeEC:       "SPP",
     weight:       4950,
-    payload:      15050,
     techPayload:  16000,
     roadWeight:   20000,
     axleNum:      2,
-    couplingLoad: 0,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 0
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -6541,7 +6747,8 @@ umegaTrailers = {
       },*/
       {
         name: "Poland",
-        number: "PL*44810*00"
+        number: "PL*44810*00",
+        type: "SPP16"
       }
     ],
     country: [
@@ -6733,12 +6940,18 @@ umegaTrailers = {
     variant:      "14",
     typeEC:       "SPS",
     weight:       4200,
-    payload:      13800,
     techPayload:  14000,
     roadWeight:   18000,
     axleNum:      2,
-    couplingLoad: 0,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 0
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -6942,12 +7155,18 @@ umegaTrailers = {
     variant:      "3.5",
     typeEC:       "TIP3",
     weight:       1280,
-    payload:      10720,
     techPayload:  3500,
     roadWeight:   10800,
     axleNum:      1,
-    couplingLoad: 800,
-    couplingDval: 12000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 800
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -7151,12 +7370,18 @@ umegaTrailers = {
     variant:      "T",
     typeEC:       "TIP10",
     weight:       3700,
-    payload:      16800,
     techPayload:  10000,
     roadWeight:   20500,
     axleNum:      2,
-    couplingLoad: 2500,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -7168,7 +7393,8 @@ umegaTrailers = {
       }*/,
       {
         name: "Poland",
-        number: "PL*4404*00"
+        number: "PL*4404*00",
+        type: "SP1/SPT10"
       }
     ],
     country: [
@@ -7290,7 +7516,7 @@ umegaTrailers = {
       {
         name:   "Poland",
         locale: "pl",
-        type:   "SPT10"
+        type:   "SP1/SPT10"
       },
       {
         name:   "Portugal",
@@ -7360,12 +7586,18 @@ umegaTrailers = {
     variant:      "T",
     typeEC:       "TIP12",
     weight:       4100,
-    payload:      16400,
     techPayload:  12000,
-    roadWeight:   20500,
+    roadWeight:   16100,
     axleNum:      2,
-    couplingLoad: 2500,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -7377,7 +7609,8 @@ umegaTrailers = {
       }*/,
       {
         name: "Poland",
-        number: "PL*4404*00"
+        number: "PL*4404*00",
+        type: "SP1/SPT12"
       }
     ],
     country: [
@@ -7499,7 +7732,7 @@ umegaTrailers = {
       {
         name:   "Poland",
         locale: "pl",
-        type:   "SPT12"
+        type:   "SP1/SPT12"
       },
       {
         name:   "Portugal",
@@ -7569,12 +7802,18 @@ umegaTrailers = {
     variant:      "T",
     typeEC:       "TIP14",
     weight:       4500,
-    payload:      16000,
     techPayload:  14000,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 3000,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 3000
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -7582,12 +7821,13 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00023*00"
-      },
+        number: "e32*167/2013*00023*00",
+        type: "SPT14"
+      }/*,
       {
         name: "Poland",
         number: "PL*4404*00"
-      }
+      }*/
     ],
     country: [
       {
@@ -7778,12 +8018,18 @@ umegaTrailers = {
     variant:      "T",
     typeEC:       "TIP16",
     weight:       5300,
-    payload:      16000,
     techPayload:  15700,
     roadWeight:   21000,
     axleNum:      2,
-    couplingLoad: 3000,
-    couplingDval: 38000,
+    speed: 40,
+    couplingFront: {
+      dval: 135,
+      vval: 3000
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
     certificate: [
       {
         name: "No certification",
@@ -7792,11 +8038,11 @@ umegaTrailers = {
       {
         name: "European 167/2013",
         number: "e32*167/2013*00023*00"
-      }*/,
+      },
       {
         name: "Poland",
         number: "PL*4404*00"
-      }
+      }*/
     ],
     country: [
       {
@@ -7987,12 +8233,18 @@ umegaTrailers = {
     variant:      "Y",
     typeEC:       "SPY5",
     weight:       1000,
-    payload:      5000,
     techPayload:  5000,
     roadWeight:   6000,
     axleNum:      1,
-    couplingLoad: 500,
-    couplingDval: 30000,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 500
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -8196,12 +8448,18 @@ umegaTrailers = {
     variant:      "08",
     typeEC:       "UHF",
     weight:       1680,
-    payload:      8000,
     techPayload:  8000,
     roadWeight:   9680,
     axleNum:      2,
-    couplingLoad: 1500,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 1500
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -8405,12 +8663,18 @@ umegaTrailers = {
     variant:      "10",
     typeEC:       "UHF",
     weight:       2600,
-    payload:      10000,
     techPayload:  10000,
     roadWeight:   12600,
     axleNum:      2,
-    couplingLoad: 2000,
-    couplingDval: 24000,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
     certificate: [
       {
         name: "No certification",
@@ -8615,12 +8879,8 @@ activator = {
   model:          {},
   certificates:   [],
   country:        {},
-  countryName:    "",
-  countryLocale:  "",
-  certName:       "",
-  certType:       "",
+  certification:  {},
   manufacture:    0,
-  // numOfTrailers:  0,
   VINcode:        "",
   okYear:         false,
   okModel:        false,
@@ -9026,9 +9286,7 @@ function clearCountry () {
     domVar.countryChooser.removeChild(domVar.countryChooser.lastChild);
   }
   clearCertification();
-  activator.country = [];
-  activator.countryName = "";
-  activator.countryLocale = "";
+  activator.country = {};
 }
 function selectCountry () {
   var selection = domVar.countryChooser.options[domVar.countryChooser.selectedIndex].text;
@@ -9036,8 +9294,6 @@ function selectCountry () {
     var currentCountry = activator.model.country[i];
     if (currentCountry.name === selection) {
       activator.country = activator.model.country[i];
-      activator.countryName = activator.model.country[i].name;
-      activator.countryLocale = activator.model.country[i].locale;
     }
   }
   readCertification();
@@ -9052,8 +9308,6 @@ function countryChange () {
 function unsetCountry () {
   domVar.countryChooser.options[0].selected = true;
   activator.country = [];
-  activator.countryName = "";
-  activator.countryLocale = "";
   clearCountry();
   activator.okCert = false;
 }
@@ -9062,7 +9316,7 @@ function unsetCountry () {
 function readCertification () {
   for (var i = 0; i < activator.model.certificate.length; i++) {
     var currentCert = activator.model.certificate[i];
-    if ( currentCert.name === "No certification" || currentCert.name === "European 167/2013" || currentCert.name === activator.countryName) {
+    if ( currentCert.name === "No certification" || currentCert.name === "European 167/2013" || currentCert.name === activator.country.name) {
       activator.certificates.push(currentCert);
       var nodeDOM = document.createElement("option");
       var nodeText = document.createTextNode(activator.model.certificate[i].name);
@@ -9076,18 +9330,14 @@ function clearCertification () {
     domVar.certificateChooser.removeChild(domVar.certificateChooser.lastChild);
   }
   activator.certificates = [];
-  activator.certName = "";
-  activator.certType = "";
+  activator.certification = {};
   deactivateElement("certificateChooser");
-  // setForm ("undefined");
-
 }
 function selectCertification () {
   var selected = domVar.certificateChooser.options[domVar.certificateChooser.selectedIndex].text;
   for (var i = 0; i < activator.certificates.length; i++) {
     if (selected === activator.certificates[i].name) {
-      activator.certName = activator.certificates[i].name;
-      activator.certType = activator.certificates[i].number;
+      activator.certification = activator.certificates[i]
       activator.okCert = true;
     }
   }
@@ -9109,7 +9359,7 @@ function chooseForm () {
       setForm("rus");
       break;
     case 'dk':
-      if (activator.certName === "European 167/2013") {
+      if (activator.certification.name === "European 167/2013") {
         setForm("uniform");
       } else {
         setForm("nocertOld")
@@ -9119,7 +9369,7 @@ function chooseForm () {
       setForm("undefined");
       break;
     case 'pl':
-      if (activator.certName === "European 167/2013") {
+      if (activator.certification.name === "European 167/2013") {
         setForm("uniform");
       } else {
         setForm("witam")
