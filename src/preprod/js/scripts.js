@@ -707,182 +707,182 @@ umegaTrailers = {
       {
         name:   "Albania",
         locale: "al",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Austria",
         locale: "at",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Belgium",
         locale: "be",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Bosnia and Herzegovina",
         locale: "ba",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Bulgaria",
         locale: "bg",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Croatia",
         locale: "hr",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Czech Rep.",
         locale: "cz",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Denmark",
         locale: "dk",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Estonia",
         locale: "ee",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Finland",
         locale: "fi",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "France",
         locale: "fr",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Germany",
         locale: "de",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Greece",
         locale: "gr",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Hungary",
         locale: "hu",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Ireland",
         locale: "ie",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Italy",
         locale: "it",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Latvia",
         locale: "lv",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Lithuania",
         locale: "lt",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Macedonia",
         locale: "mk",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Moldova",
         locale: "md",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Montenegro",
         locale: "me",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Netherlands",
         locale: "nl",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Norway",
         locale: "no",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Poland",
         locale: "pl",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Portugal",
         locale: "pt",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Romania",
         locale: "ro",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Russia",
         locale: "ru",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Serbia",
         locale: "rs",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Slovakia",
         locale: "sk",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Slovenia",
         locale: "si",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Spain",
         locale: "es",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Sweden",
         locale: "se",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Switzerland",
         locale: "ch",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Ukraine",
         locale: "ua",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "United Kingdom",
         locale: "gb",
-        type:   "GPP27"
+        type:   "GPP27L"
       },
       {
         name:   "Other",
         locale: "univ",
-        type:   "GPP27"
+        type:   "GPP27L"
       }
     ]
   },
