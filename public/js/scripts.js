@@ -2682,7 +2682,7 @@ umegaTrailers = {
       {
         name:   "Denmark",
         locale: "dk",
-        type:   "SPC16"
+        type:   "SPC18"
       },
       {
         name:   "Estonia",
