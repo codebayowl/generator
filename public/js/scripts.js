@@ -1535,7 +1535,7 @@ umegaTrailers = {
     typeEC:       "TIP14",
     weight:       4050,
     techPayload:  14000,
-    roadWeight:   21000,
+    roadWeight:   18050,
     axleNum:      2,
     speed: 40,
     couplingFront: {
@@ -1745,8 +1745,8 @@ umegaTrailers = {
       }
     ]
   },
-  spb14r:   {
-    name:         "SPB14R",
+  spr14:   {
+    name:         "SPR14",
     category:     "R3a",
     variant:      "R",
     typeEC:       "TIP14",
@@ -1781,182 +1781,182 @@ umegaTrailers = {
       {
         name:   "Albania",
         locale: "al",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Austria",
         locale: "at",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Belgium",
         locale: "be",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Bosnia and Herzegovina",
         locale: "ba",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Bulgaria",
         locale: "bg",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Croatia",
         locale: "hr",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Czech Rep.",
         locale: "cz",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Denmark",
         locale: "dk",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Estonia",
         locale: "ee",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Finland",
         locale: "fi",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "France",
         locale: "fr",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Germany",
         locale: "de",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Greece",
         locale: "gr",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Hungary",
         locale: "hu",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Ireland",
         locale: "ie",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Italy",
         locale: "it",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Latvia",
         locale: "lv",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Lithuania",
         locale: "lt",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Macedonia",
         locale: "mk",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Moldova",
         locale: "md",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Montenegro",
         locale: "me",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Netherlands",
         locale: "nl",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Norway",
         locale: "no",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Poland",
         locale: "pl",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Portugal",
         locale: "pt",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Romania",
         locale: "ro",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Russia",
         locale: "ru",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Serbia",
         locale: "rs",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Slovakia",
         locale: "sk",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Slovenia",
         locale: "si",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Spain",
         locale: "es",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Sweden",
         locale: "se",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Switzerland",
         locale: "ch",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Ukraine",
         locale: "ua",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "United Kingdom",
         locale: "gb",
-        type:   "SPB14R"
+        type:   "SPR14"
       },
       {
         name:   "Other",
         locale: "univ",
-        type:   "SPB14R"
+        type:   "SPR14"
       }
     ]
   },
