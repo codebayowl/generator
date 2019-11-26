@@ -5228,7 +5228,7 @@ umegaTrailers = {
       {
         name: "Poland",
         number: "PL*44810*00",
-        type: "SPP10"
+        type: "SP2/SPP10"
       }
     ],
     country: [
