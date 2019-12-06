@@ -3909,9 +3909,9 @@ umegaTrailers = {
     category:     "R3a",
     variant:      "S",
     typeEC:       "SPD10",
-    weight:       4300,
+    weight:       3800,
     techPayload:  10000,
-    roadWeight:   14300,
+    roadWeight:   13800,
     axleNum:      2,
     speed: 40,
     couplingFront: {
@@ -4331,6 +4331,436 @@ umegaTrailers = {
         name:   "Other",
         locale: "univ",
         type:   "SPD13"
+      }
+    ]
+  },
+  spd14:   {
+    name:         "SPD14",
+    category:     "R3a",
+    variant:      "S",
+    typeEC:       "SPD14",
+    weight:       4760,
+    techPayload:  14000,
+    roadWeight:   18760,
+    axleNum:      2,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       96
+    },
+    certificate: [
+      {
+        name: "No certification",
+        number: ""
+      }/*,
+      {
+        name: "European 167/2013",
+        number: "e32*167/2013*00023*00"
+      },
+      {
+        name: "Poland",
+        number: "PL*4404*00"
+      }*/
+    ],
+    country: [
+      {
+        name:   "Albania",
+        locale: "al",
+        type:   "SPD14"
+      },
+      {
+        name:   "Austria",
+        locale: "at",
+        type:   "SPD14"
+      },
+      {
+        name:   "Belgium",
+        locale: "be",
+        type:   "SPD14"
+      },
+      {
+        name:   "Bosnia and Herzegovina",
+        locale: "ba",
+        type:   "SPD14"
+      },
+      {
+        name:   "Bulgaria",
+        locale: "bg",
+        type:   "SPD14"
+      },
+      {
+        name:   "Croatia",
+        locale: "hr",
+        type:   "SPD14"
+      },
+      {
+        name:   "Czech Rep.",
+        locale: "cz",
+        type:   "SPD14"
+      },
+      {
+        name:   "Denmark",
+        locale: "dk",
+        type:   "SPD14"
+      },
+      {
+        name:   "Estonia",
+        locale: "ee",
+        type:   "SPD14"
+      },
+      {
+        name:   "Finland",
+        locale: "fi",
+        type:   "SPD14"
+      },
+      {
+        name:   "France",
+        locale: "fr",
+        type:   "SPD14"
+      },
+      {
+        name:   "Germany",
+        locale: "de",
+        type:   "SPD14"
+      },
+      {
+        name:   "Greece",
+        locale: "gr",
+        type:   "SPD14"
+      },
+      {
+        name:   "Hungary",
+        locale: "hu",
+        type:   "SPD14"
+      },
+      {
+        name:   "Ireland",
+        locale: "ie",
+        type:   "SPD14"
+      },
+      {
+        name:   "Italy",
+        locale: "it",
+        type:   "SPD14"
+      },
+      {
+        name:   "Latvia",
+        locale: "lv",
+        type:   "SPD14"
+      },
+      {
+        name:   "Lithuania",
+        locale: "lt",
+        type:   "SPD14"
+      },
+      {
+        name:   "Macedonia",
+        locale: "mk",
+        type:   "SPD14"
+      },
+      {
+        name:   "Moldova",
+        locale: "md",
+        type:   "SPD14"
+      },
+      {
+        name:   "Montenegro",
+        locale: "me",
+        type:   "SPD14"
+      },
+      {
+        name:   "Netherlands",
+        locale: "nl",
+        type:   "SPD14"
+      },
+      {
+        name:   "Norway",
+        locale: "no",
+        type:   "SPD14"
+      },
+      {
+        name:   "Poland",
+        locale: "pl",
+        type:   "SPD14"
+      },
+      {
+        name:   "Portugal",
+        locale: "pt",
+        type:   "SPD14"
+      },
+      {
+        name:   "Romania",
+        locale: "ro",
+        type:   "SPD14"
+      },
+      {
+        name:   "Russia",
+        locale: "ru",
+        type:   "SPD14"
+      },
+      {
+        name:   "Serbia",
+        locale: "rs",
+        type:   "SPD14"
+      },
+      {
+        name:   "Slovakia",
+        locale: "sk",
+        type:   "SPD14"
+      },
+      {
+        name:   "Slovenia",
+        locale: "si",
+        type:   "SPD14"
+      },
+      {
+        name:   "Spain",
+        locale: "es",
+        type:   "SPD14"
+      },
+      {
+        name:   "Sweden",
+        locale: "se",
+        type:   "SPD14"
+      },
+      {
+        name:   "Switzerland",
+        locale: "ch",
+        type:   "SPD14"
+      },
+      {
+        name:   "Ukraine",
+        locale: "ua",
+        type:   "SPD14"
+      },
+      {
+        name:   "United Kingdom",
+        locale: "gb",
+        type:   "SPD14"
+      },
+      {
+        name:   "Other",
+        locale: "univ",
+        type:   "SPD14"
+      }
+    ]
+  },
+  spd14dariaus:   {
+    name:         "SPD14dariaus",
+    category:     "R3a",
+    variant:      "S",
+    typeEC:       "SPD14",
+    weight:       4760,
+    techPayload:  5240,
+    roadWeight:   10000,
+    axleNum:      2,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2500
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       96
+    },
+    certificate: [
+      {
+        name: "No certification",
+        number: ""
+      }/*,
+      {
+        name: "European 167/2013",
+        number: "e32*167/2013*00023*00"
+      },
+      {
+        name: "Poland",
+        number: "PL*4404*00"
+      }*/
+    ],
+    country: [
+      {
+        name:   "Albania",
+        locale: "al",
+        type:   "SPD14"
+      },
+      {
+        name:   "Austria",
+        locale: "at",
+        type:   "SPD14"
+      },
+      {
+        name:   "Belgium",
+        locale: "be",
+        type:   "SPD14"
+      },
+      {
+        name:   "Bosnia and Herzegovina",
+        locale: "ba",
+        type:   "SPD14"
+      },
+      {
+        name:   "Bulgaria",
+        locale: "bg",
+        type:   "SPD14"
+      },
+      {
+        name:   "Croatia",
+        locale: "hr",
+        type:   "SPD14"
+      },
+      {
+        name:   "Czech Rep.",
+        locale: "cz",
+        type:   "SPD14"
+      },
+      {
+        name:   "Denmark",
+        locale: "dk",
+        type:   "SPD14"
+      },
+      {
+        name:   "Estonia",
+        locale: "ee",
+        type:   "SPD14"
+      },
+      {
+        name:   "Finland",
+        locale: "fi",
+        type:   "SPD14"
+      },
+      {
+        name:   "France",
+        locale: "fr",
+        type:   "SPD14"
+      },
+      {
+        name:   "Germany",
+        locale: "de",
+        type:   "SPD14"
+      },
+      {
+        name:   "Greece",
+        locale: "gr",
+        type:   "SPD14"
+      },
+      {
+        name:   "Hungary",
+        locale: "hu",
+        type:   "SPD14"
+      },
+      {
+        name:   "Ireland",
+        locale: "ie",
+        type:   "SPD14"
+      },
+      {
+        name:   "Italy",
+        locale: "it",
+        type:   "SPD14"
+      },
+      {
+        name:   "Latvia",
+        locale: "lv",
+        type:   "SPD14"
+      },
+      {
+        name:   "Lithuania",
+        locale: "lt",
+        type:   "SPD14"
+      },
+      {
+        name:   "Macedonia",
+        locale: "mk",
+        type:   "SPD14"
+      },
+      {
+        name:   "Moldova",
+        locale: "md",
+        type:   "SPD14"
+      },
+      {
+        name:   "Montenegro",
+        locale: "me",
+        type:   "SPD14"
+      },
+      {
+        name:   "Netherlands",
+        locale: "nl",
+        type:   "SPD14"
+      },
+      {
+        name:   "Norway",
+        locale: "no",
+        type:   "SPD14"
+      },
+      {
+        name:   "Poland",
+        locale: "pl",
+        type:   "SPD14"
+      },
+      {
+        name:   "Portugal",
+        locale: "pt",
+        type:   "SPD14"
+      },
+      {
+        name:   "Romania",
+        locale: "ro",
+        type:   "SPD14"
+      },
+      {
+        name:   "Russia",
+        locale: "ru",
+        type:   "SPD14"
+      },
+      {
+        name:   "Serbia",
+        locale: "rs",
+        type:   "SPD14"
+      },
+      {
+        name:   "Slovakia",
+        locale: "sk",
+        type:   "SPD14"
+      },
+      {
+        name:   "Slovenia",
+        locale: "si",
+        type:   "SPD14"
+      },
+      {
+        name:   "Spain",
+        locale: "es",
+        type:   "SPD14"
+      },
+      {
+        name:   "Sweden",
+        locale: "se",
+        type:   "SPD14"
+      },
+      {
+        name:   "Switzerland",
+        locale: "ch",
+        type:   "SPD14"
+      },
+      {
+        name:   "Ukraine",
+        locale: "ua",
+        type:   "SPD14"
+      },
+      {
+        name:   "United Kingdom",
+        locale: "gb",
+        type:   "SPD14"
+      },
+      {
+        name:   "Other",
+        locale: "univ",
+        type:   "SPD14"
       }
     ]
   },
