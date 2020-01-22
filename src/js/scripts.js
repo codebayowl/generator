@@ -5844,6 +5844,222 @@ umegaTrailers = {
       }
     ]
   },
+  spp08u:   {
+    name:         "SPP08U",
+    category:     "R3a",
+    variant:      "U",
+    typeEC:       "SPP8",
+    weight:       2700,
+    techPayload:  8000,
+    roadWeight:   10700,
+    axleNum:      2,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 0
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
+    certificate: [
+      {
+        name: "No certification",
+        number: ""
+      },
+      /*{
+        name: "European 167/2013",
+        number: "e32*167/2013*00023*00"
+      },*/
+      {
+        name: "Poland",
+        number: "PL*44810*00",
+        type: "SPP8"
+      }
+    ],
+    country: [
+      {
+        name:   "Albania",
+        locale: "al",
+        type:   "SPP8"
+      },
+      {
+        name:   "Austria",
+        locale: "at",
+        type:   "SPP8"
+      },
+      {
+        name:   "Belgium",
+        locale: "be",
+        type:   "SPP8"
+      },
+      {
+        name:   "Bosnia and Herzegovina",
+        locale: "ba",
+        type:   "SPP8"
+      },
+      {
+        name:   "Bulgaria",
+        locale: "bg",
+        type:   "SPP8"
+      },
+      {
+        name:   "Croatia",
+        locale: "hr",
+        type:   "SPP8"
+      },
+      {
+        name:   "Czech Rep.",
+        locale: "cz",
+        type:   "SPP8"
+      },
+      {
+        name:   "Denmark",
+        locale: "dk",
+        type:   "SPP8"
+      },
+      {
+        name:   "Estonia",
+        locale: "ee",
+        type:   "SPP8"
+      },
+      {
+        name:   "Finland",
+        locale: "fi",
+        type:   "SPP8"
+      },
+      {
+        name:   "France",
+        locale: "fr",
+        type:   "SPP8"
+      },
+      {
+        name:   "Germany",
+        locale: "de",
+        type:   "SPP8"
+      },
+      {
+        name:   "Greece",
+        locale: "gr",
+        type:   "SPP8"
+      },
+      {
+        name:   "Hungary",
+        locale: "hu",
+        type:   "SPP8"
+      },
+      {
+        name:   "Ireland",
+        locale: "ie",
+        type:   "SPP8"
+      },
+      {
+        name:   "Italy",
+        locale: "it",
+        type:   "SPP8"
+      },
+      {
+        name:   "Latvia",
+        locale: "lv",
+        type:   "SPP8"
+      },
+      {
+        name:   "Lithuania",
+        locale: "lt",
+        type:   "SPP8"
+      },
+      {
+        name:   "Macedonia",
+        locale: "mk",
+        type:   "SPP8"
+      },
+      {
+        name:   "Moldova",
+        locale: "md",
+        type:   "SPP8"
+      },
+      {
+        name:   "Montenegro",
+        locale: "me",
+        type:   "SPP8"
+      },
+      {
+        name:   "Netherlands",
+        locale: "nl",
+        type:   "SPP8"
+      },
+      {
+        name:   "Norway",
+        locale: "no",
+        type:   "SPP8"
+      },
+      {
+        name:   "Poland",
+        locale: "pl",
+        type:   "SP2/SPP8"
+      },
+      {
+        name:   "Portugal",
+        locale: "pt",
+        type:   "SPP8"
+      },
+      {
+        name:   "Romania",
+        locale: "ro",
+        type:   "SPP8"
+      },
+      {
+        name:   "Russia",
+        locale: "ru",
+        type:   "SPP8"
+      },
+      {
+        name:   "Serbia",
+        locale: "rs",
+        type:   "SPP8"
+      },
+      {
+        name:   "Slovakia",
+        locale: "sk",
+        type:   "SPP8"
+      },
+      {
+        name:   "Slovenia",
+        locale: "si",
+        type:   "SPP8"
+      },
+      {
+        name:   "Spain",
+        locale: "es",
+        type:   "SPP8"
+      },
+      {
+        name:   "Sweden",
+        locale: "se",
+        type:   "SPP8"
+      },
+      {
+        name:   "Switzerland",
+        locale: "ch",
+        type:   "SPP8"
+      },
+      {
+        name:   "Ukraine",
+        locale: "ua",
+        type:   "SPP8"
+      },
+      {
+        name:   "United Kingdom",
+        locale: "gb",
+        type:   "SPP8"
+      },
+      {
+        name:   "Other",
+        locale: "univ",
+        type:   "SPP8"
+      }
+    ]
+  },
   spp10u:   {
     name:         "SPP10U",
     category:     "R3a",
