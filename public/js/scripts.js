@@ -3690,10 +3690,10 @@ umegaTrailers = {
     ]
   },
   spc30:   {
-    name:         "SPC30U",
+    name:         "SPC30",
     category:     "R3a",
     variant:      "C",
-    typeEC:       "TIP30",
+    typeEC:       "SPC30",
     weight:       9500,
     techPayload:  30000,
     roadWeight:   31000,
