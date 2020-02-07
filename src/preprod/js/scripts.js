@@ -6283,7 +6283,7 @@ umegaTrailers = {
     typeEC:       "SPP",
     weight:       3800,
     techPayload:  12000,
-    roadWeight:   20000,
+    roadWeight:   15800,
     axleNum:      2,
     speed: 40,
     couplingFront: {
@@ -6713,9 +6713,9 @@ umegaTrailers = {
     category:     "R3a",
     variant:      "14P",
     typeEC:       "SPP",
-    weight:       4500,
+    weight:       4850,
     techPayload:  14000,
-    roadWeight:   20000,
+    roadWeight:   18850,
     axleNum:      2,
     speed: 40,
     couplingFront: {
@@ -6731,10 +6731,10 @@ umegaTrailers = {
         name: "No certification",
         number: ""
       },
-      /*{
+      {
         name: "European 167/2013",
-        number: "e32*167/2013*00023*00"
-      },*/
+        number: "e32*167/2013*00050*00"
+      },
       {
         name: "Poland",
         number: "PL*44810*00",
@@ -7163,10 +7163,10 @@ umegaTrailers = {
         name: "No certification",
         number: ""
       },
-      /*{
+      {
         name: "European 167/2013",
-        number: "e32*167/2013*00023*00"
-      },*/
+        number: "e32*167/2013*00050*00"
+      },
       {
         name: "Poland",
         number: "PL*44810*00",
