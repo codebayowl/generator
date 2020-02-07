@@ -5635,7 +5635,7 @@ umegaTrailers = {
     typeEC:       "SPP",
     weight:       3700,
     techPayload:  10000,
-    roadWeight:   20000,
+    roadWeight:   13700,
     axleNum:      2,
     speed: 40,
     couplingFront: {
