@@ -2615,7 +2615,7 @@ umegaTrailers = {
     variant:      "16",
     typeEC:       "TIP16",
     weight:       5500,
-    techPayload:  18000,
+    techPayload:  16000,
     roadWeight:   21000,
     axleNum:      2,
     speed: 40,
@@ -9777,7 +9777,7 @@ function formTrailerList () {
     var text = umegaTrailers[trailer].name;
     // получаем значение для элемента
     var value = text.toLowerCase();
-    // создаем новый элемента
+    // создаем новый элемент
     var newOption = new Option(text, value);
     domVar.trailerChooser.options[domVar.trailerChooser.options.length]=newOption;
   }
