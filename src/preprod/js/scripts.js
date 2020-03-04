@@ -8002,6 +8002,221 @@ umegaTrailers = {
       }
     ]
   },
+  spt5:   {
+    name:         "SPT5",
+    category:     "R3a",
+    variant:      "5",
+    typeEC:       "TIP5",
+    weight:       1500,
+    techPayload:  5000,
+    roadWeight:   6500,
+    axleNum:      1,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 800
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
+    certificate: [
+      {
+        name: "No certification",
+        number: ""
+      }/*,
+      {
+        name: "European 167/2013",
+        number: "e32*167/2013*00023*00"
+      },
+      {
+        name: "Poland",
+        number: "PL*4404*00"
+      }*/
+    ],
+    country: [
+      {
+        name:   "Albania",
+        locale: "al",
+        type:   "SPT5"
+      },
+      {
+        name:   "Austria",
+        locale: "at",
+        type:   "SPT5"
+      },
+      {
+        name:   "Belgium",
+        locale: "be",
+        type:   "SPT5"
+      },
+      {
+        name:   "Bosnia and Herzegovina",
+        locale: "ba",
+        type:   "SPT5"
+      },
+      {
+        name:   "Bulgaria",
+        locale: "bg",
+        type:   "SPT5"
+      },
+      {
+        name:   "Croatia",
+        locale: "hr",
+        type:   "SPT5"
+      },
+      {
+        name:   "Czech Rep.",
+        locale: "cz",
+        type:   "SPT5"
+      },
+      {
+        name:   "Denmark",
+        locale: "dk",
+        type:   "SPT5"
+      },
+      {
+        name:   "Estonia",
+        locale: "ee",
+        type:   "SPT5"
+      },
+      {
+        name:   "Finland",
+        locale: "fi",
+        type:   "SPT5"
+      },
+      {
+        name:   "France",
+        locale: "fr",
+        type:   "SPT5"
+      },
+      {
+        name:   "Germany",
+        locale: "de",
+        type:   "SPT5"
+      },
+      {
+        name:   "Greece",
+        locale: "gr",
+        type:   "SPT5"
+      },
+      {
+        name:   "Hungary",
+        locale: "hu",
+        type:   "SPT5"
+      },
+      {
+        name:   "Ireland",
+        locale: "ie",
+        type:   "SPT5"
+      },
+      {
+        name:   "Italy",
+        locale: "it",
+        type:   "SPT5"
+      },
+      {
+        name:   "Latvia",
+        locale: "lv",
+        type:   "SPT5"
+      },
+      {
+        name:   "Lithuania",
+        locale: "lt",
+        type:   "SPT5"
+      },
+      {
+        name:   "Macedonia",
+        locale: "mk",
+        type:   "SPT5"
+      },
+      {
+        name:   "Moldova",
+        locale: "md",
+        type:   "SPT5"
+      },
+      {
+        name:   "Montenegro",
+        locale: "me",
+        type:   "SPT5"
+      },
+      {
+        name:   "Netherlands",
+        locale: "nl",
+        type:   "SPT5"
+      },
+      {
+        name:   "Norway",
+        locale: "no",
+        type:   "SPT5"
+      },
+      {
+        name:   "Poland",
+        locale: "pl",
+        type:   "SPT5"
+      },
+      {
+        name:   "Portugal",
+        locale: "pt",
+        type:   "SPT5"
+      },
+      {
+        name:   "Romania",
+        locale: "ro",
+        type:   "SPT5"
+      },
+      {
+        name:   "Russia",
+        locale: "ru",
+        type:   "SPT5"
+      },
+      {
+        name:   "Serbia",
+        locale: "rs",
+        type:   "SPT5"
+      },
+      {
+        name:   "Slovakia",
+        locale: "sk",
+        type:   "SPT5"
+      },
+      {
+        name:   "Slovenia",
+        locale: "si",
+        type:   "SPT5"
+      },
+      {
+        name:   "Spain",
+        locale: "es",
+        type:   "SPT5"
+      },
+      {
+        name:   "Sweden",
+        locale: "se",
+        type:   "SPT5"
+      },
+      {
+        name:   "Switzerland",
+        locale: "ch",
+        type:   "SPT5"
+      },
+      {
+        name:   "Ukraine",
+        locale: "ua",
+        type:   "SPT5"
+      },
+      {
+        name:   "United Kingdom",
+        locale: "gb",
+        type:   "SPT5"
+      },
+      {
+        name:   "Other",
+        locale: "univ",
+        type:   "SPT5"
+      }
+    ]
+  },
   spt10:   {
     name:         "SPT10",
     category:     "R3a",
