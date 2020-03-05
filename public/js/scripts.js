@@ -8231,7 +8231,7 @@ umegaTrailers = {
     speed: 40,
     couplingFront: {
       dval: 125,
-      vval: 800
+      vval: 1500
     },
     couplingRear: {
       presence:   false,
