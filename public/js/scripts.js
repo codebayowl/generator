@@ -5866,12 +5866,14 @@ umegaTrailers = {
     certificate: [
       {
         name: "No certification",
-        number: ""
+        number: "-",
+        type: "SPP10P"
       },
-      /*{
+      {
         name: "European 167/2013",
-        number: "e32*167/2013*00000*00"
-      },*/
+        number: "e32*167/2013*00050*01",
+        type: "SPP10P"
+      },
       {
         name: "Poland",
         number: "PL*44810*00",
@@ -6514,16 +6516,18 @@ umegaTrailers = {
     certificate: [
       {
         name: "No certification",
-        number: ""
+        number: "-",
+        type: "SPP12P"
       },
-      /*{
+      {
         name: "European 167/2013",
-        number: "e32*167/2013*00023*00"
-      },*/
+        number: "e32*167/2013*00050*01",
+        type: "SPP12P"
+      },
       {
         name: "Poland",
         number: "PL*44810*00",
-        type: "SPP12"
+        type: "SP2/SPP12"
       }
     ],
     country: [
@@ -6946,16 +6950,18 @@ umegaTrailers = {
     certificate: [
       {
         name: "No certification",
-        number: ""
+        number: "",
+        type: "SPP14P"
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00050*00"
+        number: "e32*167/2013*00050*00",
+        type: "SPP14P"
       },
       {
         name: "Poland",
         number: "PL*44810*00",
-        type: "SPP14"
+        type: "SP2/SPP14"
       }
     ],
     country: [
@@ -7378,16 +7384,18 @@ umegaTrailers = {
     certificate: [
       {
         name: "No certification",
-        number: ""
+        number: "",
+        type: "SPP14P"
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00050*00"
+        number: "e32*167/2013*00050*00",
+        type: "SPP14P"
       },
       {
         name: "Poland",
         number: "PL*44810*00",
-        type: "SPP16"
+        type: "SP2/SPP16"
       }
     ],
     country: [
