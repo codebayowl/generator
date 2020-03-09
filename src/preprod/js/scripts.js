@@ -5937,7 +5937,7 @@ umegaTrailers = {
       {
         name:   "Germany",
         locale: "de",
-        type:   "ZD14"
+        type:   "SPP10P"
       },
       {
         name:   "Greece",
@@ -6530,117 +6530,117 @@ umegaTrailers = {
       {
         name:   "Albania",
         locale: "al",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Austria",
         locale: "at",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Belgium",
         locale: "be",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Bosnia and Herzegovina",
         locale: "ba",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Bulgaria",
         locale: "bg",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Croatia",
         locale: "hr",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Czech Rep.",
         locale: "cz",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Denmark",
         locale: "dk",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Estonia",
         locale: "ee",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Finland",
         locale: "fi",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "France",
         locale: "fr",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Germany",
         locale: "de",
-        type:   "ZD16"
+        type:   "SPP12P"
       },
       {
         name:   "Greece",
         locale: "gr",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Hungary",
         locale: "hu",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Ireland",
         locale: "ie",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Italy",
         locale: "it",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Latvia",
         locale: "lv",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Lithuania",
         locale: "lt",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Macedonia",
         locale: "mk",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Moldova",
         locale: "md",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Montenegro",
         locale: "me",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Netherlands",
         locale: "nl",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Norway",
         locale: "no",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Poland",
@@ -6650,62 +6650,62 @@ umegaTrailers = {
       {
         name:   "Portugal",
         locale: "pt",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Romania",
         locale: "ro",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Russia",
         locale: "ru",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Serbia",
         locale: "rs",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Slovakia",
         locale: "sk",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Slovenia",
         locale: "si",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Spain",
         locale: "es",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Sweden",
         locale: "se",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Switzerland",
         locale: "ch",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Ukraine",
         locale: "ua",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "United Kingdom",
         locale: "gb",
-        type:   "SPP12"
+        type:   "SPP12P"
       },
       {
         name:   "Other",
         locale: "univ",
-        type:   "SPP12"
+        type:   "SPP12P"
       }
     ]
   },
@@ -6962,117 +6962,117 @@ umegaTrailers = {
       {
         name:   "Albania",
         locale: "al",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Austria",
         locale: "at",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Belgium",
         locale: "be",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Bosnia and Herzegovina",
         locale: "ba",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Bulgaria",
         locale: "bg",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Croatia",
         locale: "hr",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Czech Rep.",
         locale: "cz",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Denmark",
         locale: "dk",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Estonia",
         locale: "ee",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Finland",
         locale: "fi",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "France",
         locale: "fr",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Germany",
         locale: "de",
-        type:   "ZD18"
+        type:   "SPP14P"
       },
       {
         name:   "Greece",
         locale: "gr",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Hungary",
         locale: "hu",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Ireland",
         locale: "ie",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Italy",
         locale: "it",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Latvia",
         locale: "lv",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Lithuania",
         locale: "lt",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Macedonia",
         locale: "mk",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Moldova",
         locale: "md",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Montenegro",
         locale: "me",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Netherlands",
         locale: "nl",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Norway",
         locale: "no",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Poland",
@@ -7082,62 +7082,62 @@ umegaTrailers = {
       {
         name:   "Portugal",
         locale: "pt",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Romania",
         locale: "ro",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Russia",
         locale: "ru",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Serbia",
         locale: "rs",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Slovakia",
         locale: "sk",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Slovenia",
         locale: "si",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Spain",
         locale: "es",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Sweden",
         locale: "se",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Switzerland",
         locale: "ch",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Ukraine",
         locale: "ua",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "United Kingdom",
         locale: "gb",
-        type:   "SPP14"
+        type:   "SPP14P"
       },
       {
         name:   "Other",
         locale: "univ",
-        type:   "SPP14"
+        type:   "SPP14P"
       }
     ]
   },
