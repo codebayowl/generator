@@ -7385,12 +7385,12 @@ umegaTrailers = {
       {
         name: "No certification",
         number: "",
-        type: "SPP14P"
+        type: "SPP16P"
       },
       {
         name: "European 167/2013",
         number: "e32*167/2013*00050*00",
-        type: "SPP14P"
+        type: "SPP16P"
       },
       {
         name: "Poland",
