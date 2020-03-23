@@ -1749,7 +1749,7 @@ umegaTrailers = {
     name:         "SPB16",
     category:     "R3a",
     variant:      "B",
-    typeEC:       "TIP16",
+    typeEC:       "TIP16 B",
     weight:       5600,
     techPayload:  16000,
     roadWeight:   21000,
@@ -1767,12 +1767,12 @@ umegaTrailers = {
       {
         name: "No certification",
         number: "",
-      }/*,
+      },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00015*00",
+        number: "e32*167/2013*00015*01",
         type: "SPB16"
-      },
+      }/*,
       {
         name: "Poland",
         number: "PL*4404*00",
@@ -2830,7 +2830,7 @@ umegaTrailers = {
     name:         "SPC16BS",
     category:     "R3a",
     variant:      "16",
-    typeEC:       "TIP16",
+    typeEC:       "TIP16 16",
     weight:       5500,
     techPayload:  16000,
     roadWeight:   21000,
@@ -2851,7 +2851,7 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00015*00",
+        number: "e32*167/2013*00015*01",
         type: "SPC16"
       },
       {
@@ -3479,7 +3479,7 @@ umegaTrailers = {
     name:         "SPC20BS",
     category:     "R3a",
     variant:      "20",
-    typeEC:       "SPC16",
+    typeEC:       "TIP16 20",
     weight:       6700,
     techPayload:  20000,
     roadWeight:   21000,
@@ -3500,7 +3500,7 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00015*00",
+        number: "e32*167/2013*00015*01",
         type: "SPC20"
       }/*,
       {
