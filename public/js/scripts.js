@@ -2614,8 +2614,8 @@ umegaTrailers = {
     category:     "R3a",
     variant:      "C",
     typeEC:       "TIP14",
-    weight:       4500, // 4100!
-    techPayload:  16000,
+    weight:       4450, // 4100!
+    techPayload:  14000,
     roadWeight:   21000,
     axleNum:      2,
     speed: 40,
@@ -5438,7 +5438,7 @@ umegaTrailers = {
       },
       /*{
         name: "European 167/2013",
-        number: "e32*167/2013*00031*00"
+        number: "e32*167/2013*00015*02"
       },*/
       {
         name: "Poland",
@@ -9115,7 +9115,7 @@ umegaTrailers = {
       }/*,
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00023*00"
+        number: "e32*167/2013*00015*02"
       },
       {
         name: "Poland",
