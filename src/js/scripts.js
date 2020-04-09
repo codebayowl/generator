@@ -6955,7 +6955,7 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00050*00",
+        number: "e32*167/2013*00050*01",
         type: "SPP14P"
       },
       {
@@ -7389,7 +7389,7 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00050*00",
+        number: "e32*167/2013*00050*01",
         type: "SPP16P"
       },
       {
