@@ -8227,8 +8227,8 @@ umegaTrailers = {
       }
     ]
   },
-  spt5:   {
-    name:         "SPT5",
+  spt05:   {
+    name:         "SPT05",
     category:     "R3a",
     variant:      "5",
     typeEC:       "TIP5",
