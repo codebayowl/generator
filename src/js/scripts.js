@@ -10100,7 +10100,7 @@ function validateVIN () {
       unsetCountry();
       break;
     case 7:   
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d/g.test(activator.VINcode); 
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
       vinUnlocker();
@@ -10109,7 +10109,7 @@ function validateVIN () {
       unsetCountry();
       break;
     case 8:   
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}/g.test(activator.VINcode); 
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
       vinUnlocker();
@@ -10118,7 +10118,7 @@ function validateVIN () {
       unsetCountry();
       break;
     case 9:   
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]/g.test(activator.VINcode); 
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
       vinUnlocker();
@@ -10127,7 +10127,7 @@ function validateVIN () {
       unsetCountry();
       break;
     case 10:  
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}/g.test(activator.VINcode); 
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
       vinUnlocker();
@@ -10136,7 +10136,7 @@ function validateVIN () {
       unsetCountry();
       break;
     case 11:  
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d/g.test(activator.VINcode); 
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
       vinUnlocker();
@@ -10145,7 +10145,7 @@ function validateVIN () {
       unsetCountry();
       break;
     case 12:  
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{2}/g.test(activator.VINcode); 
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{2}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
       vinUnlocker();
@@ -10154,7 +10154,7 @@ function validateVIN () {
       unsetCountry();
       break;
     case 13:  
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{3}/g.test(activator.VINcode); 
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{3}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
       vinUnlocker();
@@ -10163,7 +10163,7 @@ function validateVIN () {
       unsetCountry();
       break;
     case 14:  
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{4}/g.test(activator.VINcode); 
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{4}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
       vinUnlocker();
@@ -10172,7 +10172,7 @@ function validateVIN () {
       unsetCountry();
       break;
     case 15:  
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{5}/g.test(activator.VINcode); 
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{5}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
       vinUnlocker();
@@ -10181,7 +10181,7 @@ function validateVIN () {
       unsetCountry();
       break;
     case 16:  
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{6}/g.test(activator.VINcode); 
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{6}/g.test(activator.VINcode); 
       vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
       activator.okVIN = false;
       vinUnlocker();
@@ -10190,7 +10190,7 @@ function validateVIN () {
       unsetCountry();
       break;
     default:  
-      vinValid =  /UME[\dA-Z][A-Z]{2}\d{2}[A-Z]{2}\d{7}/g.test(activator.VINcode);
+      vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{7}/g.test(activator.VINcode);
       if (vinValid) {
         reactVIN("validPin");
         activator.okVIN = true;
