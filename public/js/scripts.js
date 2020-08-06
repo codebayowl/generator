@@ -3713,11 +3713,11 @@ umegaTrailers = {
       {
         name: "No certification",
         number: ""
-      }/*,
+      },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00031*00"
-      },
+        number: "e32*167/2013*00061*00"
+      }/*,
       {
         name: "Poland",
         number: "PL*4404*00"
@@ -3928,11 +3928,11 @@ umegaTrailers = {
       {
         name: "No certification",
         number: ""
-      }/*,
+      },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00023*00"
-      },
+        number: "e32*167/2013*00061*00"
+      }/*,
       {
         name: "Poland",
         number: "PL*4404*00"
