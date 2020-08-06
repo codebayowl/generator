@@ -3693,12 +3693,12 @@ umegaTrailers = {
   },
   spc24:   {
     name:         "SPC24",
-    category:     "R3a",
-    variant:      "C",
-    typeEC:       "SPC24",
+    category:     "R4a",
+    variant:      "C24",
+    typeEC:       "TIP28",
     weight:       9000,
     techPayload:  24000,
-    roadWeight:   31000,
+    roadWeight:   28000,
     axleNum:      3,
     speed: 40,
     couplingFront: {
@@ -3716,7 +3716,8 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00061*00"
+        number: "e32*167/2013*00061*00",
+        type: "SPC24"
       }/*,
       {
         name: "Poland",
@@ -3908,9 +3909,9 @@ umegaTrailers = {
   },
   spc30:   {
     name:         "SPC30",
-    category:     "R3a",
-    variant:      "C",
-    typeEC:       "SPC30",
+    category:     "R4a",
+    variant:      "C30",
+    typeEC:       "TIP28",
     weight:       9500,
     techPayload:  30000,
     roadWeight:   28000,
@@ -3921,7 +3922,7 @@ umegaTrailers = {
       vval: 4000
     },
     couplingRear: {
-      presence:   false,
+      presence:   true,
       dval:       96
     },
     certificate: [
@@ -3931,7 +3932,8 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00061*00"
+        number: "e32*167/2013*00061*00",
+        type: "SPC30"
       }/*,
       {
         name: "Poland",
