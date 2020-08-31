@@ -191,7 +191,10 @@ currentTrailer = {
     this.manufactured   = activator.manufacture;
     this.speed          = activator.model.speed;
     this.weight         = activator.model.weight;
-    this.couplingVert   = activator.model.couplingFront.vval;
+    // this.couplingVert   = activator.model.couplingFront.vval;
+    // added 2020-08-31  load on coupling point according to local sertification. 
+    // Need to add local values to DB "country" section
+    this.couplingVert   = activator.country.drawbar != null ? activator.country.drawbar : activator.model.couplingFront.vval;
     this.techPayload    = activator.model.techPayload;
     this.homologation   = activator.certification.number;
     this.vinCode        = activator.VINcode;
@@ -413,7 +416,8 @@ umegaTrailers = {
       {
         name:   "Russia",
         locale: "ru",
-        type:   "GPP23"
+        type:   "GPP23",
+        drawbar: 3000
       },
       {
         name:   "Serbia",
@@ -625,7 +629,8 @@ umegaTrailers = {
       {
         name:   "Russia",
         locale: "ru",
-        type:   "GPP23HD"
+        type:   "GPP23HD",
+        drawbar: 3000
       },
       {
         name:   "Serbia",
@@ -837,7 +842,8 @@ umegaTrailers = {
       {
         name:   "Russia",
         locale: "ru",
-        type:   "GPP27L"
+        type:   "GPP27L",
+        drawbar: 3000
       },
       {
         name:   "Serbia",
@@ -1049,7 +1055,8 @@ umegaTrailers = {
       {
         name:   "Russia",
         locale: "ru",
-        type:   "PI20"
+        type:   "PI20",
+        drawbar: 3000
       },
       {
         name:   "Serbia",
