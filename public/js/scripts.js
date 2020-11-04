@@ -3071,7 +3071,8 @@ umegaTrailers = {
     certificate: [
       {
         name: "No certification",
-        number: ""
+        number: "",
+        type: "SPC20L"
       },
       {
         name: "European 167/2013",
@@ -3482,8 +3483,8 @@ umegaTrailers = {
       }
     ]
   },
-  spc20bs:   {
-    name:         "SPC20BS",
+  spc20:   {
+    name:         "SPC20",
     category:     "R3a",
     variant:      "20",
     typeEC:       "TIP16 20",
@@ -3503,7 +3504,8 @@ umegaTrailers = {
     certificate: [
       {
         name: "No certification",
-        number: ""
+        number: "",
+        type: "SPC20"
       },
       {
         name: "European 167/2013",
@@ -10239,7 +10241,8 @@ function presetTrailer () {
   for (i=0; i < domVar.trailerChooser.options.length; i++) {
     if((domVar.trailerChooser.options[i].value.toLowerCase().slice(0,5) === model.toLowerCase()) || 
         (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,4) === "pi20" && model.toLowerCase() === "0pt20") ||
-        (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,4) === "pi42" && model.toLowerCase() === "0pt42")) {
+        (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,4) === "pi42" && model.toLowerCase() === "0pt42") ||
+        (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,6) === "spc20l" && model.toLowerCase() === "spl20")) {
       setTrailer(i);
       selectTrailer();
       break;
