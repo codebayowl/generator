@@ -183,11 +183,16 @@ currentTrailer = {
   build: function() {
     // собираем информацию о прицепе
     this.category       = activator.model.category;
-    if (activator.certification.name === "No certification") {
-      this.model = activator.country.type;
-    } else {
-      this.model = activator.certification.type;
-    }
+
+    // Choose a trailer name according to certification...
+    // if (activator.certification.name === "No certification") {
+    //   this.model = activator.country.type;
+    // } else {
+    //   this.model = activator.certification.type;
+    // }
+    // ...OR choose name as is:
+    this.model = activator.country.type;
+
     this.manufactured   = activator.manufacture;
     this.speed          = activator.model.speed;
     this.weight         = activator.model.weight;
@@ -10382,6 +10387,7 @@ function readCertification () {
       activator.certificates.push(currentCert);
       var nodeDOM = document.createElement("option");
       var nodeText = document.createTextNode(activator.model.certificate[i].name);
+      // var nodeText = document.createTextNode(activator.model.country.type);
       nodeDOM.appendChild(nodeText);
       domVar.certificateChooser.appendChild(nodeDOM);
     }
