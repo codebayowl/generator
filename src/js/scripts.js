@@ -6736,7 +6736,7 @@ umegaTrailers = {
     typeEC:       "SPP12",
     weight:       4100,
     techPayload:  12000,
-    roadWeight:   18000,
+    roadWeight:   15800,
     axleNum:      2,
     speed: 40,
     couplingFront: {
@@ -6750,7 +6750,8 @@ umegaTrailers = {
     certificate: [
       {
         name: "No certification",
-        number: ""
+        number: "",
+        type: "SPP12"
       },
       /*{
         name: "European 167/2013",
