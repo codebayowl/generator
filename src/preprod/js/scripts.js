@@ -1547,16 +1547,16 @@ umegaTrailers = {
     typeEC:       "TIP14",
     weight:       4050,
     techPayload:  14000,
-    roadWeight:   21000,
+    roadWeight:   21000, //18050!!
     axleNum:      2,
     speed: 40,
     couplingFront: {
       dval: 125,
-      vval: 3000
+      vval: 3000 // 2500!!
     },
     couplingRear: {
       presence:   true,
-      dval:       96
+      dval:       78 //96!
     },
     certificate: [
       {
@@ -2628,16 +2628,16 @@ umegaTrailers = {
     typeEC:       "TIP14",
     weight:       4450, // 4100!
     techPayload:  14000,
-    roadWeight:   21000,
+    roadWeight:   21000, // 18450
     axleNum:      2,
     speed: 40,
     couplingFront: {
       dval: 125,
-      vval: 3000
+      vval: 3000 // 2500
     },
     couplingRear: {
       presence:   true,
-      dval:       96
+      dval:       78 //96
     },
     certificate: [
       {
@@ -5219,16 +5219,16 @@ umegaTrailers = {
     typeEC:       "TIP14",
     weight:       4550,
     techPayload:  14000,
-    roadWeight:   21000,
+    roadWeight:   21000, //18550
     axleNum:      2,
     speed: 40,
     couplingFront: {
       dval: 125,
-      vval: 2500
+      vval: 3000 // 2500
     },
     couplingRear: {
       presence:   true,
-      dval:       96
+      dval:       78 //96
     },
     certificate: [
       {
@@ -8898,16 +8898,16 @@ umegaTrailers = {
     typeEC:       "TIP14",
     weight:       4500,
     techPayload:  14000,
-    roadWeight:   21000,
+    roadWeight:   21000, // 18500
     axleNum:      2,
     speed: 40,
     couplingFront: {
       dval: 125,
-      vval: 3000
+      vval: 3000 // 2500
     },
     couplingRear: {
       presence:   true,
-      dval:       96
+      dval:       78 // 96
     },
     certificate: [
       {
