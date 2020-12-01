@@ -1547,12 +1547,12 @@ umegaTrailers = {
     typeEC:       "TIP14",
     weight:       4050,
     techPayload:  14000,
-    roadWeight:   18050,
+    roadWeight:   21000,
     axleNum:      2,
     speed: 40,
     couplingFront: {
       dval: 125,
-      vval: 2500
+      vval: 3000
     },
     couplingRear: {
       presence:   true,
