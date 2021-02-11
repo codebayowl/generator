@@ -1112,14 +1112,14 @@ umegaTrailers = {
   },
   pi42:   {
     name:         "PI42",
-    category:     "R3a",
+    category:     "R4a",
     variant:      "42",
     typeEC:       "PI",
     weight:       14700,
     techPayload:  42000,
     roadWeight:   28000,
     axleNum:      3,
-    speed: 25,
+    speed: 40,
     couplingFront: {
       dval: 120,
       vval: 4000
@@ -1131,12 +1131,14 @@ umegaTrailers = {
     certificate: [
       {
         name: "No certification",
-        number: ""
-      }/*,
+        number: "",
+        type: "PI42"
+      },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00023*00"
-      },
+        number: "e32*167/2013*00070*00",
+        type: "PI42"
+      }/*,
       {
         name: "Poland",
         number: "PL*4404*00"
