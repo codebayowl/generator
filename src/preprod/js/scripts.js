@@ -222,7 +222,12 @@ currentTrailer = {
     if (this.axleNumber === 1) {
       this.axleLoadRu = this.axleLoadFull;
     } else if (this.axleNumber === 2) {
-      this.axleLoadRu = Math.round(this.axleLoadFull/2) + " / " + Math.round(this.axleLoadFull/2);
+      // For russian PI20 trailer we just show russian homologation data ("12690 / 12690"), for other trailers - calculating loads:
+      if (this.model == "PI20") {
+        this.axleLoadRu = "12690 / 12690";
+      } else {
+        this.axleLoadRu = Math.round(this.axleLoadFull/2) + " / " + Math.round(this.axleLoadFull/2);
+      }
     } else if (this.axleNumber === 3) {
       this.axleLoadRu = Math.round(this.axleLoadFull/3) + "/" + Math.round(this.axleLoadFull/3) + "/" + Math.round(this.axleLoadFull/3);
     }
