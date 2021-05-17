@@ -3069,7 +3069,7 @@ umegaTrailers = {
     variant:      "L",
     typeEC:       "SPC20",
     weight:       7200,
-    techPayload:  20000,
+    techPayload:  19500,
     roadWeight:   21000,
     axleNum:      2,
     speed: 40,
@@ -3078,8 +3078,8 @@ umegaTrailers = {
       vval: 3000
     },
     couplingRear: {
-      presence:   false,
-      dval:       96
+      presence:   true, // turi buti false
+      dval:       92
     },
     certificate: [
       {
@@ -3295,7 +3295,7 @@ umegaTrailers = {
       vval: 4000
     },
     couplingRear: {
-      presence:   false,
+      presence:   true, // turi buti false
       dval:       96
     },
     certificate: [
@@ -5668,8 +5668,8 @@ umegaTrailers = {
       vval: 4000
     },
     couplingRear: {
-      presence:   false,
-      dval:       96
+      presence:   true, // turi buti false
+      dval:       74.5
     },
     certificate: [
       {
