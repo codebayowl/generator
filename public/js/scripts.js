@@ -2412,6 +2412,222 @@ umegaTrailers = {
       }
     ]
   },
+  spc10b:   {
+    name:         "SPC10B",
+    category:     "R3a",
+    variant:      "10C",
+    typeEC:       "TIP12",
+    weight:       3500,
+    techPayload:  10000,
+    roadWeight:   13490,
+    axleNum:      2,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2000
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
+    certificate: [
+      {
+        name: "No certification",
+        number: ""
+      }/*,
+      {
+        name: "European 167/2013",
+        number: "e32*167/2013*00023*00"
+      },
+      {
+        name: "Poland",
+        number: "PL*4404*00",
+        type: "SP1/SPC10"
+      }*/
+    ],
+    country: [
+      {
+        name:   "Albania",
+        locale: "al",
+        type:   "SPC10"
+      },
+      {
+        name:   "Austria",
+        locale: "at",
+        type:   "SPC10"
+      },
+      {
+        name:   "Belgium",
+        locale: "be",
+        type:   "SPC10"
+      },
+      {
+        name:   "Bosnia and Herzegovina",
+        locale: "ba",
+        type:   "SPC10"
+      },
+      {
+        name:   "Bulgaria",
+        locale: "bg",
+        type:   "SPC10"
+      },
+      {
+        name:   "Croatia",
+        locale: "hr",
+        type:   "SPC10"
+      },
+      {
+        name:   "Czech Rep.",
+        locale: "cz",
+        type:   "SPC10"
+      },
+      {
+        name:   "Denmark",
+        locale: "dk",
+        type:   "SPC10"
+      },
+      {
+        name:   "Estonia",
+        locale: "ee",
+        type:   "SPC10"
+      },
+      {
+        name:   "Finland",
+        locale: "fi",
+        type:   "SPC10"
+      },
+      {
+        name:   "France",
+        locale: "fr",
+        type:   "SPC10"
+      },
+      {
+        name:   "Germany",
+        locale: "de",
+        type:   "SPC10"
+      },
+      {
+        name:   "Greece",
+        locale: "gr",
+        type:   "SPC10"
+      },
+      {
+        name:   "Hungary",
+        locale: "hu",
+        type:   "SPC10"
+      },
+      {
+        name:   "Ireland",
+        locale: "ie",
+        type:   "SPC10"
+      },
+      {
+        name:   "Italy",
+        locale: "it",
+        type:   "SPC10"
+      },
+      {
+        name:   "Latvia",
+        locale: "lv",
+        type:   "SPC10"
+      },
+      {
+        name:   "Lithuania",
+        locale: "lt",
+        type:   "SPC10"
+      },
+      {
+        name:   "Macedonia",
+        locale: "mk",
+        type:   "SPC10"
+      },
+      {
+        name:   "Moldova",
+        locale: "md",
+        type:   "SPC10"
+      },
+      {
+        name:   "Montenegro",
+        locale: "me",
+        type:   "SPC10"
+      },
+      {
+        name:   "Netherlands",
+        locale: "nl",
+        type:   "SPC10"
+      },
+      {
+        name:   "Norway",
+        locale: "no",
+        type:   "SPC10"
+      },
+      {
+        name:   "Poland",
+        locale: "pl",
+        type:   "SP1/SPC10"
+      },
+      {
+        name:   "Portugal",
+        locale: "pt",
+        type:   "SPC10"
+      },
+      {
+        name:   "Romania",
+        locale: "ro",
+        type:   "SPC10"
+      },
+      {
+        name:   "Russia",
+        locale: "ru",
+        type:   "SPC10"
+      },
+      {
+        name:   "Serbia",
+        locale: "rs",
+        type:   "SPC10"
+      },
+      {
+        name:   "Slovakia",
+        locale: "sk",
+        type:   "SPC10"
+      },
+      {
+        name:   "Slovenia",
+        locale: "si",
+        type:   "SPC10"
+      },
+      {
+        name:   "Spain",
+        locale: "es",
+        type:   "SPC10"
+      },
+      {
+        name:   "Sweden",
+        locale: "se",
+        type:   "SPC10"
+      },
+      {
+        name:   "Switzerland",
+        locale: "ch",
+        type:   "SPC10"
+      },
+      {
+        name:   "Ukraine",
+        locale: "ua",
+        type:   "SPC10"
+      },
+      {
+        name:   "United Kingdom",
+        locale: "gb",
+        type:   "SPC10"
+      },
+      {
+        name:   "Other",
+        locale: "univ",
+        type:   "SPC10"
+      }
+    ]
+  },
   spc12u:   {
     name:         "SPC12U",
     category:     "R3a",
@@ -2445,6 +2661,223 @@ umegaTrailers = {
         number: "PL*4404*00",
         type: "SP1/SPC12"
       }
+    ],
+    country: [
+      {
+        name:   "Albania",
+        locale: "al",
+        type:   "SPC12"
+      },
+      {
+        name:   "Austria",
+        locale: "at",
+        type:   "SPC12"
+      },
+      {
+        name:   "Belgium",
+        locale: "be",
+        type:   "SPC12"
+      },
+      {
+        name:   "Bosnia and Herzegovina",
+        locale: "ba",
+        type:   "SPC12"
+      },
+      {
+        name:   "Bulgaria",
+        locale: "bg",
+        type:   "SPC12"
+      },
+      {
+        name:   "Croatia",
+        locale: "hr",
+        type:   "SPC12"
+      },
+      {
+        name:   "Czech Rep.",
+        locale: "cz",
+        type:   "SPC12"
+      },
+      {
+        name:   "Denmark",
+        locale: "dk",
+        type:   "SPC12"
+      },
+      {
+        name:   "Estonia",
+        locale: "ee",
+        type:   "SPC12"
+      },
+      {
+        name:   "Finland",
+        locale: "fi",
+        type:   "SPC12"
+      },
+      {
+        name:   "France",
+        locale: "fr",
+        type:   "SPC12"
+      },
+      {
+        name:   "Germany",
+        locale: "de",
+        type:   "TW16"
+      },
+      {
+        name:   "Greece",
+        locale: "gr",
+        type:   "SPC12"
+      },
+      {
+        name:   "Hungary",
+        locale: "hu",
+        type:   "SPC12"
+      },
+      {
+        name:   "Ireland",
+        locale: "ie",
+        type:   "SPC12"
+      },
+      {
+        name:   "Italy",
+        locale: "it",
+        type:   "SPC12"
+      },
+      {
+        name:   "Latvia",
+        locale: "lv",
+        type:   "SPC12"
+      },
+      {
+        name:   "Lithuania",
+        locale: "lt",
+        type:   "SPC12"
+      },
+      {
+        name:   "Macedonia",
+        locale: "mk",
+        type:   "SPC12"
+      },
+      {
+        name:   "Moldova",
+        locale: "md",
+        type:   "SPC12"
+      },
+      {
+        name:   "Montenegro",
+        locale: "me",
+        type:   "SPC12"
+      },
+      {
+        name:   "Netherlands",
+        locale: "nl",
+        type:   "SPC12"
+      },
+      {
+        name:   "Norway",
+        locale: "no",
+        type:   "SPC12"
+      },
+      {
+        name:   "Poland",
+        locale: "pl",
+        type:   "SP1/SPC12"
+      },
+      {
+        name:   "Portugal",
+        locale: "pt",
+        type:   "SPC12"
+      },
+      {
+        name:   "Romania",
+        locale: "ro",
+        type:   "SPC12"
+      },
+      {
+        name:   "Russia",
+        locale: "ru",
+        type:   "SPC12"
+      },
+      {
+        name:   "Serbia",
+        locale: "rs",
+        type:   "SPC12"
+      },
+      {
+        name:   "Slovakia",
+        locale: "sk",
+        type:   "SPC12"
+      },
+      {
+        name:   "Slovenia",
+        locale: "si",
+        type:   "SPC12"
+      },
+      {
+        name:   "Spain",
+        locale: "es",
+        type:   "SPC12"
+      },
+      {
+        name:   "Sweden",
+        locale: "se",
+        type:   "SPC12"
+      },
+      {
+        name:   "Switzerland",
+        locale: "ch",
+        type:   "SPC12"
+      },
+      {
+        name:   "Ukraine",
+        locale: "ua",
+        type:   "SPC12"
+      },
+      {
+        name:   "United Kingdom",
+        locale: "gb",
+        type:   "SPC12"
+      },
+      {
+        name:   "Other",
+        locale: "univ",
+        type:   "SPC12"
+      }
+    ]
+  },
+  spc12b:   {
+    name:         "SPC12B",
+    category:     "R3a",
+    variant:      "C",
+    typeEC:       "TIP12",
+    weight:       3640,
+    techPayload:  12000,
+    roadWeight:   15640,
+    axleNum:      2,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2000
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
+    certificate: [
+      {
+        name: "No certification",
+        number: "",
+        type: "SPC12"
+      }/*,
+      {
+        name: "European 167/2013",
+        number: "e32*167/2013*00023*00"
+      },
+      {
+        name: "Poland",
+        number: "PL*4404*00",
+        type: "SP1/SPC12"
+      }*/
     ],
     country: [
       {
