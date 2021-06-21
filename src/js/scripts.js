@@ -195,7 +195,7 @@ currentTrailer = {
 
     this.manufactured   = activator.manufacture;
     this.speed          = activator.model.speed;
-    this.weight         = activator.model.weight;
+    this.weight         = activator.country.weight != null ? activator.country.weight : activator.model.weight;
     // this.couplingVert   = activator.model.couplingFront.vval;
     // added 2020-08-31  load on coupling point according to local sertification. 
     // Need to add local values to DB "country" section
@@ -225,7 +225,8 @@ currentTrailer = {
       // For russian PI20 trailer we just show russian homologation data ("12690 / 12690"), for other trailers - calculating loads:
       if (this.model == "PI20") {
         this.axleLoadRu = "12690 / 12690";
-      } else {
+      }
+       else {
         this.axleLoadRu = Math.round(this.axleLoadFull/2) + " / " + Math.round(this.axleLoadFull/2);
       }
     } else if (this.axleNumber === 3) {
@@ -853,7 +854,7 @@ umegaTrailers = {
         name:   "Russia",
         locale: "ru",
         type:   "GPP27L",
-        drawbar: 3000
+        drawbar: 4000
       },
       {
         name:   "Serbia",
@@ -1283,7 +1284,8 @@ umegaTrailers = {
       {
         name:   "Russia",
         locale: "ru",
-        type:   "PI42"
+        type:   "PI42",
+        weight: 14500
       },
       {
         name:   "Serbia",
