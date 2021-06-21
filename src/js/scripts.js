@@ -4795,6 +4795,221 @@ umegaTrailers = {
       }
     ]
   },
+  spd12b:   {
+    name:         "SPD12B",
+    category:     "R3a",
+    variant:      "B",
+    typeEC:       "SPD12B",
+    weight:       3850,
+    techPayload:  12000,
+    roadWeight:   15850,
+    axleNum:      2,
+    speed: 40,
+    couplingFront: {
+      dval: 125,
+      vval: 2000
+    },
+    couplingRear: {
+      presence:   true,
+      dval:       96
+    },
+    certificate: [
+      {
+        name: "No certification",
+        number: ""
+      }/*,
+      {
+        name: "European 167/2013",
+        number: "e32*167/2013*00023*00"
+      },
+      {
+        name: "Poland",
+        number: "PL*4404*00"
+      }*/
+    ],
+    country: [
+      {
+        name:   "Albania",
+        locale: "al",
+        type:   "SPD12"
+      },
+      {
+        name:   "Austria",
+        locale: "at",
+        type:   "SPD12"
+      },
+      {
+        name:   "Belgium",
+        locale: "be",
+        type:   "SPD12"
+      },
+      {
+        name:   "Bosnia and Herzegovina",
+        locale: "ba",
+        type:   "SPD12"
+      },
+      {
+        name:   "Bulgaria",
+        locale: "bg",
+        type:   "SPD12"
+      },
+      {
+        name:   "Croatia",
+        locale: "hr",
+        type:   "SPD12"
+      },
+      {
+        name:   "Czech Rep.",
+        locale: "cz",
+        type:   "SPD12"
+      },
+      {
+        name:   "Denmark",
+        locale: "dk",
+        type:   "SPD12"
+      },
+      {
+        name:   "Estonia",
+        locale: "ee",
+        type:   "SPD12"
+      },
+      {
+        name:   "Finland",
+        locale: "fi",
+        type:   "SPD12"
+      },
+      {
+        name:   "France",
+        locale: "fr",
+        type:   "SPD12"
+      },
+      {
+        name:   "Germany",
+        locale: "de",
+        type:   "SPD12"
+      },
+      {
+        name:   "Greece",
+        locale: "gr",
+        type:   "SPD12"
+      },
+      {
+        name:   "Hungary",
+        locale: "hu",
+        type:   "SPD12"
+      },
+      {
+        name:   "Ireland",
+        locale: "ie",
+        type:   "SPD12"
+      },
+      {
+        name:   "Italy",
+        locale: "it",
+        type:   "SPD12"
+      },
+      {
+        name:   "Latvia",
+        locale: "lv",
+        type:   "SPD12"
+      },
+      {
+        name:   "Lithuania",
+        locale: "lt",
+        type:   "SPD12"
+      },
+      {
+        name:   "Macedonia",
+        locale: "mk",
+        type:   "SPD12"
+      },
+      {
+        name:   "Moldova",
+        locale: "md",
+        type:   "SPD12"
+      },
+      {
+        name:   "Montenegro",
+        locale: "me",
+        type:   "SPD12"
+      },
+      {
+        name:   "Netherlands",
+        locale: "nl",
+        type:   "SPD12"
+      },
+      {
+        name:   "Norway",
+        locale: "no",
+        type:   "SPD12"
+      },
+      {
+        name:   "Poland",
+        locale: "pl",
+        type:   "SPD12"
+      },
+      {
+        name:   "Portugal",
+        locale: "pt",
+        type:   "SPD12"
+      },
+      {
+        name:   "Romania",
+        locale: "ro",
+        type:   "SPD12"
+      },
+      {
+        name:   "Russia",
+        locale: "ru",
+        type:   "SPD12"
+      },
+      {
+        name:   "Serbia",
+        locale: "rs",
+        type:   "SPD12"
+      },
+      {
+        name:   "Slovakia",
+        locale: "sk",
+        type:   "SPD12"
+      },
+      {
+        name:   "Slovenia",
+        locale: "si",
+        type:   "SPD12"
+      },
+      {
+        name:   "Spain",
+        locale: "es",
+        type:   "SPD12"
+      },
+      {
+        name:   "Sweden",
+        locale: "se",
+        type:   "SPD12"
+      },
+      {
+        name:   "Switzerland",
+        locale: "ch",
+        type:   "SPD12"
+      },
+      {
+        name:   "Ukraine",
+        locale: "ua",
+        type:   "SPD12"
+      },
+      {
+        name:   "United Kingdom",
+        locale: "gb",
+        type:   "SPD12"
+      },
+      {
+        name:   "Other",
+        locale: "univ",
+        type:   "SPD12"
+      }
+    ]
+  },
   spd13:   {
     name:         "SPD13",
     category:     "R3a",
