@@ -200,7 +200,7 @@ currentTrailer = {
     // added 2020-08-31  load on coupling point according to local sertification. 
     // Need to add local values to DB "country" section
     this.couplingVert   = activator.country.drawbar != null ? activator.country.drawbar : activator.model.couplingFront.vval;
-    this.techPayload    = activator.model.techPayload;
+    this.techPayload    = activator.country.techPayload != null ? activator.country.techPayload : activator.model.techPayload;
     this.homologation   = activator.certification.number;
     this.vinCode        = activator.VINcode;
     this.roadWeight     = activator.model.roadWeight;
@@ -428,7 +428,9 @@ umegaTrailers = {
         name:   "Russia",
         locale: "ru",
         type:   "GPP23",
-        drawbar: 3000
+        drawbar: 3000,
+        weight: 7500,
+        techPayload: 17000
       },
       {
         name:   "Serbia",
