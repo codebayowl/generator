@@ -10719,152 +10719,81 @@ function vinUnlocker() {
   }
 }
 // VIN code validation on-the-fly
+
 function validateVIN () {
   var vinValid = false;
+  function vinValidationActions () {
+    vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
+    activator.okVIN = false;
+    vinUnlocker();
+    unsetTrailer();
+    unsetYear();
+    unsetCountry();
+  }
   switch (activator.VINcode.length) {
     case 1:   
       vinValid =  /U/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 2:   
       vinValid =  /UM/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 3:   
       vinValid =  /UME/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 4:   
       vinValid =  /UME[\dA-Z]/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 5:   
       vinValid =  /UME[\dA-Z][A-Z]/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 6:   
       vinValid =  /UME[\dA-Z][A-Z]{2}/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 7:   
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 8:   
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 9:   
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 10:  
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 11:  
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 12:  
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{2}/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 13:  
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{3}/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 14:  
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{4}/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 15:  
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{5}/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     case 16:  
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{6}/g.test(activator.VINcode); 
-      vinValid ? reactVIN("pendingPin") : reactVIN("invalidPin");
-      activator.okVIN = false;
-      vinUnlocker();
-      unsetTrailer();
-      unsetYear();
-      unsetCountry();
+      vinValidationActions();
       break;
     default:  
       vinValid =  /UME[\dA-Z][A-Z]{2}[\dA-Z]\d[A-Z]{2}\d{7}/g.test(activator.VINcode);
@@ -10881,29 +10810,29 @@ function validateVIN () {
         unsetYear();
         unsetCountry();
       }
-      // add VIN to the cookies?
+      // add VIN to cookies?
   }
   activator.checkup();
 }
 
 
-// Формируем хтмл-ный список названий прицепов из "дэйтабэйзе"
+// Parsing 'database' trailer names and shaping html list of trailers
 function formTrailerList () {
   for (var trailer in umegaTrailers) {
-    // получаем текст для элемента
+    // getting element text
     var text = umegaTrailers[trailer].name;
-    // получаем значение для элемента
+    // Getting element value
     var value = text.toLowerCase();
-    // создаем новый элемент
+    // Creating new element
     var newOption = new Option(text, value);
     domVar.trailerChooser.options[domVar.trailerChooser.options.length]=newOption;
   }
 }
-// на основании VIN-кода выбираем из сформированного хтмл-списка соответствующий пункт
+// According parsed VIN, choosing a relevant item from list
 function presetTrailer () {
   var model = parseVIN()[0].toLowerCase();
   var year = parseVIN()[1];
-  // если одно из значений выпадающего списка прицепов совпадает с отпарсеным из винкода, устанавливаем эту модель, как активную.
+  // Setting a model as active
   for (i=0; i < domVar.trailerChooser.options.length; i++) {
     if((domVar.trailerChooser.options[i].value.toLowerCase().slice(0,5) === model.toLowerCase()) || 
         (domVar.trailerChooser.options[i].value.toLowerCase().slice(0,4) === "pi20" && model.toLowerCase() === "0pt20") ||
@@ -10914,7 +10843,7 @@ function presetTrailer () {
       break;
     }
   }
-  // если отпарсенное значение года совпадает с одним из значений из списка, устанавливаем этот год активным.
+  // Setting a year compared with parsed value.
   for (i=0; i < domVar.inputYear.options.length; i++) {
     if(domVar.inputYear.options[i].value == year) {
       setYear(i);
@@ -10929,17 +10858,17 @@ function unsetTrailer () {
   activator.model = {};
   activator.okModel = false;
 }
-// установка в селекте значения по номеру индекса (принимаемое значение)
+// changing the select to a relevant value (according received index)
 function setTrailer (optionIndex) {
   domVar.trailerChooser.options[optionIndex].selected = true;
 }
-// на основании выбранного пункта копируем из "дэйтабэйза" соответствующий прицеп-объект в активатор
+// copying a relevant object from the database
 function selectTrailer () {
   activator.model = umegaTrailers[domVar.trailerChooser.options[domVar.trailerChooser.selectedIndex].text.toLowerCase()];
   activator.okModel = true;
   readCountry();
 }
-// очищаем нахрен активатор и устанавливаем дропдаун на начальную позицию
+// Clearing the activator and putting the dropdown to initial position
 function clearTrailers () {
   activator.model = {};
   domVar.trailerChooser.options[0].selected = true;
