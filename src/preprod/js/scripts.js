@@ -1118,6 +1118,219 @@ umegaTrailers = {
       }
     ]
   },
+  pi20r:   {
+    name:         "PI20R",
+    category:     "R3a",
+    variant:      "20",
+    typeEC:       "PI",
+    weight:       8370,
+    techPayload:  20000,
+    roadWeight:   24000,
+    axleNum:      2,
+    speed: 40,
+    couplingFront: {
+      dval: 120,
+      vval: 4000
+    },
+    couplingRear: {
+      presence:   false,
+      dval:       0
+    },
+    certificate: [
+      {
+        name: "No certification",
+        number: ""
+      },
+      {
+        name: "European 167/2013",
+        number: "e32*167/2013*00021*00",
+        type: "PI20"
+      }
+    ],
+    country: [
+      {
+        name:   "Albania",
+        locale: "al",
+        type:   "PI20"
+      },
+      {
+        name:   "Austria",
+        locale: "at",
+        type:   "PI20"
+      },
+      {
+        name:   "Belgium",
+        locale: "be",
+        type:   "PI20"
+      },
+      {
+        name:   "Bosnia and Herzegovina",
+        locale: "ba",
+        type:   "PI20"
+      },
+      {
+        name:   "Bulgaria",
+        locale: "bg",
+        type:   "PI20"
+      },
+      {
+        name:   "Croatia",
+        locale: "hr",
+        type:   "PI20"
+      },
+      {
+        name:   "Czech Rep.",
+        locale: "cz",
+        type:   "PI20"
+      },
+      {
+        name:   "Denmark",
+        locale: "dk",
+        type:   "PI20"
+      },
+      {
+        name:   "Estonia",
+        locale: "ee",
+        type:   "PI20"
+      },
+      {
+        name:   "Finland",
+        locale: "fi",
+        type:   "PI20"
+      },
+      {
+        name:   "France",
+        locale: "fr",
+        type:   "PI20"
+      },
+      {
+        name:   "Germany",
+        locale: "de",
+        type:   "ASW24"
+      },
+      {
+        name:   "Greece",
+        locale: "gr",
+        type:   "PI20"
+      },
+      {
+        name:   "Hungary",
+        locale: "hu",
+        type:   "PI20"
+      },
+      {
+        name:   "Ireland",
+        locale: "ie",
+        type:   "PI20"
+      },
+      {
+        name:   "Italy",
+        locale: "it",
+        type:   "PI20"
+      },
+      {
+        name:   "Latvia",
+        locale: "lv",
+        type:   "PI20"
+      },
+      {
+        name:   "Lithuania",
+        locale: "lt",
+        type:   "PI20"
+      },
+      {
+        name:   "Macedonia",
+        locale: "mk",
+        type:   "PI20"
+      },
+      {
+        name:   "Moldova",
+        locale: "md",
+        type:   "PI20"
+      },
+      {
+        name:   "Montenegro",
+        locale: "me",
+        type:   "PI20"
+      },
+      {
+        name:   "Netherlands",
+        locale: "nl",
+        type:   "PI20"
+      },
+      {
+        name:   "Norway",
+        locale: "no",
+        type:   "PI20"
+      },
+      {
+        name:   "Poland",
+        locale: "pl",
+        type:   "PI20"
+      },
+      {
+        name:   "Portugal",
+        locale: "pt",
+        type:   "PI20"
+      },
+      {
+        name:   "Romania",
+        locale: "ro",
+        type:   "PI20"
+      },
+      {
+        name:   "Russia",
+        locale: "ru",
+        type:   "PI20",
+        drawbar: 3000
+      },
+      {
+        name:   "Serbia",
+        locale: "rs",
+        type:   "PI20"
+      },
+      {
+        name:   "Slovakia",
+        locale: "sk",
+        type:   "PI20"
+      },
+      {
+        name:   "Slovenia",
+        locale: "si",
+        type:   "PI20"
+      },
+      {
+        name:   "Spain",
+        locale: "es",
+        type:   "PI20"
+      },
+      {
+        name:   "Sweden",
+        locale: "se",
+        type:   "PI20"
+      },
+      {
+        name:   "Switzerland",
+        locale: "ch",
+        type:   "PI20"
+      },
+      {
+        name:   "Ukraine",
+        locale: "ua",
+        type:   "PI20"
+      },
+      {
+        name:   "United Kingdom",
+        locale: "gb",
+        type:   "PI20"
+      },
+      {
+        name:   "Other",
+        locale: "univ",
+        type:   "PI20"
+      }
+    ]
+  },
   pi42:   {
     name:         "PI42",
     category:     "R4a",
@@ -2151,7 +2364,7 @@ umegaTrailers = {
       {
         name:   "Russia",
         locale: "ru",
-        type:   "SPR14"
+        type:   "SPC14R"
       },
       {
         name:   "Serbia",
