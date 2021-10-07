@@ -1143,7 +1143,7 @@ umegaTrailers = {
       },
       {
         name: "European 167/2013",
-        number: "e32*167/2013*00021*00",
+        number: "e32*167/2013*00069*00",
         type: "PI20"
       }
     ],
