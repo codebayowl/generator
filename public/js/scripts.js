@@ -3085,7 +3085,7 @@ umegaTrailers = {
         name: "No certification",
         number: "",
         type: "SPC12"
-      }/*,
+      },
       {
         name: "European 167/2013",
         number: "e32*167/2013*00023*00"
@@ -3094,7 +3094,7 @@ umegaTrailers = {
         name: "Poland",
         number: "PL*4404*00",
         type: "SP1/SPC12"
-      }*/
+      }
     ],
     country: [
       {
